@@ -1,0 +1,83 @@
+[
+  { "country": "আফগানিস্তান", "capital": "কাবুল", "currency": "আফগানি" },
+  { "country": "আর্মেনিয়া", "capital": "ইয়েরেভান", "currency": "দ্রাম" },
+  { "country": "আজারবাইজান", "capital": "বাকু", "currency": "মানাত" },
+  { "country": "বাহরাইন", "capital": "মানামা", "currency": "দিনার" },
+  { "country": "বাংলাদেশ", "capital": "ঢাকা", "currency": "টাকা" },
+  { "country": "ভুটান", "capital": "থিম্পু", "currency": "নগুলট্রাম" },
+  {
+    "country": "ব্রুনাই",
+    "capital": "বন্দর সেরি বেগাওয়ান",
+    "currency": "ব্রুনাই ডলার"
+  },
+  { "country": "কম্বোডিয়া", "capital": "নমপেন", "currency": "রিয়েল" },
+  { "country": "চীন", "capital": "বেইজিং", "currency": "ইউয়ান (রেনমিনবি)" },
+  { "country": "সাইপ্রাস", "capital": "নিকোসিয়া", "currency": "ইউরো" },
+  { "country": "জর্জিয়া", "capital": "তিবিলিসি", "currency": "লারি" },
+  { "country": "ভারত", "capital": "নতুন দিল্লি", "currency": "রুপি" },
+  {
+    "country": "ইন্দোনেশিয়া",
+    "capital": "নুসান্তারা",
+    "currency": "রুপিয়াহ"
+  },
+  { "country": "ইরান", "capital": "তেহরান", "currency": "রিয়াল" },
+  { "country": "ইরাক", "capital": "বাগদাদ", "currency": "দিনার" },
+  { "country": "ইসরায়েল", "capital": "জেরুজালেম", "currency": "শেকেল" },
+  { "country": "জাপান", "capital": "টোকিও", "currency": "ইয়েন" },
+  { "country": "জর্দান", "capital": "আম্মান", "currency": "দিনার" },
+  { "country": "কাজাখস্তান", "capital": "আস্তানা", "currency": "তেঙ্গে" },
+  { "country": "কুয়েত", "capital": "কুয়েত সিটি", "currency": "দিনার" },
+  { "country": "কিরগিজস্তান", "capital": "বিশকেক", "currency": "সোম" },
+  { "country": "লাওস", "capital": "ভিয়েনতিয়েন", "currency": "কিপ" },
+  { "country": "লেবানন", "capital": "বৈরুত", "currency": "পাউন্ড" },
+  {
+    "country": "মালয়েশিয়া",
+    "capital": "কুয়ালালামপুর",
+    "currency": "রিঙ্গিত"
+  },
+  { "country": "মালদ্বীপ", "capital": "মালে", "currency": "রুফিয়া" },
+  { "country": "মঙ্গোলিয়া", "capital": "উলানবাটোর", "currency": "তুগ্রিক" },
+  { "country": "মিয়ানমার", "capital": "নেপিদো", "currency": "কিয়াত" },
+  { "country": "নেপাল", "capital": "কাঠমান্ডু", "currency": "রুপি" },
+  { "country": "উত্তর কোরিয়া", "capital": "পিয়ংইয়ং", "currency": "উন" },
+  { "country": "ওমান", "capital": "মাস্কাট", "currency": "রিয়াল" },
+  { "country": "পাকিস্তান", "capital": "ইসলামাবাদ", "currency": "রুপি" },
+  {
+    "country": "ফিলিস্তিন",
+    "capital": "রামাল্লাহ",
+    "currency": "শেকেল / দিনার"
+  },
+  { "country": "ফিলিপাইন", "capital": "ম্যানিলা", "currency": "পেসো" },
+  { "country": "কাতার", "capital": "দোহা", "currency": "রিয়াল" },
+  { "country": "সৌদি আরব", "capital": "রিয়াদ", "currency": "রিয়াল" },
+  {
+    "country": "সিঙ্গাপুর",
+    "capital": "সিঙ্গাপুর",
+    "currency": "সিঙ্গাপুর ডলার"
+  },
+  { "country": "দক্ষিণ কোরিয়া", "capital": "সিউল", "currency": "উন" },
+  {
+    "country": "শ্রীলঙ্কা",
+    "capital": "শ্রী জয়াবর্ধনেপুরা কোট্টে",
+    "currency": "রুপি"
+  },
+  { "country": "সিরিয়া", "capital": "দামেস্ক", "currency": "পাউন্ড" },
+  {
+    "country": "তাইওয়ান",
+    "capital": "তাইপে",
+    "currency": "নতুন তাইওয়ান ডলার"
+  },
+  { "country": "তাজিকিস্তান", "capital": "দুশানবে", "currency": "সোমোনি" },
+  { "country": "থাইল্যান্ড", "capital": "ব্যাংকক", "currency": "বাত" },
+  { "country": "পূর্ব তিমুর", "capital": "দিলি", "currency": "মার্কিন ডলার" },
+  { "country": "তুরস্ক", "capital": "আঙ্কারা", "currency": "লিরা" },
+  { "country": "তুর্কমেনিস্তান", "capital": "আশগাবাত", "currency": "মানাত" },
+  {
+    "country": "সংযুক্ত আরব আমিরাত",
+    "capital": "আবুধাবি",
+    "currency": "দিরহাম"
+  },
+  { "country": "উজবেকিস্তান", "capital": "তাশখন্দ", "currency": "সোম" },
+  { "country": "ভিয়েতনাম", "capital": "হ্যানয়", "currency": "ডং" },
+  { "country": "ইয়েমেন", "capital": "সানা", "currency": "রিয়াল" }
+]

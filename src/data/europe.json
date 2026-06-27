@@ -1,0 +1,76 @@
+[
+  { "country": "আলবেনিয়া", "capital": "তিরানা", "currency": "লেক" },
+  { "country": "আন্দোরা", "capital": "আন্দোরা লা ভেলা", "currency": "ইউরো" },
+  { "country": "অস্ট্রিয়া", "capital": "ভিয়েনা", "currency": "ইউরো" },
+  {
+    "country": "বেলারুশ",
+    "capital": "মিনস্ক",
+    "currency": "বেলারুশিয়ান রুবেল"
+  },
+  { "country": "বেলজিয়াম", "capital": "ব্রাসেলস", "currency": "ইউরো" },
+  {
+    "country": "বসনিয়া ও হার্জেগোভিনা",
+    "capital": "সারায়েভো",
+    "currency": "মার্ক"
+  },
+  { "country": "বুলগেরিয়া", "capital": "সোফিয়া", "currency": "লেভ" },
+  { "country": "ক্রোয়েশিয়া", "capital": "জাগ্রেব", "currency": "ইউরো" },
+  { "country": "সাইপ্রাস", "capital": "নিকোসিয়া", "currency": "ইউরো" },
+  { "country": "চেক প্রজাতন্ত্র", "capital": "প্রাগ", "currency": "কোরুনা" },
+  { "country": "ডেনমার্ক", "capital": "কোপেনহেগেন", "currency": "ক্রোন" },
+  { "country": "এস্তোনিয়া", "capital": "তালিন", "currency": "ইউরো" },
+  { "country": "ফিনল্যান্ড", "capital": "হেলসিংকি", "currency": "ইউরো" },
+  { "country": "ফ্রান্স", "capital": "প্যারিস", "currency": "ইউরো" },
+  { "country": "জার্মানি", "capital": "বার্লিন", "currency": "ইউরো" },
+  { "country": "গ্রিস", "capital": "এথেন্স", "currency": "ইউরো" },
+  { "country": "হাঙ্গেরি", "capital": "বুদাপেস্ট", "currency": "ফোরিন্ট" },
+  { "country": "আইসল্যান্ড", "capital": "রেইকিয়াভিক", "currency": "ক্রোনা" },
+  { "country": "আয়ারল্যান্ড", "capital": "ডাবলিন", "currency": "ইউরো" },
+  { "country": "ইতালি", "capital": "রোম", "currency": "ইউরো" },
+  { "country": "কসোভো", "capital": "প্রিস্টিনা", "currency": "ইউরো" },
+  { "country": "লাটভিয়া", "capital": "রিগা", "currency": "ইউরো" },
+  { "country": "লিশটেনস্টাইন", "capital": "ভাদুজ", "currency": "সুইস ফ্রাঙ্ক" },
+  { "country": "লিথুয়ানিয়া", "capital": "ভিলনিয়াস", "currency": "ইউরো" },
+  {
+    "country": "লুক্সেমবার্গ",
+    "capital": "লুক্সেমবার্গ সিটি",
+    "currency": "ইউরো"
+  },
+  { "country": "মাল্টা", "capital": "ভ্যালেটা", "currency": "ইউরো" },
+  { "country": "মলদোভা", "capital": "কিশিনেভ", "currency": "লেউ" },
+  { "country": "মোনাকো", "capital": "মোনাকো", "currency": "ইউরো" },
+  { "country": "মন্টিনেগ্রো", "capital": "পদগোরিচা", "currency": "ইউরো" },
+  { "country": "নেদারল্যান্ডস", "capital": "আমস্টারডাম", "currency": "ইউরো" },
+  {
+    "country": "উত্তর মেসিডোনিয়া",
+    "capital": "স্কোপিয়ে",
+    "currency": "দেনার"
+  },
+  { "country": "নরওয়ে", "capital": "অসলো", "currency": "ক্রোন" },
+  { "country": "পোল্যান্ড", "capital": "ওয়ার্সো", "currency": "জ্লোটি" },
+  { "country": "পর্তুগাল", "capital": "লিসবন", "currency": "ইউরো" },
+  { "country": "রোমানিয়া", "capital": "বুখারেস্ট", "currency": "লেউ" },
+  { "country": "রাশিয়া", "capital": "মস্কো", "currency": "রুবেল" },
+  { "country": "সান মারিনো", "capital": "সান মারিনো", "currency": "ইউরো" },
+  { "country": "সার্বিয়া", "capital": "বেলগ্রেড", "currency": "দিনার" },
+  { "country": "স্লোভাকিয়া", "capital": "ব্রাতিস্লাভা", "currency": "ইউরো" },
+  { "country": "স্লোভেনিয়া", "capital": "লুবলিয়ানা", "currency": "ইউরো" },
+  { "country": "স্পেন", "capital": "মাদ্রিদ", "currency": "ইউরো" },
+  { "country": "সুইডেন", "capital": "স্টকহোম", "currency": "ক্রোনা" },
+  {
+    "country": "সুইজারল্যান্ড",
+    "capital": "বার্ন",
+    "currency": "সুইস ফ্রাঙ্ক"
+  },
+  { "country": "ইউক্রেন", "capital": "কিয়েভ", "currency": "হ্রিভনিয়া" },
+  {
+    "country": "যুক্তরাজ্য",
+    "capital": "লন্ডন",
+    "currency": "পাউন্ড স্টার্লিং"
+  },
+  {
+    "country": "ভ্যাটিকান সিটি",
+    "capital": "ভ্যাটিকান সিটি",
+    "currency": "ইউরো"
+  }
+]

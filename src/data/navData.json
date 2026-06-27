@@ -1,0 +1,484 @@
+[
+  {
+    "id": 1,
+    "path": "/academy",
+    "Name": {
+      "en": "Academy",
+      "bn": "অ্যাকাডেমি"
+    }
+  },
+  {
+    "id": 2,
+    "path": "#",
+    "Name": {
+      "en": "Bangla",
+      "bn": "বাংলা"
+    },
+    "hasDropdown": true,
+    "subLink": [
+      {
+        "id": 21,
+        "Name": {
+          "en": "Bengali literature",
+          "bn": "বাংলা সাহিত্য"
+        },
+        "path": "#",
+        "hasNested": true,
+        "nestedLink": [
+          {
+            "id": 211,
+            "Name": {
+              "en": "Bangla Literature and History",
+              "bn": "বাংলা সাহিত্য ও ইতিহাস"
+            },
+            "path": "/banglaLiteratureHistory"
+          },
+          {
+            "id": 212,
+            "Name": {
+              "en": "Ancient Period of Bangla Literature",
+              "bn": "বংলা সাহিত্য এর আদিযুগ"
+            },
+            "path": "/ancientPeriodBanglaLiterature"
+          },
+          {
+            "id": 213,
+            "Name": {
+              "en": "Medieval Period of Bangla Literature",
+              "bn": "বাংলা সাহিত্য এর মধ্যযুগ"
+            },
+            "path": "/medievalPeriodBanglaLiterature"
+          },
+          {
+            "id": 214,
+            "Name": {
+              "en": "Modern Era of Bangla Literature",
+              "bn": "বাংলা সাহিত্য এর আধুনিক যুগ"
+            },
+            "path": "/ModernEraBanglaLiterature"
+          },
+          {
+            "id": 215,
+            "Name": { "en": "Novels", "bn": "উপন্যাস" },
+            "path": "/novels"
+          },
+          {
+            "id": 216,
+            "Name": { "en": " Drama", "bn": "নাটক" },
+            "path": "/drama"
+          },
+          {
+            "id": 217,
+            "Name": { "en": "sort story", "bn": "ছোটগল্প" },
+            "path": "/sortStory"
+          },
+          {
+            "id": 218,
+            "Name": { "en": "poetry", "bn": "কাব্যগ্রন্থ" },
+            "path": "/poetry"
+          },
+          {
+            "id": 219,
+            "Name": { "en": "poets titles and honors", "bn": "কবিদের উপাধি" },
+            "path": "/poetsTitlesAndHonors"
+          },
+          {
+            "id": 220,
+            "Name": {
+              "en": " poets real names and pseudonyms",
+              "bn": "কবিদের প্রকৃত নাম ও ছন্দনাম"
+            },
+            "path": "/poetsRealNamesAndPseudonyms"
+          },
+          {
+            "id": 221,
+            "Name": {
+              "en": "language movement books and publications ",
+              "bn": "ভাষা আন্দোলনভিতিক গ্রন্থ ও চলচিএ"
+            },
+            "path": "/languageMovementBooksAndPublications "
+          },
+          {
+            "id": 222,
+            "Name": {
+              "en": "language movement books and publications ",
+              "bn": "মুক্তিযুদ্ধবিষয়ক গ্রন্থ ও চলচিএ"
+            },
+            "path": "/languageMovementBooksAndPublications"
+          },
+          {
+            "id": 223,
+            "Name": {
+              "en": "Famous quotes and line from writer ",
+              "bn": "সাহিতিকদের বিখ্যাত উক্তি ও পঙতিসমুহ"
+            },
+            "path": "/FamousQuotesAndLineFromWriter "
+          },
+          {
+            "id": 224,
+            "Name": { "en": "prose ", "bn": "গদ্য" },
+            "path": "/prose"
+          },
+          {
+            "id": 225,
+            "Name": { "en": "poems", "bn": "কবিতা" },
+            "path": "/poems"
+          },
+          {
+            "id": 226,
+            "Name": { "en": "Meter and Rhythm", "bn": "ছন্দ ও অলংকার" },
+            "path": "/MeterAndRhythm"
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "Name": {
+          "en": "Bengali Grammar",
+          "bn": "বাংলা ব্যাকরণ"
+        },
+        "path": "#",
+        "hasNested": true,
+        "nestedLink": [
+          {
+            "id": 221,
+            "Name": { "en": "Language And Bangla", "bn": "ভাষা এবং বাংলা" },
+            "path": "/bangle"
+          },
+          {
+            "id": 222,
+            "Name": { "en": "phonology", "bn": "ধ্বনিতত্ত্ব" },
+            "path": "/SellList"
+          },
+          {
+            "id": 223,
+            "Name": { "en": "Sound Changes", "bn": "ধ্বনির পরিবর্তন" },
+            "path": "/SellSidebarGrid"
+          },
+          {
+            "id": 224,
+            "Name": { "en": "Juncture", "bn": "সন্ধি" },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 225,
+            "Name": {
+              "en": "Consonant and Vowel Rules",
+              "bn": "ন-ত্ব ও ষ-ত্ব বিধান"
+            },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 226,
+            "Name": {
+              "en": "Masculine and Feminine gender",
+              "bn": "পুরুষ ও স্ত্রীবাচক"
+            },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 227,
+            "Name": { "en": "Repeated Word", "bn": "দিরুক্ত শব্দ" },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 228,
+            "Name": { "en": "Numerical Words", "bn": "সংখ্যাবাচক শব্দ" },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 229,
+            "Name": { "en": "saying", "bn": "বচন" },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 230,
+            "Name": { "en": "Articles", "bn": "পদাশ্রিত নির্দেশক" },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 231,
+            "Name": { "en": "Compounding", "bn": "সমাস" },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 232,
+            "Name": { "en": "Prefix", "bn": "উপসর্গ" },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 233,
+            "Name": { "en": "Verb Root", "bn": "ধতু" },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 234,
+            "Name": { "en": "Suffix", "bn": "প্রত্যয়" },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 235,
+            "Name": { "en": "Types of Words", "bn": "শব্দের প্রকার" },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 236,
+            "Name": {
+              "en": "Parts of Speech / Classification of Words",
+              "bn": "পদ-প্রকরণ"
+            },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 237,
+            "Name": { "en": "Verb", "bn": "ক্রিয়াপদ" },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 238,
+            "Name": {
+              "en": "Tense, Person and Special Uses of Tenses",
+              "bn": "কাল, পুরুষ এবং কালের বিশিষ্ট প্রয়োগ"
+            },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 239,
+            "Name": {
+              "en": "Finite, Non-finite and Compound Verbs",
+              "bn": "সমাপিকা, অসমাপিকা ও যৌগিক ক্রিয়ার প্রয়োগ"
+            },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 240,
+            "Name": { "en": "Bengali Imperative Mode", "bn": "বাংলা অনুজ্ঞা" },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 241,
+            "Name": {
+              "en": "Verb Inflection: Sadhu and Cholito",
+              "bn": "ক্রিয়া-বিভক্তি : সাধু ও চলিত"
+            },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 242,
+            "Name": {
+              "en": "Case, Inflection, Genitive and Vocative Case",
+              "bn": "কারক ও বিভক্তি এবং সম্বন্ধ পদ ও সম্বোধন পদ"
+            },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 243,
+            "Name": {
+              "en": "Preposition / Postposition",
+              "bn": "অনুসর্গ বা কর্মপ্রবচনীয় শব্দ"
+            },
+            "path": "/SellListSidebar"
+          },
+
+
+          {
+            "id": 244,
+            "Name": {
+              "en": "Syntax / Sentence Structure",
+              "bn": "বাক্য প্রকরণ"
+            },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 245,
+            "Name": {
+              "en": "Development of Word Eligibility and Idioms",
+              "bn": "শব্দের যোগ্যতার বিকাশ ও বাগধারা"
+            },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 246,
+            "Name": {
+              "en": "Voice and Voice Change",
+              "bn": "বাচ্য এবং বাচ্য পরিবর্তন"
+            },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 247,
+            "Name": {
+              "en": "Narration / Narration Change",
+              "bn": "উক্তি পরিবর্তন"
+            },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 248,
+            "Name": {
+              "en": "Punctuation Marks",
+              "bn": "যতি বা ছেদ-চিহ্নের লিখন কৌশল"
+            },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 249,
+            "Name": {
+              "en": "Classification of Sentences",
+              "bn": "বাক্যের শ্রেণীবিভাগ"
+            },
+            "path": "/SellListSidebar"
+          },
+          {
+            "id": 250,
+            "Name": {
+              "en": "Word Order in Sentences",
+              "bn": "বাক্যে পদ-সংস্থাপনের ক্রম"
+            },
+            "path": "/SellListSidebar"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "path": "#",
+    "Name": {
+      "en": "Bangladesh & international",
+      "bn": "বাংলাদেশ এবং আন্তর্জাতিক"
+    },
+    "hasDropdown": true,
+    "subLink": [
+      {
+        "id": 32,
+        "Name": {
+          "en": "Bangladesh Affairs",
+          "bn": "বাংলাদেশ আফেয়ারস"
+        },
+        "path": "#",
+        "hasNested": true,
+        "nestedLink": [
+          {
+            "id": 321,
+            "Name": { "en": "All Day", "bn": "দিবস" },
+            "path": "/day"
+          },
+          {
+            "id": 322,
+            "Name": { "en": "Agent List", "bn": "এজেন্ট লিস্ট" },
+            "path": "/AgentListProfile"
+          },
+          {
+            "id": 323,
+            "Name": {
+              "en": "Agent Grid with sidebar",
+              "bn": "সাইডবারসহ এজেন্ট গ্রিড"
+            },
+            "path": "/AgentGridProfile"
+          },
+          {
+            "id": 324,
+            "Name": {
+              "en": "Agent List with sidebar",
+              "bn": "সাইডবারসহ এজেন্ট লিস্ট"
+            },
+            "path": "/AgentProfileSidebar"
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "Name": {
+          "en": "international Affairs",
+          "bn": "আন্তর্জাতিক আফেয়ারস"
+        },
+        "path": "#",
+        "hasNested": true,
+        "nestedLink": [
+          {
+            "id": 331,
+            "Name": { "en": "Country/Capital/Currency", "bn": "কান্ট্রি/ক্যাপিটাল/কারেন্সী" },
+            "path": "/CountryCapitalCurrency"
+          },
+          {
+            "id": 332,
+            "Name": { "en": "Agency List", "bn": "এজেন্সি লিস্ট" },
+            "path": "/AgencyList"
+          },
+          {
+            "id": 333,
+            "Name": {
+              "en": "Agency Grid with sidebar",
+              "bn": "সাইডবারসহ এজেন্সি গ্রিড"
+            },
+            "path": "/AgentSidebar"
+          },
+          {
+            "id": 334,
+            "Name": {
+              "en": "Agency List with sidebar",
+              "bn": "সাইডবারসহ এজেন্সি লিস্ট"
+            },
+            "path": "/AgencyLSidebar"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "Name": {
+      "en": "English",
+      "bn": "ইংরেজি"
+    },
+    "path": "#",
+    "hasDropdown": true,
+    "subLink": [
+      {
+        "id": 431,
+        "Name": { "en": "English Literature", "bn": "ইংরেজি সাহিত্য" },
+        "path": "/BlogGrid"
+      },
+      {
+        "id": 432,
+        "Name": { "en": "English Grammar", "bn": "ইংরেজি ব্যাকরণ" },
+        "path": "/BlogList"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "Name": {
+      "en": "Others",
+      "bn": "অন্যান্য"
+    },
+    "path": "#",
+    "hasDropdown": true,
+    "subLink": [
+      {
+        "id": 541,
+        "Name": { "en": "Math", "bn": "গণিত" },
+        "path": "/math"
+      },
+      {
+        "id": 542,
+        "Name": {
+          "en": "information & communication Technology",
+          "bn": "তথ্য ও যোগাযোগ প্রযুক্তি"
+        },
+        "path": "/gallery"
+      },
+      {
+        "id": 543,
+        "Name": { "en": "Contact Us", "bn": "যোগাযোগ" },
+        "path": "/Contact"
+      },
+      {
+        "id": 544,
+        "Name": { "en": "Testimonial", "bn": "মতামত" },
+        "path": "/Testimonial"
+      }
+    ]
+  }
+]
