@@ -18,17 +18,16 @@ const SingleExam = ({ id }: uniqueId) => {
   const PREFIXES = ['ক', 'খ', 'গ', 'ঘ']
 
   const [timeLeft, setTimeLeft] = useState(900)
-  const [answers, setAnswers] = useState<Record<number, string>>({})
+  // ✅ number index store করছি, string নয়
+  const [answers, setAnswers] = useState<Record<number, number>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showConfirmModal, setShowConfirmModal] = useState(false)
 
-  // answers এর latest value ref এ রাখুন
   const answersRef = useRef(answers)
   useEffect(() => {
     answersRef.current = answers
   }, [answers])
 
-  // timeLeft এর latest value ref এ রাখুন — useCallback dependency এড়াতে
   const timeLeftRef = useRef(timeLeft)
   useEffect(() => {
     timeLeftRef.current = timeLeft
@@ -37,6 +36,7 @@ const SingleExam = ({ id }: uniqueId) => {
   const executeSubmissionRef = useRef<(autoSubmit?: boolean) => Promise<void>>(
     async () => {}
   )
+
   const executeSubmission = useCallback(
     async (autoSubmit = false) => {
       setShowConfirmModal(false)
@@ -49,10 +49,14 @@ const SingleExam = ({ id }: uniqueId) => {
         examId: id,
         totalQuestions: singleData?.total_Question,
         answeredCount,
+        // ✅ পুরো answers object পাঠাচ্ছি — { "1": 0, "2": 2, "3": 1, ... }
+        // value = 0-based index of selected option
         submittedAnswers: currentAnswers,
-        timeTaken: 900 - timeLeftRef.current, // ✅ ref থেকে নিন, dependency নয়
+        timeTaken: 900 - timeLeftRef.current,
         autoSubmitted: autoSubmit,
       }
+
+      console.log(submissionPayload)
 
       try {
         const response = await fetch(
@@ -71,18 +75,16 @@ const SingleExam = ({ id }: uniqueId) => {
       } catch (error) {
         console.error('Submission failed:', error)
         alert('নেটওয়ার্ক সমস্যার কারণে সাবমিট করা যায়নি। আবার চেষ্টা করুন।')
-        setIsSubmitting(false) // ✅ setShouldAutoSubmit সরানো হয়েছে
+        setIsSubmitting(false)
       }
     },
-    [id, singleData] // ✅ timeLeft dependency সরানো হয়েছে
+    [id, singleData]
   )
 
-  // সবসময় latest executeSubmission ref এ রাখুন
   useEffect(() => {
     executeSubmissionRef.current = executeSubmission
   }, [executeSubmission])
 
-  // ✅ timer — পরিষ্কার, কোনো warning নেই
   useEffect(() => {
     if (isSubmitting) return
 
@@ -107,9 +109,10 @@ const SingleExam = ({ id }: uniqueId) => {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`
   }
 
-  const handleSelectOption = (questionId: number, optionLabel: string) => {
+  // ✅ optionLabel সরানো হয়েছে — এখন optionIndex (0-based) store হচ্ছে
+  const handleSelectOption = (questionId: number, optionIndex: number) => {
     if (isSubmitting) return
-    setAnswers((prev) => ({ ...prev, [questionId]: optionLabel }))
+    setAnswers((prev) => ({ ...prev, [questionId]: optionIndex }))
   }
 
   const answeredCount = Object.keys(answers).length
@@ -253,12 +256,14 @@ const SingleExam = ({ id }: uniqueId) => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {q.ans.map((option, i) => {
-                  const isSelected = answers[q.id] === option
+                  // ✅ index দিয়ে compare করছি, text দিয়ে নয়
+                  const isSelected = answers[q.id] === i
                   return (
                     <button
                       key={i}
                       disabled={isSubmitting}
-                      onClick={() => handleSelectOption(q.id, option)}
+                      // ✅ i (0-based index) পাঠাচ্ছি
+                      onClick={() => handleSelectOption(q.id, i)}
                       className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-left text-xs md:text-sm font-medium transition-all duration-200 active:scale-[0.99] group ${
                         isSelected
                           ? 'bg-green-600/10 border-green-500 text-green-400'
