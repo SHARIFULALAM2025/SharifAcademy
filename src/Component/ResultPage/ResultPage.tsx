@@ -1,4 +1,5 @@
 'use client'
+import confetti from 'canvas-confetti'
 import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { AttendExam, ExamQuestion } from '@/Types/Day'
@@ -48,8 +49,14 @@ const ResultContent = () => {
     fetch(
       `${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/api/exam/result/${resultId}`
     )
+      // ✅ এই .then টা replace করুন
       .then((r) => {
-        if (!r.ok) throw new Error('ফলাফল খুঁজে পাওয়া যায়নি')
+        if (!r.ok) {
+          return r.json().then((err) => {
+            console.error('❌ API Error:', r.status, err)
+            throw new Error(err.error || 'ফলাফল খুঁজে পাওয়া যায়নি')
+          })
+        }
         return r.json()
       })
       .then((data) => {
@@ -65,7 +72,58 @@ const ResultContent = () => {
         setLoading(false)
       })
   }, [resultId])
+ useEffect(() => {
+   // ১. প্রাথমিক কন্ডিশন চেক
+   if (!result || examFinishedData.length === 0) return
+   if (parseFloat(result.score) < 8) return
 
+   let animationFrameId:number
+   const duration = 5 * 1000 // ১৫ সেকেন্ড অনেক লম্বা, তাই ৫ সেকেন্ড দেওয়া হলো (চাইলে ১৫ করতে পারেন)
+   const animationEnd = Date.now() + duration
+
+   // আপনার কাস্টম কালার প্যালেট
+   const colors = ['#4f6ef7', '#22c55e', '#f59e0b', '#ec4899']
+
+   // ৪০০ms ডিলে-র পর অ্যানিমেশন শুরু হবে
+   const startTimer = setTimeout(() => {
+     // রিক্লুসিভ ফ্রেম ফাংশন
+     function frame() {
+       // বাম দিক থেকে ফায়ার
+       confetti({
+         particleCount: 2,
+         angle: 60,
+         spread: 55,
+         origin: { x: 0, y: 0.65 },
+         colors: colors,
+       })
+
+       // ডান দিক থেকে ফায়ার
+       confetti({
+         particleCount: 2,
+         angle: 120,
+         spread: 55,
+         origin: { x: 1, y: 0.65 },
+         colors: colors,
+       })
+
+       // সময় বাকি থাকলে পরের ফ্রেমে আবার রান করবে
+       if (Date.now() < animationEnd) {
+         animationFrameId = requestAnimationFrame(frame)
+       }
+     }
+
+     // প্রথম ফ্রেম ট্রিগার
+     frame()
+   }, 400)
+
+   // ২. ক্লিনআপ ফাংশন (খুবই গুরুত্বপূর্ণ)
+   return () => {
+     clearTimeout(startTimer)
+     if (animationFrameId) {
+       cancelAnimationFrame(animationFrameId)
+     }
+   }
+ }, [result, examFinishedData])
   if (loading)
     return (
       <div className="min-h-screen bg-[#0f1117] text-white flex items-center justify-center">
