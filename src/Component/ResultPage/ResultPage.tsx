@@ -8,7 +8,10 @@ interface ExamResult {
   id: string
   user_id: string
   exam_id: number
-  answers: Record<string, string>
+  // ✅ answers এখন index number — { "1": 0, "2": 2, ... }
+  answers: Record<string, number>
+  // ✅ correct answers index — { "1": 0, "2": 0, ... }
+  correctAnswers: Record<string, number>
   score: string
   total_correct: number
   total_wrong: number
@@ -21,8 +24,8 @@ interface Question {
   n: number
   text: string
   opts: string[]
-  correct: number
-  chosen: number
+  correct: number // 0-based correct index
+  chosen: number // 0-based user chosen index (-1 = skip)
   time: string
   tags: string[]
 }
@@ -104,10 +107,20 @@ const ResultContent = () => {
   const questions: Question[] = examFinishedData.flatMap((exam) =>
     exam.question.map((q: ExamQuestion, i: number) => {
       const questionNumber = String(i + 1)
-      const userAnswer = result.answers?.[questionNumber] ?? null
       const opts = Array.isArray(q.ans) ? q.ans : []
-      const correctIdx = q.correct_answer ? opts.indexOf(q.correct_answer) : -1
-      const chosenIdx = userAnswer ? opts.indexOf(userAnswer) : -1
+
+      // ✅ DB থেকে আসা index সরাসরি use করুন
+      const chosenIdx =
+        result.answers?.[questionNumber] !== undefined
+          ? Number(result.answers[questionNumber])
+          : -1
+
+      // ✅ backend থেকে পাঠানো correctAnswers index use করুন
+      const correctIdx =
+        result.correctAnswers?.[questionNumber] !== undefined
+          ? Number(result.correctAnswers[questionNumber])
+          : -1
+
       return {
         n: i + 1,
         text: q.ques,
@@ -239,10 +252,14 @@ const ResultContent = () => {
         <div className="bg-[#1e2336] border border-[#2a3050] rounded-xl p-4 mb-3">
           <div className="flex items-center gap-4 mb-4">
             <div
-              className={`w-[70px] h-[70px] rounded-full border-[3px] flex flex-col items-center justify-center flex-shrink-0 ${passed ? 'border-green-400' : 'border-red-400'}`}
+              className={`w-[70px] h-[70px] rounded-full border-[3px] flex flex-col items-center justify-center flex-shrink-0 ${
+                passed ? 'border-green-400' : 'border-red-400'
+              }`}
             >
               <span
-                className={`text-xl font-extrabold leading-none ${passed ? 'text-green-400' : 'text-red-400'}`}
+                className={`text-xl font-extrabold leading-none ${
+                  passed ? 'text-green-400' : 'text-red-400'
+                }`}
               >
                 {score}
               </span>
@@ -254,7 +271,9 @@ const ResultContent = () => {
             <div className="flex-1">
               <div className="h-1 bg-white/10 rounded-full overflow-hidden mb-1">
                 <div
-                  className={`h-full rounded-full transition-all duration-1000 ${passed ? 'bg-green-400' : 'bg-red-400'}`}
+                  className={`h-full rounded-full transition-all duration-1000 ${
+                    passed ? 'bg-green-400' : 'bg-red-400'
+                  }`}
                   style={{ width: `${progressPct}%` }}
                 />
               </div>
@@ -277,7 +296,11 @@ const ResultContent = () => {
 
             <div className="flex flex-col items-end gap-1.5">
               <div
-                className={`px-3 py-1.5 rounded-lg text-sm font-bold border ${passed ? 'bg-green-500/10 border-green-500/40 text-green-400' : 'bg-red-500/10 border-red-500/40 text-red-400'}`}
+                className={`px-3 py-1.5 rounded-lg text-sm font-bold border ${
+                  passed
+                    ? 'bg-green-500/10 border-green-500/40 text-green-400'
+                    : 'bg-red-500/10 border-red-500/40 text-red-400'
+                }`}
               >
                 {passed ? '✅ পাস' : '❌ ফেল'}
               </div>
@@ -372,13 +395,19 @@ const ResultContent = () => {
 
                         let cls: string
                         let letterCls: string
-                        if (isCorrectOpt) {
-                          // সঠিক উত্তর
+
+                        if (isCorrectOpt && isUserChosen) {
+                          // ✅ সঠিক উত্তর — user সঠিক বেছেছে
+                          cls =
+                            'bg-green-500/10 border-green-500/40 text-green-400'
+                          letterCls = 'bg-green-500 border-green-500 text-white'
+                        } else if (isCorrectOpt && !isUserChosen) {
+                          // ✅ সঠিক উত্তর — user বেছেনি (highlight করুন)
                           cls =
                             'bg-green-500/10 border-green-500/40 text-green-400'
                           letterCls = 'bg-green-500 border-green-500 text-white'
                         } else if (isUserChosen && !isCorrectOpt) {
-                          // ইউজার ভুল অপশন সিলেক্ট করেছে
+                          // ❌ user ভুল অপশন বেছেছে
                           cls = 'bg-red-500/10 border-red-500/40 text-red-400'
                           letterCls = 'bg-red-500 border-red-500 text-white'
                         } else {
@@ -387,6 +416,7 @@ const ResultContent = () => {
                           letterCls =
                             'bg-[#1e2336] border-[#323a58] text-slate-400'
                         }
+
                         return (
                           <div
                             key={i}
