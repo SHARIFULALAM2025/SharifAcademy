@@ -118,8 +118,7 @@ const ProfilePage = () => {
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500 dark:text-gray-400">Role</span>
                   <span className="text-gray-900 dark:text-white font-medium capitalize">
-                    {/* Fallback to 'Member' if your auth doesn't return role yet */}
-                    {(user as any).role || 'Professional'}
+                    {(user as { role?: string }).role || 'Professional'}
                   </span>
                 </div>
               </div>

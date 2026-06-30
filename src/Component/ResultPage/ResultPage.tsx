@@ -72,58 +72,60 @@ const ResultContent = () => {
         setLoading(false)
       })
   }, [resultId])
- useEffect(() => {
-   // ১. প্রাথমিক কন্ডিশন চেক
-   if (!result || examFinishedData.length === 0) return
-   if (parseFloat(result.score) < 8) return
 
-   let animationFrameId:number
-   const duration = 5 * 1000 // ১৫ সেকেন্ড অনেক লম্বা, তাই ৫ সেকেন্ড দেওয়া হলো (চাইলে ১৫ করতে পারেন)
-   const animationEnd = Date.now() + duration
+  useEffect(() => {
+    // ১. প্রাথমিক কন্ডিশন চেক
+    if (!result || examFinishedData.length === 0) return
+    if (parseFloat(result.score) < 8) return
 
-   // আপনার কাস্টম কালার প্যালেট
-   const colors = ['#4f6ef7', '#22c55e', '#f59e0b', '#ec4899']
+    let animationFrameId: number
+    const duration = 5 * 1000 // ১৫ সেকেন্ড অনেক লম্বা, তাই ৫ সেকেন্ড দেওয়া হলো (চাইলে ১৫ করতে পারেন)
+    const animationEnd = Date.now() + duration
 
-   // ৪০০ms ডিলে-র পর অ্যানিমেশন শুরু হবে
-   const startTimer = setTimeout(() => {
-     // রিক্লুসিভ ফ্রেম ফাংশন
-     function frame() {
-       // বাম দিক থেকে ফায়ার
-       confetti({
-         particleCount: 2,
-         angle: 60,
-         spread: 55,
-         origin: { x: 0, y: 0.65 },
-         colors: colors,
-       })
+    // আপনার কাস্টম কালার প্যালেট
+    const colors = ['#4f6ef7', '#22c55e', '#f59e0b', '#ec4899']
 
-       // ডান দিক থেকে ফায়ার
-       confetti({
-         particleCount: 2,
-         angle: 120,
-         spread: 55,
-         origin: { x: 1, y: 0.65 },
-         colors: colors,
-       })
+    // ৪০০ms ডিলে-র পর অ্যানিমেশন শুরু হবে
+    const startTimer = setTimeout(() => {
+      // রিক্লুসিভ ফ্রেম ফাংশন
+      function frame() {
+        // বাম দিক থেকে ফায়ার
+        confetti({
+          particleCount: 2,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0, y: 0.65 },
+          colors: colors,
+        })
 
-       // সময় বাকি থাকলে পরের ফ্রেমে আবার রান করবে
-       if (Date.now() < animationEnd) {
-         animationFrameId = requestAnimationFrame(frame)
-       }
-     }
+        // ডান দিক থেকে ফায়ার
+        confetti({
+          particleCount: 2,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1, y: 0.65 },
+          colors: colors,
+        })
 
-     // প্রথম ফ্রেম ট্রিগার
-     frame()
-   }, 400)
+        // সময় বাকি থাকলে পরের ফ্রেমে আবার রান করবে
+        if (Date.now() < animationEnd) {
+          animationFrameId = requestAnimationFrame(frame)
+        }
+      }
 
-   // ২. ক্লিনআপ ফাংশন (খুবই গুরুত্বপূর্ণ)
-   return () => {
-     clearTimeout(startTimer)
-     if (animationFrameId) {
-       cancelAnimationFrame(animationFrameId)
-     }
-   }
- }, [result, examFinishedData])
+      // প্রথম ফ্রেম ট্রিগার
+      frame()
+    }, 400)
+
+    // ২. ক্লিনআপ ফাংশন (খুবই গুরুত্বপূর্ণ)
+    return () => {
+      clearTimeout(startTimer)
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId)
+      }
+    }
+  }, [result, examFinishedData])
+
   if (loading)
     return (
       <div className="min-h-screen bg-[#0f1117] text-white flex items-center justify-center">
@@ -244,7 +246,7 @@ const ResultContent = () => {
           <div className="flex-1 min-w-[90px] flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-500/10 border border-slate-500/20">
             <div>
               <div className="text-[9px] text-slate-400/70 font-medium">
-                সময়
+                সময়
               </div>
               <div className="text-sm font-bold text-slate-300">
                 {minutes}m {seconds}s
@@ -341,7 +343,7 @@ const ResultContent = () => {
                 <span>{totalMarks}</span>
               </div>
               <div className="text-[11px] text-slate-400">
-                সময় লেগেছে:{' '}
+                সময় লেগেছে:{' '}
                 <span className="text-slate-200 font-semibold">
                   {minutes} মিনিট {seconds} সেকেন্ড
                 </span>
@@ -378,7 +380,7 @@ const ResultContent = () => {
                 lbl: 'ভুল উত্তর',
                 color: 'text-red-400',
               },
-              { val: skippedCount, lbl: 'বাদ দেওয়া', color: 'text-blue-400' },
+              { val: skippedCount, lbl: 'বাদ দেওয়া', color: 'text-blue-400' },
               {
                 val: `${accuracy}%`,
                 lbl: 'নির্ভুলতা',
@@ -417,7 +419,6 @@ const ResultContent = () => {
               {filteredQuestions.map((q) => {
                 const isCorrect = q.chosen !== -1 && q.chosen === q.correct
                 const isWrong = q.chosen !== -1 && q.chosen !== q.correct
-                const isSkipped = q.chosen === -1
 
                 return (
                   <div
@@ -455,21 +456,17 @@ const ResultContent = () => {
                         let letterCls: string
 
                         if (isCorrectOpt && isUserChosen) {
-                          // ✅ সঠিক উত্তর — user সঠিক বেছেছে
                           cls =
                             'bg-green-500/10 border-green-500/40 text-green-400'
                           letterCls = 'bg-green-500 border-green-500 text-white'
                         } else if (isCorrectOpt && !isUserChosen) {
-                          // ✅ সঠিক উত্তর — user বেছেনি (highlight করুন)
                           cls =
                             'bg-green-500/10 border-green-500/40 text-green-400'
                           letterCls = 'bg-green-500 border-green-500 text-white'
                         } else if (isUserChosen && !isCorrectOpt) {
-                          // ❌ user ভুল অপশন বেছেছে
                           cls = 'bg-red-500/10 border-red-500/40 text-red-400'
                           letterCls = 'bg-red-500 border-red-500 text-white'
                         } else {
-                          // অন্য অপশন
                           cls = 'bg-[#181c27] border-[#2a3050] text-slate-400'
                           letterCls =
                             'bg-[#1e2336] border-[#323a58] text-slate-400'
@@ -505,7 +502,7 @@ const ResultContent = () => {
                           ? '✓ সঠিক'
                           : isWrong
                             ? '✗ ভুল'
-                            : '— বাদ দেওয়া'}
+                            : '— বাদ দেওয়া'}
                       </div>
                       <div className="flex items-center gap-1 text-[10px] text-slate-500">
                         <svg
@@ -565,7 +562,7 @@ const ResultContent = () => {
 
         {questions.length === 0 && (
           <div className="text-center py-12 text-slate-500 text-sm">
-            প্রশ্ন লোড হয়নি
+            প্রশ্ন লোড হয়নি
           </div>
         )}
       </div>

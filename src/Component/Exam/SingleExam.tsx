@@ -78,7 +78,7 @@ const SingleExam = ({ id }: uniqueId) => {
         setIsSubmitting(false)
       }
     },
-    [id, singleData]
+    [id, singleData,router]
   )
 
   useEffect(() => {
