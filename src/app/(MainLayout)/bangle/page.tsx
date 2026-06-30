@@ -28,7 +28,7 @@ const Page = () => {
           {/* Definition */}
           <h2
             className="
-          text-black text-center
+          text-black text-center dark:text-white
           text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl
           mt-1 sm:mt-2 leading-snug sm:leading-normal
         "

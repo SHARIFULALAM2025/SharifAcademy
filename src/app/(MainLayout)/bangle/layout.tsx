@@ -7,6 +7,7 @@ const LanguageLayout = ({ children }: { children: React.ReactNode }) => {
     <ReusableLayout items={sidebarItems}>
       {children}
     </ReusableLayout>
+    
   )
 }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { SidebarItem } from './sidebar'
 import SidebarWrapper from './SidebarWrapper'
 import '../../app/globals.css'
+import Footer from '../Footer/Footer'
 
 interface ReusableLayoutProps {
   children: React.ReactNode
@@ -16,7 +17,7 @@ const ReusableLayout = ({
 }: ReusableLayoutProps) => {
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-green-200">
-      <header className="h-8 bg-green-700 flex items-center overflow-hidden">
+      <header className="h-8 bg-green-700 dark:bg-slate-950 flex items-center overflow-hidden">
         <h1 className="text-white text-base font-semibold whitespace-nowrap inline-block animate-marquee">
           ⚽FIFA প্রথম গোল: মেক্সিকোর জুলিয়ান কুইনোনেস(৯ম মিনিট, বনাম দক্ষিণ
           আফ্রিকা) 🎯 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 🏆 প্রথম হ্যাটট্রিক:
@@ -32,6 +33,7 @@ const ReusableLayout = ({
           <div>{children}</div>
         </main>
       </div>
+      <Footer/>
     </div>
   )
 }

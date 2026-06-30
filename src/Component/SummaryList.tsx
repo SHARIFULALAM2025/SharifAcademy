@@ -4,7 +4,7 @@ import { LiaHandPointRightSolid } from "react-icons/lia"
 
 export const Summary = ({ items,className="" }: SummaryListProps) => {
   return (
-    <ul className={`text-black space-y-1 sm:space-y-2 mt-2 ${className}`}>
+    <ul className={`text-black dark:text-white space-y-1 sm:space-y-2 mt-2 ${className}`}>
       {items.map((item, i) => (
         <li
           key={i}
