@@ -2,7 +2,7 @@ import React from 'react'
 
 const Newsletter = () => {
   return (
-    <div className="w-full bg-[#064E3B] text-white font-sans py-16 px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center border-t border-emerald-800/40">
+    <div className="w-full bg-white dark:bg-slate-950 text-white font-sans py-16 px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center border-t border-emerald-800/40">
       <div className="max-w-3xl mx-auto space-y-6">
         {/* Top Mini Tag */}
         <p className="text-emerald-300 font-medium tracking-wider text-xs sm:text-sm uppercase">

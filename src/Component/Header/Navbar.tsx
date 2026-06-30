@@ -51,7 +51,7 @@ const Navbar = () => {
 
   return (
     <nav className="w-full border-b border-blue-800/30 bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 sticky top-0 h-14 z-50 transition-colors duration-200">
-      <div className=" h-full flex items-center justify-between px-4">
+      <div className=" h-full flex items-center justify-between ">
         <Link
           href="/"
           className="text-xl font-bold tracking-tight text-green-700 transition-colors"

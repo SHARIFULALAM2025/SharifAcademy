@@ -4,14 +4,14 @@ import {
   Phone,
   MapPin,
   ShieldCheck,
- 
+
   ArrowUpRight
 } from 'lucide-react'
 import { FaFacebook, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0B131F] text-gray-400 font-sans border-t border-gray-800/80 pt-16 pb-8 w-full">
+    <footer className="bg-white dark:bg-slate-950 text-gray-400 font-sans border-t border-gray-800/80 pt-16 pb-8 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Main Grid Content */}

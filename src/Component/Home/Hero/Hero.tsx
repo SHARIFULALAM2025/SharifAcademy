@@ -14,13 +14,13 @@ import Image from 'next/image'
 
 const Hero = () => {
   return (
-    <div className="bg-[#0B131F] text-white font-sans flex flex-col justify-between">
+    <div className="dark:bg-slate-950 text-white font-sans flex flex-col justify-between">
       {/* Main Hero Content */}
-      <div className="  px-4  w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="    w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Left Side: Text Content */}
         <div className="col-span-6 space-y-6 text-left">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-[#1A2436] border border-[#D17822]/30 px-4 py-1.5 rounded-full text-xs sm:text-sm text-[#D17822]">
+          <div className="inline-flex items-center gap-2  border border-[#D17822]/30 px-4 py-1.5 rounded-full text-xs sm:text-sm text-[#D17822]">
             <span className="w-2 h-2 rounded-full bg-[#D17822] animate-pulse"></span>
             বাংলাদেশের #১ অনলাইন একাডেমি
           </div>
