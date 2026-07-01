@@ -65,24 +65,41 @@ const articlesData: Article[] = [
       />
     ),
   },
+  {
+    id: 4,
+    category: 'মার্কেটিং:',
+    title: 'ডিজিটাল মার্কেটিং দিয়ে ব্যবসা বাড়ানোর কৌশল',
+    readTime: '৬ মিনিট',
+    date: '০৫ জুন ২০২৬',
+    themeColor: 'text-[#ea580c]',
+    bannerBg: 'bg-[#fff7ed]',
+    iconPath: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+      />
+    ),
+  }
 ]
 
 const BlogSection = () => {
   return (
-    <div className="bg-[#f8fafc] dark:bg-slate-950 py-16 px-4 font-sans text-slate-800">
-      <div className="max-w-5xl mx-auto">
+    <div className="bg-[#f8fafc] dark:bg-slate-950 py-6 px-4 font-sans text-slate-800">
+      <div className="">
         {/* Header Block */}
         <div className="text-center mb-10">
-          <span className="text-[#155e2f] font-bold text-xs sm:text-sm tracking-wide block mb-2">
+          <span className="text-[#155e2f] dark:text-white font-bold text-xs sm:text-sm tracking-wide block mb-2">
             ব্লগ ও রিসোর্স
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1e293b]">
+          <h2 className="text-2xl sm:text-3xl dark:text-white font-extrabold text-[#1e293b]">
             শিক্ষামূলক আর্টিকেল ও গাইড
           </h2>
         </div>
 
         {/* 3-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-2 mb-12">
           {articlesData.map((article) => (
             <div
               key={article.id}
@@ -144,7 +161,10 @@ const BlogSection = () => {
 
         {/* View All Links Prompt matching the subtle bottom line layout */}
         <div className="text-center">
-          <button className="text-xs sm:text-sm font-bold text-slate-300 hover:text-slate-500 transition-colors duration-200">
+          <button
+            type="submit"
+            className="bg-transparent hover:bg-white hover:text-[#064E3B] text-white border border-emerald-400/60 font-semibold px-8 py-3 rounded-xl transition-all duration-300 text-sx sm:text-base shadow-lg shadow-black/10 active:scale-95"
+          >
             সব আর্টিকেল পড়ুন
           </button>
         </div>

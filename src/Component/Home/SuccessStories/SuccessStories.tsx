@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import React from 'react'
 
 interface AlumStory {
@@ -16,91 +17,261 @@ const successData: AlumStory[] = [
   {
     id: 1,
     name: 'সাকিব আলম',
-    initials: 'সা',
+    initials: 'https://i.ibb.co.com/k21ppQLH/agent-02.jpg',
     role: 'Software Engineer',
     companyOrPlatform: 'Google Singapore',
     description:
-      'পাইথন ও মেশিন লার্নিং কোর্স করার ২ বছরের মধ্যে গুগলে জব পেয়েছেন।',
-    badgeText: 'বার্ষিক আয় : ৬০ লক্ষ+',
+      'পাইথন ও মেশিন লার্নিং কোর্স করার ২ বছরের মধ্যে গুগলে জব পেয়েছেন।',
+    badgeText: 'বার্ষিক আয় : ৬০ লক্ষ+',
     initialsBgColor: 'bg-[#155e2f] text-white', // Dark green matching image
   },
   {
     id: 2,
-    name: 'তানিয়া আক্তার',
-    initials: 'তা',
+    name: 'তানিয়া আক্তার',
+    initials: 'https://i.ibb.co.com/k21ppQLH/agent-02.jpg',
     role: 'ফ্রিল্যান্স ডিজাইনার',
     companyOrPlatform: 'Upwork Top Rated',
     description:
-      'গ্রাফিক ডিজাইন কোর্স করে ঘরে বসেই মাসে ৮০,০০০+ টাকা আয় করছেন।',
+      'গ্রাফিক ডিজাইন কোর্স করে ঘরে বসেই মাসে ৮০,০০০+ টাকা আয় করছেন।',
+    badgeText: 'Top Rated Plus Freelancer',
+    initialsBgColor: 'bg-[#b46d05] text-white', // Amber matching image
+  },
+  {
+    id: 3,
+    name: 'তানিয়া আক্তার',
+    initials: 'https://i.ibb.co.com/k21ppQLH/agent-02.jpg',
+    role: 'ফ্রিল্যান্স ডিজাইনার',
+    companyOrPlatform: 'Upwork Top Rated',
+    description:
+      'গ্রাফিক ডিজাইন কোর্স করে ঘরে বসেই মাসে ৮০,০০০+ টাকা আয় করছেন।',
+    badgeText: 'Top Rated Plus Freelancer',
+    initialsBgColor: 'bg-[#b46d05] text-white', // Amber matching image
+  },
+  {
+    id: 4,
+    name: 'তানিয়া আক্তার',
+    initials: 'https://i.ibb.co.com/k21ppQLH/agent-02.jpg',
+    role: 'ফ্রিল্যান্স ডিজাইনার',
+    companyOrPlatform: 'Upwork Top Rated',
+    description:
+      'গ্রাফিক ডিজাইন কোর্স করে ঘরে বসেই মাসে ৮০,০০০+ টাকা আয় করছেন।',
+    badgeText: 'Top Rated Plus Freelancer',
+    initialsBgColor: 'bg-[#b46d05] text-white', // Amber matching image
+  },
+  {
+    id: 5,
+    name: 'তানিয়া আক্তার',
+    initials: 'https://i.ibb.co.com/k21ppQLH/agent-02.jpg',
+    role: 'ফ্রিল্যান্স ডিজাইনার',
+    companyOrPlatform: 'Upwork Top Rated',
+    description:
+      'গ্রাফিক ডিজাইন কোর্স করে ঘরে বসেই মাসে ৮০,০০০+ টাকা আয় করছেন।',
+    badgeText: 'Top Rated Plus Freelancer',
+    initialsBgColor: 'bg-[#b46d05] text-white', // Amber matching image
+  },
+  {
+    id: 6,
+    name: 'তানিয়া আক্তার',
+    initials: 'https://i.ibb.co.com/k21ppQLH/agent-02.jpg',
+    role: 'ফ্রিল্যান্স ডিজাইনার',
+    companyOrPlatform: 'Upwork Top Rated',
+    description:
+      'গ্রাফিক ডিজাইন কোর্স করে ঘরে বসেই মাসে ৮০,০০০+ টাকা আয় করছেন।',
+    badgeText: 'Top Rated Plus Freelancer',
+    initialsBgColor: 'bg-[#b46d05] text-white', // Amber matching image
+  },
+  {
+    id: 7,
+    name: 'তানিয়া আক্তার',
+    initials: 'https://i.ibb.co.com/k21ppQLH/agent-02.jpg',
+    role: 'ফ্রিল্যান্স ডিজাইনার',
+    companyOrPlatform: 'Upwork Top Rated',
+    description:
+      'গ্রাফিক ডিজাইন কোর্স করে ঘরে বসেই মাসে ৮০,০০০+ টাকা আয় করছেন।',
+    badgeText: 'Top Rated Plus Freelancer',
+    initialsBgColor: 'bg-[#b46d05] text-white', // Amber matching image
+  },
+  {
+    id: 8,
+    name: 'তানিয়া আক্তার',
+    initials: 'https://i.ibb.co.com/k21ppQLH/agent-02.jpg',
+    role: 'ফ্রিল্যান্স ডিজাইনার',
+    companyOrPlatform: 'Upwork Top Rated',
+    description:
+      'গ্রাফিক ডিজাইন কোর্স করে ঘরে বসেই মাসে ৮০,০০০+ টাকা আয় করছেন।',
+    badgeText: 'Top Rated Plus Freelancer',
+    initialsBgColor: 'bg-[#b46d05] text-white', // Amber matching image
+  },
+  {
+    id: 9,
+    name: 'তানিয়া আক্তার',
+    initials: 'https://i.ibb.co.com/k21ppQLH/agent-02.jpg',
+    role: 'ফ্রিল্যান্স ডিজাইনার',
+    companyOrPlatform: 'Upwork Top Rated',
+    description:
+      'গ্রাফিক ডিজাইন কোর্স করে ঘরে বসেই মাসে ৮০,০০০+ টাকা আয় করছেন।',
     badgeText: 'Top Rated Plus Freelancer',
     initialsBgColor: 'bg-[#b46d05] text-white', // Amber matching image
   },
 ]
 
+// Top row = even IDs (moves left -> right), Bottom row = odd IDs (moves right -> left)
+const evenRow = successData.filter((a) => a.id % 2 === 0)
+const oddRow = successData.filter((a) => a.id % 2 !== 0)
+
+const StoryCard = ({
+  alum,
+  tailSide = 'left',
+}: {
+  alum: AlumStory
+  tailSide?: 'left' | 'right'
+}) => (
+  <div
+    className={`relative bg-[#1f2937] border border-gray-700/60 rounded-2xl p-6 flex items-start gap-4 shadow-md w-[320px] sm:w-[360px] flex-shrink-0 ${
+      tailSide === 'left' ? 'rounded-tl-sm' : 'rounded-tr-sm'
+    }`}
+  >
+    {tailSide === 'left' ? (
+      <>
+        {/* Chat bubble tail (left) — border layer */}
+        <span
+          aria-hidden="true"
+          className="absolute top-0 left-0 -translate-x-[11px] -translate-y-px w-0 h-0
+            border-t-[11px] border-t-transparent
+            border-r-[12px] border-r-gray-700/60
+            border-b-[11px] border-b-transparent"
+        />
+        {/* Chat bubble tail (left) — fill layer */}
+        <span
+          aria-hidden="true"
+          className="absolute top-0 left-0 -translate-x-[9px] -translate-y-px w-0 h-0
+            border-t-[9px] border-t-transparent
+            border-r-[10px] border-r-[#1f2937]
+            border-b-[9px] border-b-transparent"
+        />
+      </>
+    ) : (
+      <>
+        {/* Chat bubble tail (right) — border layer */}
+        <span
+          aria-hidden="true"
+          className="absolute top-0 right-0 translate-x-[11px] -translate-y-px w-0 h-0
+            border-t-[11px] border-t-transparent
+            border-l-[12px] border-l-gray-700/60
+            border-b-[11px] border-b-transparent"
+        />
+        {/* Chat bubble tail (right) — fill layer */}
+        <span
+          aria-hidden="true"
+          className="absolute top-0 right-0 translate-x-[9px] -translate-y-px w-0 h-0
+            border-t-[9px] border-t-transparent
+            border-l-[10px] border-l-[#1f2937]
+            border-b-[9px] border-b-transparent"
+        />
+      </>
+    )}
+
+    {/* Initials Avatar Block */}
+    <div
+      className={`w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0 select-none shadow-md ${alum.initialsBgColor}`}
+    >
+      <Image
+        src={alum.initials}
+        alt={alum.name}
+        width={36}
+        height={36}
+        className="w-full h-full object-cover rounded-full"
+      />
+    </div>
+
+    {/* Information Metadata */}
+    <div className="flex-1 min-w-0">
+      <h3 className="text-lg font-bold text-white mb-1">{alum.name}</h3>
+      <p className="text-xs sm:text-sm text-amber-500 font-medium mb-2">
+        {alum.role} —{' '}
+        <span className="text-amber-500/90">{alum.companyOrPlatform}</span>
+      </p>
+      <p className="text-sm text-gray-400 leading-relaxed">
+        {alum.description}
+      </p>
+    </div>
+  </div>
+)
+
+const MarqueeRow = ({
+  items,
+  direction,
+}: {
+  items: AlumStory[]
+  direction: 'ltr' | 'rtl'
+}) => {
+  // Duplicate the row so the loop is seamless
+  const looped = [...items, ...items]
+  // Tail sits on the trailing edge relative to travel direction
+  const tailSide = direction === 'ltr' ? 'right' : 'left'
+  return (
+    <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+      <div
+        className={`flex gap-6 w-max ${
+          direction === 'ltr' ? 'animate-marquee-ltr' : 'animate-marquee-rtl'
+        } hover:[animation-play-state:paused]`}
+      >
+        {looped.map((alum, idx) => (
+          <StoryCard
+            key={`${alum.id}-${idx}`}
+            alum={alum}
+            tailSide={tailSide}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 const SuccessStories = () => {
   return (
-    <div className="bg-white dark:bg-slate-950 p-6 sm:p-12 flex justify-center items-center">
+    <div className="bg-white dark:bg-slate-950 flex justify-center items-center">
       {/* Main Container Layer */}
-      <div className="w-full max-w-5xl bg-[#111827] rounded-3xl p-8 sm:p-12 border border-gray-800/40 shadow-xl text-center">
+      <div className="w-full rounded-3xl border border-gray-800/40 shadow-xl text-center py-10">
         {/* Section Headings */}
         <span className="text-amber-500 font-medium text-sm sm:text-base tracking-wide block mb-2">
           সাফল্যের গল্প
         </span>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-10 tracking-tight">
-          আমাদের অ্যালামনাইরা আজ কোথায়?
+          আমাদের অ্যালামনাইরা আজ কোথায়?
         </h2>
 
-        {/* Stories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-          {successData.map((alum) => (
-            <div
-              key={alum.id}
-              className="bg-[#1f2937]/50 border border-gray-700/30 rounded-2xl p-6 flex items-start gap-4 hover:border-gray-600/40 transition-all duration-300"
-            >
-              {/* Initials Avatar Block */}
-              <div
-                className={`w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0 select-none shadow-md ${alum.initialsBgColor}`}
-              >
-                {alum.initials}
-              </div>
-
-              {/* Information Metadata */}
-              <div className="flex-1 min-w-0">
-                <h3 className="text-lg font-bold text-white mb-1">
-                  {alum.name}
-                </h3>
-                <p className="text-xs sm:text-sm text-amber-500 font-medium mb-2">
-                  {alum.role} —{' '}
-                  <span className="text-amber-500/90">
-                    {alum.companyOrPlatform}
-                  </span>
-                </p>
-                <p className="text-sm text-gray-400 leading-relaxed mb-4">
-                  {alum.description}
-                </p>
-
-                {/* Pill Badge Container */}
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                  <svg
-                    className="w-3.5 h-3.5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2.5}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  {alum.badgeText}
-                </span>
-              </div>
-            </div>
-          ))}
+        {/* Two infinite marquee rows, opposite directions */}
+        <div className="flex flex-col gap-6">
+          <MarqueeRow items={evenRow} direction="ltr" />
+          <MarqueeRow items={oddRow} direction="rtl" />
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes marquee-ltr {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0%);
+          }
+        }
+        @keyframes marquee-rtl {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-marquee-ltr {
+          animation: marquee-ltr 30s linear infinite;
+        }
+        .animate-marquee-rtl {
+          animation: marquee-rtl 30s linear infinite;
+        }
+      `}</style>
     </div>
   )
 }

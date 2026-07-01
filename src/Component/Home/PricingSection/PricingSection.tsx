@@ -2,7 +2,7 @@
 import React from 'react'
 
 interface PricingPlan {
-  id: string
+  id: number
   name: string
   price: string
   billingPeriod?: string
@@ -16,7 +16,7 @@ interface PricingPlan {
 
 const pricingData: PricingPlan[] = [
   {
-    id: 'basic',
+    id: 1,
     name: 'বেসিক',
     price: '৳৪৯৯',
     billingPeriod: '/মাস',
@@ -30,7 +30,7 @@ const pricingData: PricingPlan[] = [
     ],
   },
   {
-    id: 'pro',
+    id: 2,
     name: 'প্রো',
     price: '৳৯৯৯',
     billingPeriod: '/মাস',
@@ -45,7 +45,7 @@ const pricingData: PricingPlan[] = [
     ],
   },
   {
-    id: 'team',
+    id: 3,
     name: 'টিম / প্রতিষ্ঠান',
     price: 'কাস্টম',
     subtitle: 'স্কুল, কোচিং বা কর্পোরেট প্রতিষ্ঠানের জন্য বিশেষ প্যাকেজ।',
@@ -57,27 +57,40 @@ const pricingData: PricingPlan[] = [
       { text: 'ইনভয়েস ও বার্ষিক বিলিং', included: true },
     ],
   },
+  {
+    id: 4,
+    name: 'টিম / প্রতিষ্ঠান',
+    price: 'কাস্টম',
+    subtitle: 'স্কুল, কোচিং বা কর্পোরেট প্রতিষ্ঠানের জন্য বিশেষ প্যাকেজ।',
+    features: [
+      { text: 'সব প্রো সুবিধা', included: true },
+      { text: 'ডেডিকেটেড অ্যাকাউন্ট ম্যানেজার', included: true },
+      { text: 'কাস্টম কোর্স তৈরি', included: true },
+      { text: 'বাল্ক রিপোর্ট ও অ্যানালিটিক্স', included: true },
+      { text: 'ইনভয়েস ও বার্ষিক বিলিং', included: true },
+    ],
+  }
 ]
 
 const PricingSection = () => {
   return (
-    <div className="bg-white dark:bg-slate-950 py-16 px-4 font-sans text-slate-800">
-      <div className="max-w-5xl mx-auto">
+    <div className="bg-white dark:bg-slate-950 py-6 px-4 font-sans text-slate-800">
+      <div className="">
         {/* Headings */}
         <div className="text-center mb-12">
-          <span className="text-[#155e2f] font-bold text-xs sm:text-sm tracking-wide block mb-2">
+          <span className="text-[#155e2f] dark:text-white font-bold text-xs sm:text-sm tracking-wide block mb-2">
             মূল্য পরিকল্পনা
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1e293b] mb-3">
+          <h2 className="text-2xl sm:text-3xl font-extrabold dark:text-white text-[#1e293b] mb-3">
             তোমার বাজেটে সেরা প্ল্যান বেছে নাও
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-white font-medium">
             সব প্ল্যানে ৩০ দিনের মানি-ব্যাক গ্যারান্টি
           </p>
         </div>
 
         {/* Grid Cards layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-2 items-stretch">
           {pricingData.map((plan) => (
             <div
               key={plan.id}
@@ -149,12 +162,9 @@ const PricingSection = () => {
                 ))}
               </ul>
 
-              {/* Dynamic Bottom Button mock (shown transparently or customized) */}
-              {plan.isPopular && (
-                <button className="w-full py-2.5 rounded-xl border border-slate-200 bg-white/40 text-[#155e2f] font-bold text-xs tracking-wide select-none cursor-default opacity-40">
-                  প্রো নাও
-                </button>
-              )}
+              <button className=" bg-slate-950 hover:text-[#064E3B] text-white border border-emerald-400/60 font-semibold px-8 py-3 rounded-xl transition-all duration-300 text-sx sm:text-base shadow-lg shadow-black/10 active:scale-95">
+                Subscription
+              </button>
             </div>
           ))}
         </div>
