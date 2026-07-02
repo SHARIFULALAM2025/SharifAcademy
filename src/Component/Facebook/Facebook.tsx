@@ -8,7 +8,7 @@ const Facebook = () => {
     try {
       await authClient.signIn.social({
         provider: 'facebook',
-        callbackURL: 'http://localhost:3000',
+        callbackURL: 'https://sharif-academy.vercel.app',
       })
     } catch {
       toast.error('Facebook login failed')
