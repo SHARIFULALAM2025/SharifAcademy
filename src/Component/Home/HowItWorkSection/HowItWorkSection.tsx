@@ -1,7 +1,5 @@
 'use client'
 
-import { ArrowRight } from 'lucide-react'
-
 type Step = {
   number: string
   title: string
@@ -35,35 +33,32 @@ export default function HowItWorkSection() {
   return (
     <section className="bg-slate-50 dark:bg-slate-950 py-12 px-7">
       <div className="text-center mb-10">
-        <p className="text-[11px] font-bold text-emerald-700 tracking-widest uppercase mb-1.5">
+        <p className="text-[11px] font-bold dark:text-white text-emerald-700 tracking-widest uppercase mb-1.5">
           প্রক্রিয়া
         </p>
-        <h2 className="text-[22px] font-bold text-slate-800">
+        <h2 className="text-[22px] font-bold dark:text-white text-slate-800">
           মাত্র ৪টি ধাপে শুরু করো
         </h2>
       </div>
 
-      <div className="flex items-start justify-center max-w-4xl mx-auto">
+      <div className="flex items-start justify-center">
         {steps.map((step, i) => (
-          <div key={step.number} className="flex items-start flex-1">
-            <div className="flex-1 text-center px-2">
+          <div key={step.number} className="relative flex-1 px-2">
+            {i < steps.length - 1 && (
+              <div className="absolute top-[22px] left-1/2 w-full border-t-2 border-dotted border-emerald-700/50 dark:border-emerald-500/50 -translate-y-1/2 z-0" />
+            )}
+
+            <div className="relative z-10 text-center">
               <div className="w-11 h-11 rounded-full bg-emerald-700 text-white text-[17px] font-bold flex items-center justify-center mx-auto mb-2.5">
                 {step.number}
               </div>
-              <h3 className="text-[13px] font-semibold text-slate-800 mb-1">
+              <h3 className="text-[13px] font-semibold dark:text-white text-slate-800 mb-1">
                 {step.title}
               </h3>
-              <p className="text-[11px] text-slate-500 leading-relaxed">
+              <p className="text-[11px] dark:text-white text-slate-500 leading-relaxed">
                 {step.description}
               </p>
             </div>
-
-            {i < steps.length - 1 && (
-              <ArrowRight
-                size={18}
-                className="text-emerald-700 mt-3.5 flex-shrink-0"
-              />
-            )}
           </div>
         ))}
       </div>

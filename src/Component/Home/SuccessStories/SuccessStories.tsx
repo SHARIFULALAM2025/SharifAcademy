@@ -232,7 +232,7 @@ const SuccessStories = () => {
   return (
     <div className="bg-white dark:bg-slate-950 flex justify-center items-center">
       {/* Main Container Layer */}
-      <div className="w-full rounded-3xl border border-gray-800/40 shadow-xl text-center py-10">
+      <div className="w-full rounded-3xl shadow-xl text-center py-10">
         {/* Section Headings */}
         <span className="text-amber-500 font-medium text-sm sm:text-base tracking-wide block mb-2">
           সাফল্যের গল্প

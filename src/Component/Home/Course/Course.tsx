@@ -69,6 +69,19 @@ const courses: Course[] = [
     icon: <FaFacebook size={36} className="text-white/80" />,
     iconBg: 'bg-gradient-to-br from-amber-600 to-amber-400',
   },
+  {
+    id: '4',
+    badgeLeft: { text: 'ট্রেন্ডিং', variant: 'trending' },
+    badgeRight: 'ইন্টারমিডিয়েট',
+    title: 'ডিজিটাল মার্কেটিং মাস্টারক্লাস ২০২৬',
+    instructor: 'করিম ভাই • Meta Certified Marketer',
+    rating: 4,
+    reviews: 987,
+    price: 799,
+    oldPrice: 1999,
+    icon: <FaFacebook size={36} className="text-white/80" />,
+    iconBg: 'bg-gradient-to-br from-amber-600 to-amber-400',
+  },
 ]
 
 function badgeClasses(variant: Course['badgeLeft']['variant']) {
@@ -89,13 +102,7 @@ function CourseCard({ course }: { course: Course }) {
         course.featured ? 'border-emerald-700' : 'border-slate-200'
       }`}
     >
-      {course.featured && (
-        <div className="bg-emerald-700 text-center py-1">
-          <span className="text-[10px] font-bold text-amber-400">
-            ★ সর্বাধিক বিক্রিত
-          </span>
-        </div>
-      )}
+
 
       <div
         className={`h-[90px] flex items-center justify-center ${course.iconBg}`}
@@ -160,13 +167,13 @@ export default function Course() {
   return (
     <section className="bg-white dark:bg-slate-950 py-10 px-7">
       <div className="text-center mb-7 max-w-md mx-auto">
-        <p className="text-[11px] font-bold text-emerald-700 tracking-widest uppercase mb-1.5">
+        <p className="text-[11px] font-bold text-emerald-700 dark:text-white tracking-widest uppercase mb-1.5">
           জনপ্রিয় কোর্সসমূহ
         </p>
-        <h2 className="text-[22px] font-bold text-slate-800 mb-2">
+        <h2 className="text-[22px] font-bold dark:text-white text-slate-800 mb-2">
           তোমার পছন্দের বিষয় বেছে নাও
         </h2>
-        <p className="text-[13px] text-slate-500 leading-relaxed">
+        <p className="text-[13px] text-slate-500 dark:text-white leading-relaxed">
           প্রতিটি কোর্স বাংলায় তৈরি, শিল্প-বিশেষজ্ঞদের দ্বারা পরিকল্পিত
         </p>
       </div>
@@ -186,7 +193,7 @@ export default function Course() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
         {courses.map((course) => (
           <CourseCard key={course.id} course={course} />
         ))}
