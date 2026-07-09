@@ -20,11 +20,7 @@ const Hero = () => {
         {/* Left Side: Text Content */}
         <div className="col-span-6 space-y-6 text-left">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2  border border-[#D17822]/30 px-4 py-1.5 rounded-full text-xs sm:text-sm text-[#D17822]">
-            <span className="w-2 h-2 rounded-full bg-[#D17822] animate-pulse"></span>
-            বাংলাদেশের #১ অনলাইন একাডেমি
-          </div>
-
+          
           {/* Heading */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
             দক্ষতা অর্জন করো, <br />

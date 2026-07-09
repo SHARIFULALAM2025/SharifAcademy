@@ -69,7 +69,7 @@ export const CountryCurrencyCapital: SidebarItem[] = [
     href: '/math/exam',
     icon: <FaPenSquare />,
   },
-];
+]
 export const BangladeshDay: SidebarItem[] = [
   {
     id: 1,
@@ -111,6 +111,20 @@ export const BangladeshDay: SidebarItem[] = [
     id: 7,
     label: 'প্রাকটিস করুন',
     href: '/day/practice',
+    icon: <FaPenSquare />,
+  },
+]
+export const Treaty: SidebarItem[] = [
+  {
+    id: 1,
+    label: 'practice',
+    href: '/treaty/practice',
+    icon: <FaBookOpen />,
+  },
+  {
+    id: 2,
+    label: 'exam',
+    href: '/treaty/exam',
     icon: <FaPenSquare />,
   },
 ]
