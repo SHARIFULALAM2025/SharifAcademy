@@ -128,3 +128,32 @@ export const Treaty: SidebarItem[] = [
     icon: <FaPenSquare />,
   },
 ]
+export const Saying: SidebarItem[] = [
+  {
+    id: 1,
+    label: 'practice',
+    href: '/treaty/practice',
+    icon: <FaBookOpen />,
+  },
+  {
+    id: 2,
+    label: 'exam',
+    href: '/treaty/exam',
+    icon: <FaPenSquare />,
+  },
+]
+export const Punctuation: SidebarItem[] = [
+  {
+    id: 1,
+    label: 'practice',
+    href: '/treaty/practice',
+    icon: <FaBookOpen />,
+  },
+  {
+    id: 2,
+    label: 'exam',
+    href: '/treaty/exam',
+    icon: <FaPenSquare />,
+  },
+]
+

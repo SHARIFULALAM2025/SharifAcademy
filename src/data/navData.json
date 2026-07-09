@@ -189,7 +189,7 @@
           {
             "id": 229,
             "Name": { "en": "saying", "bn": "বচন" },
-            "path": "/SellListSidebar"
+            "path": "/saying"
           },
           {
             "id": 230,
@@ -319,7 +319,7 @@
               "en": "Punctuation Marks",
               "bn": "যতি বা ছেদ-চিহ্নের লিখন কৌশল"
             },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 249,
