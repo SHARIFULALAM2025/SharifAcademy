@@ -156,4 +156,46 @@ export const Punctuation: SidebarItem[] = [
     icon: <FaPenSquare />,
   },
 ]
+export const Narration: SidebarItem[] = [
+  {
+    id: 1,
+    label: 'practice',
+    href: '/treaty/practice',
+    icon: <FaBookOpen />,
+  },
+  {
+    id: 2,
+    label: 'exam',
+    href: '/treaty/exam',
+    icon: <FaPenSquare />,
+  },
+]
+export const Prefix: SidebarItem[] = [
+  {
+    id: 1,
+    label: 'practice',
+    href: '/treaty/practice',
+    icon: <FaBookOpen />,
+  },
+  {
+    id: 2,
+    label: 'exam',
+    href: '/treaty/exam',
+    icon: <FaPenSquare />,
+  },
+]
+export const Idioms: SidebarItem[] = [
+  {
+    id: 1,
+    label: 'practice',
+    href: '/treaty/practice',
+    icon: <FaBookOpen />,
+  },
+  {
+    id: 2,
+    label: 'exam',
+    href: '/treaty/exam',
+    icon: <FaPenSquare />,
+  },
+]
 

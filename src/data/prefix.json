@@ -1,0 +1,476 @@
+{
+  "topic": {
+    "title_bn": "উপসর্গ",
+    "title_en": "Prefix",
+    "definition": "বাংলা ব্যাকরণে কতগুলো অব্যয়বাচক শব্দাংশ আছে যার নিজস্ব কোন অর্থ নেই কিন্তু অন্য শব্দের পূর্বে বসে সেই শব্দটিকে নতুন শব্দে পরিণত করে, এগুলোকেই উপসর্গ বলে।",
+    "characteristics": "উপসর্গের অর্থবাচকতা (নিজস্ব অর্থ) নেই কিন্তু অর্থদ্যোতকতা (অন্য শব্দের অর্থ বদলানোর ক্ষমতা) আছে।"
+  },
+  "functions_of_prefix": [
+    "নতুন শব্দ গঠন করে।",
+    "শব্দের অর্থের পরিবর্তন ঘটায়।",
+    "অর্থের বিশিষ্টতা দান করে।",
+    "অর্থের সঙ্কোচন ঘটায়।",
+    "অর্থের সম্প্রসারণ ঘটায়।"
+  ],
+  "types_of_prefix": [
+    {
+      "type_name": "খাঁটি বাংলা উপসর্গ",
+      "total_count": 21,
+      "list": [
+        "অ",
+        "অনা",
+        "অঘা",
+        "অজ",
+        "আ",
+        "আড়",
+        "আন",
+        "আব",
+        "ইতি",
+        "উন",
+        "কদ্",
+        "কু",
+        "নি",
+        "পাতি",
+        "বি",
+        "ভর",
+        "রাম",
+        "স",
+        "সু",
+        "ব",
+        "হা"
+      ],
+      "examples": [
+        {
+          "prefix": "অ",
+          "meaning": "খারাপ বা নিন্দিত/না/ক্রমাগত",
+          "base_word": "কাজ",
+          "new_word": "অকাজ"
+        },
+        {
+          "prefix": "অনা",
+          "meaning": "অভাব/নিন্দিত",
+          "base_word": "বৃষ্টি",
+          "new_word": "অনাবৃষ্টি"
+        },
+        {
+          "prefix": "অঘা",
+          "meaning": "বোকা",
+          "base_word": "রাম",
+          "new_word": "অঘারাম"
+        },
+        {
+          "prefix": "অজ",
+          "meaning": "মন্দ",
+          "base_word": "পাড়াগাঁ",
+          "new_word": "অজপাড়াগাঁ"
+        },
+        {
+          "prefix": "আ",
+          "meaning": "না/নিন্দা",
+          "base_word": "লবণহীন",
+          "new_word": "আলুনি"
+        },
+        {
+          "prefix": "আড়",
+          "meaning": "বাঁকা",
+          "base_word": "চোখে",
+          "new_word": "আড়চোখে"
+        },
+        {
+          "prefix": "আন",
+          "meaning": "না বাচক/বিচলিত",
+          "base_word": "কোরা",
+          "new_word": "আনকোরা"
+        },
+        {
+          "prefix": "আব",
+          "meaning": "অস্পষ্টতা",
+          "base_word": "ছায়া",
+          "new_word": "আবছায়া"
+        },
+        {
+          "prefix": "ইতি",
+          "meaning": "পুরনো",
+          "base_word": "হাস",
+          "new_word": "ইতিহাস"
+        },
+        {
+          "prefix": "উন",
+          "meaning": "কম",
+          "base_word": "পাজর",
+          "new_word": "ঊনপাঁজর"
+        },
+        {
+          "prefix": "কদ",
+          "meaning": "খারাপ",
+          "base_word": "বেল",
+          "new_word": "কদবেল"
+        },
+        {
+          "prefix": "কু",
+          "meaning": "কুৎসিত/খারাপ",
+          "base_word": "কাজ",
+          "new_word": "কুকাজ"
+        },
+        {
+          "prefix": "নি",
+          "meaning": "নেই",
+          "base_word": "খোঁজ",
+          "new_word": "নিখোঁজ"
+        },
+        {
+          "prefix": "পাতি",
+          "meaning": "ছোট",
+          "base_word": "হাঁস",
+          "new_word": "পাতিহাঁস"
+        },
+        {
+          "prefix": "বি",
+          "meaning": "নিন্দা বা না/অভাব",
+          "base_word": "পথ",
+          "new_word": "বিপথ"
+        },
+        {
+          "prefix": "ব",
+          "meaning": "নিরেট মূর্খ",
+          "base_word": "কলম",
+          "new_word": "বকলম"
+        },
+        {
+          "prefix": "ভর",
+          "meaning": "পূর্ণ",
+          "base_word": "পেট",
+          "new_word": "ভরপেট"
+        },
+        {
+          "prefix": "রাম",
+          "meaning": "বড়",
+          "base_word": "দা",
+          "new_word": "রামদা"
+        },
+        {
+          "prefix": "স",
+          "meaning": "সহ/বিশেষ",
+          "base_word": "পরিবার",
+          "new_word": "সপরিবার"
+        },
+        {
+          "prefix": "সু",
+          "meaning": "ভালো",
+          "base_word": "খবর",
+          "new_word": "সুখবর"
+        },
+        {
+          "prefix": "হা",
+          "meaning": "অভাব",
+          "base_word": "ভাতে",
+          "new_word": "হাভাতে"
+        }
+      ]
+    },
+    {
+      "type_name": "তৎসম বা সংস্কৃত উপসর্গ",
+      "total_count": 20,
+      "list": [
+        "প্র",
+        "পরা",
+        "অপ",
+        "সম",
+        "নি",
+        "অব",
+        "অনু",
+        "নির",
+        "dur",
+        "বি",
+        "অধি",
+        "সু",
+        "উৎ",
+        "পরি",
+        "প্রতি",
+        "অভি",
+        "অতি",
+        "অপি",
+        "উপ",
+        "আ"
+      ],
+      "examples": [
+        {
+          "prefix": "প্র",
+          "meaning": "উৎকৃষ্ট ও আধিক্য",
+          "base_word": "গাঢ়",
+          "new_word": "প্রগাঢ়"
+        },
+        {
+          "prefix": "পরা",
+          "meaning": "বিপরীত/আতিশয্য",
+          "base_word": "জয়",
+          "new_word": "পরাজয়"
+        },
+        {
+          "prefix": "অপ",
+          "meaning": "বিপরীত/নিন্দার্থে",
+          "base_word": "মান",
+          "new_word": "অপমান"
+        },
+        {
+          "prefix": "সম",
+          "meaning": "সম্যকরূপ/সম্মুখে",
+          "base_word": "পূর্ণ",
+          "new_word": "সম্পূর্ণ"
+        },
+        {
+          "prefix": "নি",
+          "meaning": "আতিশয্যে/অভাব/বিকৃত",
+          "base_word": "যুক্ত",
+          "new_word": "নিযুক্ত"
+        },
+        {
+          "prefix": "অব",
+          "meaning": "নিন্দার্থে/নিচে/শেষ",
+          "base_word": "হেলা",
+          "new_word": "অবহেলা"
+        },
+        {
+          "prefix": "অনু",
+          "meaning": "পশ্চাৎ/পুনঃ পুনঃ/সাদৃশ্য",
+          "base_word": "করণ",
+          "new_word": "অনুকরণ"
+        },
+        {
+          "prefix": "নির",
+          "meaning": "অভাব/নিশ্চিত/বহিষ্কার",
+          "base_word": "আশ্রয়",
+          "new_word": "নিরাশ্রয়"
+        },
+        {
+          "prefix": "দুর",
+          "meaning": "মন্দ/কষ্টসাধ্য/অভাব",
+          "base_word": "ভাগ্য",
+          "new_word": "দুর্ভাগ্য"
+        },
+        {
+          "prefix": "বি",
+          "meaning": "বিশেষ/না/অভাব",
+          "base_word": "জয়",
+          "new_word": "বিজয়"
+        },
+        {
+          "prefix": "সু",
+          "meaning": "সহজ/ভালো/আতিশয্যে",
+          "base_word": "গম",
+          "new_word": "সুগম"
+        },
+        {
+          "prefix": "উৎ",
+          "meaning": "উপর/আতিশয্যে",
+          "base_word": "ক্ষিপ্ত",
+          "new_word": "উৎক্ষিপ্ত"
+        },
+        {
+          "prefix": "অধি",
+          "meaning": "আধিপত্য",
+          "base_word": "কার",
+          "new_word": "অধিকার"
+        },
+        {
+          "prefix": "পরি",
+          "meaning": "পূর্ণতাবাচক",
+          "base_word": "পূর্ণ",
+          "new_word": "পরিপূর্ণ"
+        },
+        {
+          "prefix": "প্রতি",
+          "meaning": "সাদৃশ্য/বিপরীত/পুনঃ পুনঃ",
+          "base_word": "ধ্বনি",
+          "new_word": "প্রতিধ্বনি"
+        },
+        {
+          "prefix": "উপ",
+          "meaning": "সামীপ্য/সাদৃশ্য/ছোট/নিন্দা",
+          "base_word": "কণ্ঠ",
+          "new_word": "উপকণ্ঠ"
+        },
+        {
+          "prefix": "অভি",
+          "meaning": "সম্যক/গমন",
+          "base_word": "যান",
+          "new_word": "অভিযান"
+        },
+        {
+          "prefix": "অপি",
+          "meaning": "নিহিত",
+          "base_word": "হিত",
+          "new_word": "অপিনিহিত"
+        },
+        {
+          "prefix": "অতি",
+          "meaning": "অতিশয়/অতিক্রম",
+          "base_word": "বৃষ্টি",
+          "new_word": "অতিবৃষ্টি"
+        },
+        {
+          "prefix": "আ",
+          "meaning": "পর্যন্ত/ঈষৎ/বিপরীত",
+          "base_word": "কণ্ঠ",
+          "new_word": "আকণ্ঠ"
+        }
+      ]
+    },
+    {
+      "type_name": "বিদেশী উপসর্গ",
+      "total_count": "বহু",
+      "languages": [
+        {
+          "language": "আরবি",
+          "examples": [
+            {
+              "prefix": "খাস",
+              "meaning": "বিশেষ",
+              "base_word": "কামরা",
+              "new_word": "খাস কামরা"
+            },
+            {
+              "prefix": "আম",
+              "meaning": "সাধারণ",
+              "base_word": "জনতা",
+              "new_word": "আমজনতা"
+            },
+            {
+              "prefix": "গর",
+              "meaning": "অভাব",
+              "base_word": "মিল",
+              "new_word": "গরমিল"
+            },
+            {
+              "prefix": "লা",
+              "meaning": "না অর্থে",
+              "base_word": "জওয়াব",
+              "new_word": "লাজওয়াব"
+            }
+          ]
+        },
+        {
+          "language": "ফারসি",
+          "examples": [
+            {
+              "prefix": "কার",
+              "meaning": "কাজ",
+              "base_word": "খানা",
+              "new_word": "কারখানা"
+            },
+            {
+              "prefix": "না",
+              "meaning": "না অর্থে",
+              "base_word": "চার",
+              "new_word": "নাচার"
+            },
+            {
+              "prefix": "নিম",
+              "meaning": "অল্প",
+              "base_word": "রাজি",
+              "new_word": "নিমরাজি"
+            },
+            {
+              "prefix": "ফি",
+              "meaning": "প্রতি",
+              "base_word": "দিন",
+              "new_word": "ফি-দিন"
+            },
+            {
+              "prefix": "বদ",
+              "meaning": "মন্দ",
+              "base_word": "মেজাজ",
+              "new_word": "বদমেজাজ"
+            },
+            {
+              "prefix": "বে",
+              "meaning": "না অর্থে",
+              "base_word": "তাল",
+              "new_word": "বেতাল"
+            },
+            {
+              "prefix": "ব",
+              "meaning": "সাথে",
+              "base_word": "নাম",
+              "new_word": "বনাম"
+            },
+            {
+              "prefix": "কম",
+              "meaning": "স্বল্প",
+              "base_word": "বুদ্ধি",
+              "new_word": "কমবুদ্ধি"
+            },
+            {
+              "prefix": "দর",
+              "meaning": "মধ্যস্থতা",
+              "base_word": "দাম",
+              "new_word": "দরদাম"
+            }
+          ]
+        },
+        {
+          "language": "ইংরেজি",
+          "examples": [
+            {
+              "prefix": "সাব",
+              "meaning": "অধীন",
+              "base_word": "জজ",
+              "new_word": "সাব-জজ"
+            },
+            {
+              "prefix": "হাফ",
+              "meaning": "অর্ধ",
+              "base_word": "শার্ট",
+              "new_word": "হাফশার্ট"
+            },
+            {
+              "prefix": "ফুল",
+              "meaning": "সম্পূর্ণ",
+              "base_word": "শার্ট",
+              "new_word": "ফুলশার্ট"
+            },
+            {
+              "prefix": "হেড",
+              "meaning": "প্রধান",
+              "base_word": "মাস্টার",
+              "new_word": "হেডমাস্টার"
+            }
+          ]
+        },
+        {
+          "language": "হিন্দি",
+          "examples": [
+            {
+              "prefix": "হর",
+              "meaning": "প্রতিদিন",
+              "base_word": "রোজ",
+              "new_word": "হররোজ"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "root_word_variations": [
+    {
+      "root_word": "হার",
+      "variations": ["প্রহার", "बिहार", "উপহার", "পরিহার", "অনাহার"]
+    },
+    {
+      "root_word": "কার",
+      "variations": ["উপকার", "বিকার", "প্রকার", "আকার", "অধিকার"]
+    },
+    {
+      "root_word": "গম",
+      "variations": ["দুর্গম", "সুগম", "আগম", "নির্গম", "সংগম"]
+    },
+    {
+      "root_word": "তাপ",
+      "variations": ["পরিতাপ", "অনুতাপ", "প্রতাপ", "উত্তাপ", "সন্তাপ"]
+    },
+    {
+      "root_word": "ধান",
+      "variations": ["অভিধান", "উপাধান", "পরিধান", "প্রধান", "সমাধান"]
+    }
+  ]
+}

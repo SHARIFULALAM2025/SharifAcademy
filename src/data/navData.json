@@ -204,7 +204,7 @@
           {
             "id": 232,
             "Name": { "en": "Prefix", "bn": "উপসর্গ" },
-            "path": "/SellListSidebar"
+            "path": "/prefix"
           },
           {
             "id": 233,
@@ -295,7 +295,7 @@
               "en": "Development of Word Eligibility and Idioms",
               "bn": "শব্দের যোগ্যতার বিকাশ ও বাগধারা"
             },
-            "path": "/SellListSidebar"
+            "path": "/idioms"
           },
           {
             "id": 246,
@@ -311,7 +311,7 @@
               "en": "Narration / Narration Change",
               "bn": "উক্তি পরিবর্তন"
             },
-            "path": "/SellListSidebar"
+            "path": "/narration"
           },
           {
             "id": 248,
@@ -366,16 +366,16 @@
           },
           {
             "id": 322,
-            "Name": { "en": "Agent List", "bn": "এজেন্ট লিস্ট" },
-            "path": "/AgentListProfile"
+            "Name": { "en": "Agriculture", "bn": "কৃষি" },
+            "path": "/agriculture"
           },
           {
             "id": 323,
             "Name": {
-              "en": "Agent Grid with sidebar",
-              "bn": "সাইডবারসহ এজেন্ট গ্রিড"
+              "en": "geological NickName",
+              "bn": "ভৌগোলিক উপনাম"
             },
-            "path": "/AgentGridProfile"
+            "path": "/geoNickname"
           },
           {
             "id": 324,
