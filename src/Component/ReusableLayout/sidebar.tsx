@@ -65,8 +65,8 @@ export const CountryCurrencyCapital: SidebarItem[] = [
   },
   {
     id: 2,
-    label: 'exam',
-    href: '/math/exam',
+    label: 'Statistics',
+    href: '/math/Statistics',
     icon: <FaPenSquare />,
   },
 ]
