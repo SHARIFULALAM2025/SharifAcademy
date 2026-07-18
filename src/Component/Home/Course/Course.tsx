@@ -14,7 +14,7 @@ type Course = {
   price: number
   oldPrice: number
   icon: React.ReactNode
-  iconBg: string
+  industry: 'tech' | 'design' | 'business' | 'language' | 'science' | 'arts'
   featured?: boolean
 }
 
@@ -40,7 +40,7 @@ const courses: Course[] = [
     price: 999,
     oldPrice: 2499,
     icon: <Code2 size={36} className="text-white/80" />,
-    iconBg: 'bg-gradient-to-br from-emerald-700 to-emerald-500',
+    industry: 'tech',
   },
   {
     id: '2',
@@ -53,7 +53,7 @@ const courses: Course[] = [
     price: 1299,
     oldPrice: 3000,
     icon: <Palette size={36} className="text-white/80" />,
-    iconBg: 'bg-gradient-to-br from-blue-700 to-blue-500',
+    industry: 'design',
     featured: true,
   },
   {
@@ -67,7 +67,7 @@ const courses: Course[] = [
     price: 799,
     oldPrice: 1999,
     icon: <FaFacebook size={36} className="text-white/80" />,
-    iconBg: 'bg-gradient-to-br from-amber-600 to-amber-400',
+    industry: 'business',
   },
   {
     id: '4',
@@ -80,32 +80,37 @@ const courses: Course[] = [
     price: 799,
     oldPrice: 1999,
     icon: <FaFacebook size={36} className="text-white/80" />,
-    iconBg: 'bg-gradient-to-br from-amber-600 to-amber-400',
+    industry: 'business',
   },
 ]
 
+// স্ট্যাটাস ব্যাজ (হট/নতুন/ট্রেন্ডিং) — global.css-এর সেমান্টিক
+// color token (--success/--danger/--info) থেকে রঙ নেয়, industry
+// রঙের সাথে গুলিয়ে না ফেলার জন্য আলাদা রাখা হয়েছে।
 function badgeClasses(variant: Course['badgeLeft']['variant']) {
   switch (variant) {
     case 'hot':
-      return 'bg-orange-50 text-orange-700'
+      return 'bg-danger/10 text-danger'
     case 'new':
-      return 'bg-emerald-50 text-emerald-700'
+      return 'bg-success/10 text-success'
     case 'trending':
-      return 'bg-orange-50 text-orange-700'
+      return 'bg-info/10 text-info'
   }
 }
 
 function CourseCard({ course }: { course: Course }) {
   return (
     <div
-      className={`rounded-xl bg-white overflow-hidden border ${
-        course.featured ? 'border-emerald-700' : 'border-slate-200'
+      className={`rounded-xl bg-card overflow-hidden border ${
+        course.featured ? 'border-accent' : 'border-border'
       }`}
     >
-
-
+      {/* আইকন-স্ট্রিপের রঙ সরাসরি global.css-এর --industry-<key>
+          ভ্যারিয়েবল থেকে আসে, তাই নতুন industry যোগ করলে এখানে
+          কোনো কোড না বদলেও কার্ড অটোমেটিক ঠিক রঙ পাবে। */}
       <div
-        className={`h-[90px] flex items-center justify-center ${course.iconBg}`}
+        className="h-[90px] flex items-center justify-center"
+        style={{ background: `var(--industry-${course.industry})` }}
       >
         {course.icon}
       </div>
@@ -119,18 +124,18 @@ function CourseCard({ course }: { course: Course }) {
           >
             {course.badgeLeft.text}
           </span>
-          <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700">
+          <span className="label" data-industry={course.industry}>
             {course.badgeRight}
           </span>
         </div>
 
-        <h3 className="text-[13px] font-semibold text-slate-800 leading-snug mb-1">
+        <h3 className="text-[13px] font-semibold text-foreground leading-snug mb-1">
           {course.title}
         </h3>
-        <p className="text-[11px] text-slate-500 mb-1.5">{course.instructor}</p>
+        <p className="text-[11px] text-muted mb-1.5">{course.instructor}</p>
 
         <div className="flex items-center gap-1 mb-2">
-          <div className="flex text-amber-400">
+          <div className="flex text-accent">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star
                 key={i}
@@ -140,21 +145,21 @@ function CourseCard({ course }: { course: Course }) {
               />
             ))}
           </div>
-          <span className="text-[10px] text-slate-400">
+          <span className="text-[10px] text-muted">
             ({course.reviews.toLocaleString('bn-BD')} রিভিউ)
           </span>
         </div>
 
-        <div className="flex items-center justify-between pt-2 border-t border-slate-200">
+        <div className="flex items-center justify-between pt-2 border-t border-border">
           <div>
-            <span className="text-sm font-bold text-emerald-700">
+            <span className="text-sm font-bold text-primary">
               ৳{course.price.toLocaleString('bn-BD')}
             </span>
-            <span className="text-[11px] text-slate-400 line-through ml-1">
+            <span className="text-[11px] text-muted line-through ml-1">
               ৳{course.oldPrice.toLocaleString('bn-BD')}
             </span>
           </div>
-          <button className="text-[11px] font-semibold bg-emerald-700 text-white rounded-md px-2.5 py-1 hover:bg-emerald-800 transition-colors">
+          <button className="text-[11px] font-semibold bg-primary text-primary-foreground rounded-md px-2.5 py-1 hover:bg-accent hover:text-accent-foreground transition-colors">
             ভর্তি হও
           </button>
         </div>
@@ -165,15 +170,15 @@ function CourseCard({ course }: { course: Course }) {
 
 export default function Course() {
   return (
-    <section className="bg-white dark:bg-slate-950 py-10 px-7">
+    <section className="bg-background py-10 px-7">
       <div className="text-center mb-7 max-w-md mx-auto">
-        <p className="text-[11px] font-bold text-emerald-700 dark:text-white tracking-widest uppercase mb-1.5">
+        <p className="text-[11px] font-bold text-accent tracking-widest uppercase mb-1.5">
           জনপ্রিয় কোর্সসমূহ
         </p>
-        <h2 className="text-[22px] font-bold dark:text-white text-slate-800 mb-2">
+        <h2 className="font-display text-[22px] font-semibold text-foreground mb-2">
           তোমার পছন্দের বিষয় বেছে নাও
         </h2>
-        <p className="text-[13px] text-slate-500 dark:text-white leading-relaxed">
+        <p className="text-[13px] text-muted leading-relaxed">
           প্রতিটি কোর্স বাংলায় তৈরি, শিল্প-বিশেষজ্ঞদের দ্বারা পরিকল্পিত
         </p>
       </div>
@@ -184,8 +189,8 @@ export default function Course() {
             key={cat}
             className={`text-xs font-medium px-3.5 py-1.5 rounded-full border transition-colors ${
               i === 0
-                ? 'bg-emerald-700 text-white border-emerald-700'
-                : 'bg-white text-slate-500 border-slate-200 hover:border-slate-300'
+                ? 'bg-primary text-primary-foreground border-primary'
+                : 'bg-card text-muted border-border hover:border-primary/40 hover:text-foreground'
             }`}
           >
             {cat}
@@ -200,7 +205,7 @@ export default function Course() {
       </div>
 
       <div className="text-center mt-5">
-        <button className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 border-2 border-emerald-700 rounded-lg px-5 py-2.5 hover:bg-emerald-50 transition-colors">
+        <button className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary border-2 border-primary rounded-lg px-5 py-2.5 hover:bg-primary/10 transition-colors">
           সব কোর্স দেখুন <ArrowRight size={16} />
         </button>
       </div>

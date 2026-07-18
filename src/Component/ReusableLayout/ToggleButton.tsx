@@ -11,7 +11,7 @@ const ToggleButton = ({ isCollapsed, onToggle }: ToggleButtonProps) => {
     <div>
       <button
         onClick={onToggle}
-        className="absolute -right-3 top-1 bg-green-500 hover:bg-green-600 text-white p-1 rounded-full border-2 border-slate-900 shadow-lg cursor-pointer transition-transform duration-300 z-50"
+        className="absolute -right-3 top-1 bg-accent hover:opacity-90 text-accent-foreground p-1 rounded-full border-2 border-foreground shadow-lg cursor-pointer transition-transform duration-300 z-50"
         aria-label="Toggle Sidebar"
       >
         <MdOutlineKeyboardDoubleArrowRight

@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -18,10 +19,10 @@ const Language = ({ isCollapsed, items }: LanguageProps) => {
           <Link
             key={item.id}
             href={item.href}
-            className={`flex items-center gap-1  font-medium transition-colors ${
+            className={`flex items-center gap-2 px-2 py-1.5 rounded-lg font-medium transition-colors ${
               isActive
-                ? ' text-green-600'
-                : 'text-slate-100  hover:text-red-600'
+                ? 'text-accent bg-[color-mix(in_oklab,var(--accent)_16%,transparent)]'
+                : 'text-background/70 hover:text-accent hover:bg-[color-mix(in_oklab,var(--accent)_8%,transparent)]'
             }`}
           >
             <span className="text-xs min-w-3 flex justify-center">

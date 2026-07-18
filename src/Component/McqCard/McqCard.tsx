@@ -30,21 +30,21 @@ const optionClass = (
   isReadOnly: boolean
 ): string => {
   const base =
-    'w-full text-left px-4 py-3 rounded-lg border text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'
+    'w-full text-left px-5 py-3.5 rounded-md border text-sm font-medium transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] font-body'
 
   if (isReadOnly) {
     if (option === correct)
-      return `${base} border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300`
-    return `${base} border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 opacity-50`
+      return `${base} border-[var(--success)] bg-[var(--success)]/10 text-[var(--success)]`
+    return `${base} border-[var(--border)] bg-[var(--card)] opacity-40`
   }
 
   if (!selected)
-    return `${base} border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-slate-600`
+    return `${base} border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] hover:border-[var(--accent)] hover:bg-[var(--accent)]/5 shadow-sm`
   if (option === correct)
-    return `${base} border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300`
+    return `${base} border-[var(--success)] bg-[var(--success)]/10 text-[var(--success)]`
   if (option === selected)
-    return `${base} border-red-400 bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400`
-  return `${base} border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 opacity-50`
+    return `${base} border-[var(--danger)] bg-[var(--danger)]/10 text-[var(--danger)]`
+  return `${base} border-[var(--border)] bg-[var(--card)] opacity-40`
 }
 
 const McqCard = ({
@@ -116,14 +116,14 @@ const McqCard = ({
   const handleLike = async (e: React.MouseEvent): Promise<void> => {
     e.stopPropagation()
     if (!session?.user) {
-      alert('Like করতে Login করুন!')
+      toast.error('Like করতে Login করুন!')
       return
     }
     setActions((prev) => ({
       ...prev,
       likes: prev.isLiked ? prev.likes - 1 : prev.likes + 1,
       isLiked: !prev.isLiked,
-      dislikes: prev.isDisliked ? prev.dislikes - 1 : prev.dislikes,
+      dislikes: prev.isDisliked ? prev.dislikes - 1 : prev.disliked,
       isDisliked: false,
     }))
     await apiCall('like')
@@ -133,12 +133,12 @@ const McqCard = ({
   const handleDislike = async (e: React.MouseEvent): Promise<void> => {
     e.stopPropagation()
     if (!session?.user) {
-      alert('Dislike করতে Login করুন!')
+      toast.error('Dislike করতে Login করুন!')
       return
     }
     setActions((prev) => ({
       ...prev,
-      dislikes: prev.isDisliked ? prev.dislikes - 1 : prev.dislikes + 1,
+      dislikes: prev.isDisliked ? prev.disliked - 1 : prev.disliked + 1,
       isDisliked: !prev.isDisliked,
       likes: prev.isLiked ? prev.likes - 1 : prev.likes,
       isLiked: false,
@@ -150,7 +150,7 @@ const McqCard = ({
   const handleFavourite = async (e: React.MouseEvent): Promise<void> => {
     e.stopPropagation()
     if (!session?.user) {
-      alert('Favourite করতে Login করুন!')
+      toast.error('Favourite করতে Login করুন!')
       return
     }
     setActions((prev) => ({ ...prev, isFavourite: !prev.isFavourite }))
@@ -179,20 +179,20 @@ const McqCard = ({
   return (
     <div
       onClick={() => checkMode()}
-      className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6 shadow-sm space-y-5 cursor-pointer"
+      className="card card--illuminated p-6 md:p-7 shadow-md space-y-6 cursor-pointer animate-fade-rise transition-all duration-300"
     >
-      {/* Question */}
-      <div className="flex items-start gap-3">
-        <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 text-sm font-semibold flex items-center justify-center">
+      {/* Question Header */}
+      <div className="flex items-start gap-4">
+        <span className="flex-shrink-0 w-9 h-9 rounded-md bg-[var(--primary)]/10 text-[var(--primary)] font-display text-base font-semibold flex items-center justify-center border border-[var(--primary)]/20 shadow-inner">
           {questionNumber}
         </span>
-        <p className="text-slate-800 dark:text-slate-100 font-medium leading-relaxed pt-1">
+        <div className="text-[var(--foreground)] font-medium leading-relaxed pt-1 text-[15px] font-body">
           <MathText text={question.ques} />
-        </p>
+        </div>
       </div>
 
-      {/* Options */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      {/* Options Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
         {question.answer.map((option, i) => (
           <button
             key={i}
@@ -208,37 +208,43 @@ const McqCard = ({
               isReadOnly
             )}
           >
-            <span className="inline-flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-xs flex-shrink-0">
+            <span className="flex items-center w-full gap-3">
+              <span className="w-5 h-5 rounded-sm border border-current flex items-center justify-center text-[11px] flex-shrink-0 font-display font-bold bg-background/50">
                 {PREFIXES[i]}
               </span>
-              <MathText text={option} />
+              <span className="flex-1">
+                <MathText text={option} />
+              </span>
               {(selected || isReadOnly) && option === question.correct && (
-                <span className="ml-auto">✓</span>
+                <span className="ml-auto text-sm font-bold text-[var(--success)]">
+                  ✓
+                </span>
               )}
               {selected &&
                 option === selected &&
                 option !== question.correct && (
-                  <span className="ml-auto">✗</span>
+                  <span className="ml-auto text-sm font-bold text-[var(--danger)]">
+                    ✗
+                  </span>
                 )}
             </span>
           </button>
         ))}
       </div>
 
-      {/* Result */}
+      {/* Feedback Badge */}
       {(selected || isReadOnly) && (
         <div
-          className={`text-sm font-medium px-4 py-2 rounded-lg w-fit ${
+          className={`text-xs font-semibold px-4 py-2 rounded-md font-body w-fit tracking-wide shadow-sm border ${
             isReadOnly || isCorrect
-              ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300'
-              : 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'
+              ? 'bg-[var(--success)]/10 text-[var(--success)] border-[var(--success)]/20'
+              : 'bg-[var(--danger)]/10 text-[var(--danger)] border-[var(--danger)]/20'
           }`}
         >
           {isReadOnly ? (
-            <>
+            <span className="flex items-center gap-1.5">
               ✓ সঠিক উত্তর: <MathText text={question.correct} />
-            </>
+            </span>
           ) : isCorrect ? (
             '✓ সঠিক উত্তর!'
           ) : (
@@ -247,11 +253,11 @@ const McqCard = ({
         </div>
       )}
 
-      {/* Description + Actions */}
+      {/* Footer Actions & Explanation */}
       {question.description && (
-        <div className="border-t border-slate-100 dark:border-slate-700 pt-4 space-y-3">
-          <div className="flex justify-between items-center">
-            {/* ব্যাখ্যা বাটন */}
+        <div className="border-t border-[var(--border)] pt-5 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            {/* ব্যাখ্যা টগল বাটন */}
             <button
               onClick={(e) => {
                 e.stopPropagation()
@@ -259,77 +265,83 @@ const McqCard = ({
                 if (isReadOnly) return
                 setShowDesc(!showDesc)
               }}
-              className="flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-blue-500 transition-colors"
+              className="flex items-center gap-1.5 text-xs font-semibold text-[var(--muted)] hover:text-[var(--accent)] transition-colors group font-body"
             >
-              <span
-                className={`transition-transform duration-200 `}
-              >
-                ব্যাখ্যা
-              </span>
-              <MdDoubleArrow />
+              <span className="tracking-wider">ব্যাখ্যা</span>
+              <MdDoubleArrow
+                className={`transition-transform duration-300 ${showDesc ? 'rotate-90 text-[var(--accent)]' : 'group-hover:translate-x-0.5'}`}
+              />
             </button>
 
-            {/* Action বাটন */}
-            <div className="flex items-center space-x-4">
-              <span className="flex items-center gap-1 text-xs text-slate-400">
-                <FiEye />
+            {/* সোশ্যাল অ্যান্ড ইন্টারঅ্যাকশন বাটনস */}
+            <div className="flex items-center space-x-4 bg-background/40 px-3 py-1.5 rounded-full border border-[var(--border)]/60 w-fit">
+              <span className="flex items-center gap-1 text-xs text-[var(--muted)] font-mono">
+                <FiEye className="text-sm" />
                 {actions.views}
               </span>
+
+              <div className="h-3 w-[1px] bg-[var(--border)]" />
+
               <button
                 onClick={handleLike}
                 title={session?.user ? 'Like' : 'Login করুন'}
-                className={`flex items-center gap-1 text-xs font-medium transition-colors ${
+                className={`flex items-center gap-1 text-xs font-medium transition-colors font-mono ${
                   actions.isLiked
-                    ? 'text-blue-500'
-                    : 'text-slate-400 hover:text-blue-500'
+                    ? 'text-[var(--primary)]'
+                    : 'text-[var(--muted)] hover:text-[var(--primary)]'
                 }`}
               >
-                <BiLike />
+                <BiLike className="text-sm" />
                 {actions.likes}
               </button>
+
               <button
                 onClick={handleDislike}
                 title={session?.user ? 'Dislike' : 'Login করুন'}
-                className={`flex items-center gap-1 text-xs font-medium transition-colors ${
+                className={`flex items-center gap-1 text-xs font-medium transition-colors font-mono ${
                   actions.isDisliked
-                    ? 'text-red-500'
-                    : 'text-slate-400 hover:text-red-500'
+                    ? 'text-[var(--danger)]'
+                    : 'text-[var(--muted)] hover:text-[var(--danger)]'
                 }`}
               >
-                <BiDislike />
+                <BiDislike className="text-sm" />
                 {actions.dislikes}
               </button>
+
+              <div className="h-3 w-[1px] bg-[var(--border)]" />
+
               <button
                 onClick={handleFavourite}
                 title={actions.isFavourite ? 'Saved' : 'Save'}
                 className={`flex items-center gap-1 text-xs font-medium transition-colors ${
                   actions.isFavourite
-                    ? 'text-red-500'
-                    : 'text-slate-400 hover:text-red-500'
+                    ? 'text-[var(--accent)]'
+                    : 'text-[var(--muted)] hover:text-[var(--accent)]'
                 }`}
               >
-                <FaHeart />
+                <FaHeart className="text-sm" />
               </button>
+
               <button
                 onClick={handleShare}
                 title={copied ? 'কপি হয়েছে!' : 'শেয়ার করুন'}
-                className={`flex items-center gap-1 text-xs font-medium transition-colors ${
+                className={`flex items-center gap-1 text-xs font-medium transition-colors font-body ${
                   copied
-                    ? 'text-green-500'
-                    : 'text-slate-400 hover:text-blue-500'
+                    ? 'text-[var(--success)]'
+                    : 'text-[var(--muted)] hover:text-[var(--primary)]'
                 }`}
               >
-                <FaShareAlt />
-                {copied && <span>কপি!</span>}
+                <FaShareAlt className="text-sm" />
+                {copied && <span className="text-[10px] font-bold">কপি!</span>}
               </button>
             </div>
           </div>
 
-          {/* Description টেক্সট */}
+          {/* ব্যাখ্যা টেক্সট বক্স */}
           {(showDesc || isReadOnly) && (
-            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-700/50 rounded-lg px-4 py-3">
+            <div className="text-sm text-[var(--foreground)]/90 leading-relaxed bg-[var(--background)] border border-[var(--border)]/70 rounded-md px-4 py-3.5 shadow-inner font-body animate-fade-rise">
               <MathText text={question.description} />
-            </p>
+            </div>
           )}
         </div>
       )}

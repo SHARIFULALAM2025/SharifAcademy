@@ -16,7 +16,7 @@ interface LoginFormData {
 
 const Login = () => {
   const [eye, openEye] = useState<boolean>(false)
-  const [loading, setLoading] = useState<boolean>(false) 
+  const [loading, setLoading] = useState<boolean>(false)
 
   const {
     register,
@@ -26,7 +26,7 @@ const Login = () => {
 
   const handelEye = () => openEye(!eye)
 
-  const router=useRouter()
+  const router = useRouter()
   const handleLogin: SubmitHandler<LoginFormData> = async (data) => {
     try {
       setLoading(true)
@@ -42,7 +42,7 @@ const Login = () => {
       }
 
       toast.success('Logged in successfully!')
-      router.push("/")
+      router.push('/')
     } catch (error: unknown) {
       console.error(error)
       toast.error(
@@ -53,28 +53,19 @@ const Login = () => {
     }
   }
 
-  const gridBgStyle: React.CSSProperties = {
-    backgroundColor: '#0d0d0d',
-    backgroundImage: `
-      linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px)
-    `,
-    backgroundSize: '40px 40px',
-    minHeight: '100vh',
-    padding: '40px 16px',
-  }
-
+  // Corner accents echo manuscript-illumination corners, in the
+  // theme's --accent (Antique Gilt) — matches Register.tsx.
   const cornerAccent: React.CSSProperties = {
     position: 'absolute',
     width: '16px',
     height: '16px',
-    borderColor: '#aaaaaa',
+    borderColor: 'var(--accent)',
     borderStyle: 'solid',
     pointerEvents: 'none',
   }
 
   return (
-    <div className="relative flex flex-col justify-center" style={gridBgStyle}>
+    <div className="relative flex flex-col justify-center bg-background bg-star-pattern min-h-screen px-4 py-10">
       {/* Logo Header */}
       <div className="grid justify-center space-y-2 mb-6">
         <Link href="/" className="flex items-center gap-2 justify-center">
@@ -87,16 +78,16 @@ const Login = () => {
               className="w-full h-full object-contain"
             />
           </div>
-          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white">
+          <h1 className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-foreground">
             Sharif Academy
           </h1>
         </Link>
-        <h2 className="text-xl md:text-2xl text-center lg:text-3xl font-bold text-slate-100">
+        <h2 className="font-display text-xl md:text-2xl text-center lg:text-3xl font-bold text-foreground">
           Sign In! For Existing Account
         </h2>
       </div>
 
-      <div className="relative w-full max-w-xl mx-auto shadow-2xl transition-all duration-300 bg-[#141414]/90 p-8 border border-white/10 backdrop-blur-sm">
+      <div className="relative w-full max-w-xl mx-auto shadow-2xl transition-all duration-300 bg-card/95 p-8 border border-border backdrop-blur-sm rounded-lg">
         {/* Corner Accents */}
         <span
           style={{
@@ -137,11 +128,11 @@ const Login = () => {
         >
           {/* Email Field */}
           <div>
-            <label className="block text-sm font-semibold text-slate-100 mb-1">
-              Email <span className="text-red-500">*</span>
+            <label className="block text-sm font-semibold text-foreground mb-1">
+              Email <span className="text-danger">*</span>
             </label>
             <div className="relative">
-              <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-100" />
+              <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
               <input
                 {...register('email', {
                   required: 'Email is required!',
@@ -152,11 +143,11 @@ const Login = () => {
                 })}
                 type="email"
                 placeholder="Enter your email"
-                className="w-full border text-slate-100 border-slate-700 bg-transparent rounded-md py-3 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-teal-500 transition"
+                className="w-full border text-foreground border-border bg-transparent rounded-md py-3 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-accent transition"
               />
             </div>
             {errors.email && (
-              <span className="text-red-500 text-xs mt-1 block">
+              <span className="text-danger text-xs mt-1 block">
                 {errors.email.message}
               </span>
             )}
@@ -164,11 +155,11 @@ const Login = () => {
 
           {/* Password Field */}
           <div>
-            <label className="block text-sm font-semibold text-slate-100 mb-1">
-              Password <span className="text-red-500">*</span>
+            <label className="block text-sm font-semibold text-foreground mb-1">
+              Password <span className="text-danger">*</span>
             </label>
             <div className="relative">
-              <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-100" />
+              <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
               <input
                 {...register('password', {
                   required: 'Password is required!',
@@ -179,17 +170,17 @@ const Login = () => {
                 })}
                 type={eye ? 'text' : 'password'}
                 placeholder="Password..."
-                className="w-full border text-white border-slate-700 bg-transparent rounded-md py-3 pl-10 pr-10 focus:outline-none focus:ring-2 focus:ring-teal-500 transition"
+                className="w-full border text-foreground border-border bg-transparent rounded-md py-3 pl-10 pr-10 focus:outline-none focus:ring-2 focus:ring-accent transition"
               />
               <div
                 onClick={handelEye}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-100 cursor-pointer"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted cursor-pointer"
               >
                 {eye ? <FaEye /> : <FaEyeSlash />}
               </div>
             </div>
             {errors.password && (
-              <span className="text-red-500 text-xs mt-1 block">
+              <span className="text-danger text-xs mt-1 block">
                 {errors.password.message}
               </span>
             )}
@@ -199,7 +190,7 @@ const Login = () => {
           <div className="flex justify-end">
             <Link
               href="/remember"
-              className="text-sm hover:underline text-slate-400 hover:text-teal-400 transition"
+              className="text-sm hover:underline text-muted hover:text-accent transition"
             >
               Forgot Password?
             </Link>
@@ -209,7 +200,7 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="inline-flex items-center justify-center gap-2 px-4 py-3 w-full bg-[#008744] hover:bg-[#006f37] active:bg-[#00592c] text-white text-sm font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-200 ease-in-out cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed"
+            className="inline-flex items-center justify-center gap-2 px-4 py-3 w-full bg-primary hover:opacity-90 active:opacity-80 text-primary-foreground text-sm font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-200 ease-in-out cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
@@ -218,19 +209,19 @@ const Login = () => {
         {/* Divider */}
         <div className="relative my-6">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-slate-700"></div>
+            <div className="w-full border-t border-border"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-[#141414] text-slate-400">OR</span>
+            <span className="px-2 bg-card text-muted">OR</span>
           </div>
         </div>
 
         {/* Footer Link */}
-        <p className="text-center text-sm text-slate-100 mt-4">
-          Don t have an account yet?{' '}
+        <p className="text-center text-sm text-foreground mt-4">
+          Don&apos;t have an account yet?{' '}
           <Link
             href="/register"
-            className="text-teal-500 font-bold cursor-pointer hover:underline"
+            className="text-accent font-bold cursor-pointer hover:underline"
           >
             Sign Up
           </Link>

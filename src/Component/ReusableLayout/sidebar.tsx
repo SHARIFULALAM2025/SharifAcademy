@@ -69,6 +69,12 @@ export const CountryCurrencyCapital: SidebarItem[] = [
     href: '/math/Statistics',
     icon: <FaPenSquare />,
   },
+  {
+    id: 3,
+    label: 'RootOrSquare',
+    href: '/math/root',
+    icon: <FaPenSquare />,
+  },
 ]
 export const BangladeshDay: SidebarItem[] = [
   {

@@ -1,71 +1,343 @@
+/* ============================================================
+   SHARIF ACADEMY — GLOBAL THEME
+   Concept: "Manuscript & Gilt"
+   একটি e‑learning platform-এর জন্য থিম, অনুপ্রেরণা: পুরনো পাণ্ডুলিপি
+   (manuscript) + ইসলামিক জ্যামিতিক প্যাটার্ন + gold-leaf illumination।
+   গতানুগতিক cream+terracotta বা pure-black+neon look এড়িয়ে,
+   deep indigo ink + antique gold + parchment paper ব্যবহার করা হয়েছে।
+   ============================================================ */
+
 @import "tailwindcss";
 
+/* ---- Fonts ------------------------------------------------
+   Display  : Fraunces      → calligraphic, high-contrast serif,
+                              হেডিং/লোগো-তে "manuscript" চরিত্র দেয়
+   Body     : Hind Siliguri → বাংলা + ল্যাটিন উভয়ের জন্য পরিষ্কার,
+                              পড়তে আরামদায়ক UI face
+   Utility  : IBM Plex Mono → কোর্স কোড, স্কোর, ডেটা, ক্যাপশন
+
+   NOTE: এই তিনটা ফন্ট এখানে @import দিয়ে লোড করা হচ্ছে না।
+   Next.js-এ CSS @import url(...) সবসময় ফাইলের একদম প্রথম লাইনে
+   থাকতে হয় — এই globals.css যদি অন্য কোনো CSS-এর নিচে বসে, বা
+   Tailwind-এর output-এর সাথে merge হয়, তাহলেই এই বিল্ড এরর আসবে।
+   এর বদলে layout.tsx-এ next/font/google ব্যবহার করুন — নিচের
+   কমেন্ট ব্লকে কোড দেওয়া আছে। এভাবে ফন্ট self-host-ও হবে, আর
+   এই ক্লাস-এর এরর আর কখনো আসবে না। */
+
 :root {
-  /* Light Mode Colors */
-  --background: #ffffff;
-  --foreground: #171717;
-  --scrollbar-track: #f1f5f9;
-  --scrollbar-thumb: #3b82f6; /* Light mode thumb color (e.g., blue-500) */
+  /* ---- Core palette (Manuscript & Gilt — light / "vellum") ---- */
+  --background: #F5F1E6;      /* Vellum       — warm parchment paper   */
+  --foreground: #201F3A;      /* Manuscript Ink — deep indigo-black    */
+  --primary:    #2A2F6D;      /* Royal Indigo — headings, primary CTA  */
+  --primary-foreground: #F5F1E6;
+  --accent:     #B8912B;      /* Antique Gilt — illumination gold      */
+  --accent-foreground: #201F3A;
+  --card:       #FDFBF3;      /* Ivory Leaf   — cards/panels           */
+  --border:     #E1D8B9;      /* Parchment edge                        */
+  --muted:      #7A7360;      /* Faded ink / captions                  */
+
+  /* ---- Semantic feedback (kept in-family, not generic RGB) ---- */
+  --success: #4B6B3A;
+  --warning: #B8912B;
+  --danger:  #8C3B2E;
+  --info:    #2A5C7A;
+
+  /* ---- Signature geometric motif (8‑point star, low opacity) --- */
+  --pattern-ink: 32 47 109;      /* rgb of --primary, for use in patterns */
+  --pattern-opacity: 0.05;
+
+  /* ---- Industry / category label hues (single source of truth) ---
+     নতুন industry/category যোগ করতে চাইলে এখানে একটা লাইন যোগ করুন:
+     --industry-<key>: <hex>;
+     এরপর কোথাও ক্লাস বদলাতে হবে না — badge, chip, card accent
+     সবাই এই ভ্যারিয়েবল থেকেই রঙ নেবে। */
+  --industry-tech:      #2A5C7A;
+  --industry-business:  #6B4A2A;
+  --industry-design:    #8C3B6B;
+  --industry-language:  #4B6B3A;
+  --industry-science:   #2A2F6D;
+  --industry-arts:      #B8912B;
+  --industry-default:   var(--muted);
+
+  --radius: 0.625rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark Mode Colors */
-    --background: #0f172a;
-    --foreground: #ffffff;
-    --scrollbar-track: #1e293b;
-    --scrollbar-thumb: #60a5fa; /* Dark mode thumb color (e.g., blue-400) */
-  }
+.dark {
+  --background: #14132B;      /* Midnight Indigo */
+  --foreground: #F1ECDA;      /* Parchment White  */
+  --primary:    #7C89E0;      /* Lit Indigo — lighter for contrast on dark */
+  --primary-foreground: #14132B;
+  --accent:     #E4C567;      /* Bright Gilt — glows on dark ground */
+  --accent-foreground: #14132B;
+  --card:       #1C1B3B;
+  --border:     #33305E;
+  --muted:      #A29CC4;
+
+  --success: #7FA766;
+  --warning: #E4C567;
+  --danger:  #D97D68;
+  --info:    #6FB2D9;
+
+  --pattern-ink: 228 197 103; /* rgb of --accent in dark mode */
+  --pattern-opacity: 0.06;
+
+  --industry-tech:      #6FB2D9;
+  --industry-business:  #C79A5C;
+  --industry-design:    #D08FC0;
+  --industry-language:  #8FBF75;
+  --industry-science:   #9AA6F2;
+  --industry-arts:      #E4C567;
+  --industry-default:   var(--muted);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+
+  /* next/font/google (layout.tsx) নিচের variable নাম দিয়ে ফন্ট inject করবে:
+     --font-fraunces, --font-hind-siliguri, --font-plex-mono
+     সেটআপ কোড ফাইলের একদম শেষে কমেন্টে দেওয়া আছে। */
+  --font-display: var(--font-fraunces), "Noto Serif Bengali", serif;
+  --font-body: var(--font-hind-siliguri), "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 6px);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
 @custom-variant dark (&:where(.dark *));
 
-html, body, #root {
-  height: 100%;
-}
+/* ============================================================
+   BASE
+   ------------------------------------------------------------
+   FIX (correction): এই পুরো ব্লক আগে plain top-level CSS হিসেবে
+   ছিল, কোনো @layer-এর ভিতরে wrap করা ছিল না। CSS cascade layers
+   স্পেসিফিকেশন অনুযায়ী, un-layered rule সবসময় layered rule-কে
+   হারিয়ে দেয় — specificity বা source-order যাই হোক না কেন।
 
-/* --- Scrollbar Styles (No Hover) --- */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 10px;
-}
+   ফলে `* { border-color: var(--border); }` Tailwind-এর utilities
+   layer-এ থাকা `border-t-transparent` / `border-r-border` /
+   `border-b-transparent` (chat-bubble tail triangle বানাতে
+   ব্যবহৃত হয়) — সবগুলোকে override করে দিচ্ছিল, ফলে triangle-এর
+   বদলে solid square দেখা যাচ্ছিল।
 
-::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-}
+   Fix: পুরো BASE ব্লক এখন `@layer base { ... }`-এর ভিতরে, যাতে
+   এটা utilities layer-এর নিচে বসে এবং border-*-transparent
+   utility-গুলো ঠিকভাবে override করতে পারে।
+   ============================================================ */
+@layer base {
+  * { border-color: var(--border); }
 
-::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border-radius:10px;
-  border: 2px solid var(--scrollbar-track);
-}
+  html, body, #root { height: 100%; }
 
-/* Firefox Support */
-@supports (scrollbar-color: auto) {
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
+  }
+
+  code, kbd, .font-mono { font-family: var(--font-mono); }
+
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 35%, transparent);
+    color: var(--foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--muted) 40%, transparent);
+    border-radius: 999px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
   }
 }
 
-/* --- Animations --- */
-@keyframes marquee {
-  from { transform: translateX(100%); }
-  to   { transform: translateX(-100%); }
+/* ============================================================
+   SIGNATURE — geometric motif (8-point star, echoes Islamic
+   manuscript illumination). Use sparingly: hero sections,
+   section dividers, empty states. Never on body text blocks.
+   ============================================================ */
+.bg-star-pattern {
+  background-image: radial-gradient(
+      circle at 1px 1px,
+      rgb(var(--pattern-ink) / var(--pattern-opacity)) 1.4px,
+      transparent 0
+    ),
+    conic-gradient(
+      from 45deg,
+      rgb(var(--pattern-ink) / var(--pattern-opacity)) 0deg 45deg,
+      transparent 45deg 90deg
+    );
+  background-size: 28px 28px, 56px 56px;
 }
 
-.animate-marquee {
-  animation: marquee 60s linear infinite;
+.divider-seal {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--muted);
+}
+.divider-seal::before,
+.divider-seal::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.divider-seal-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  background: var(--accent);
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%,
+    21% 91%, 32% 57%, 2% 35%, 39% 35%
+  ); /* 8-point-ish star */
+}
+
+/* ============================================================
+   INDUSTRY / CATEGORY LABEL — global component
+   ------------------------------------------------------------
+   ব্যবহার:
+     <span class="label" data-industry="tech">Web Development</span>
+     <span class="label" data-industry="design">UI/UX</span>
+     <span class="label label--seal" data-industry="science">Certified</span>
+
+   নতুন industry/category যোগ করা:
+     ১) :root এবং .dark — এ  --industry-<key>  ভ্যারিয়েবল যোগ করুন
+     ২) নিচের [data-industry="<key>"] সিলেক্টর ব্লকে ম্যাপ করুন
+   এভাবে পুরো প্রজেক্টে রঙ, dark-mode, hover — সব জায়গায়
+   একটাই সোর্স অফ ট্রুথ থেকে কন্ট্রোল হয়।
+   ============================================================ */
+.label {
+  --label-color: var(--industry-default);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--label-color);
+  background: color-mix(in oklab, var(--label-color) 14%, var(--card));
+  border: 1px solid color-mix(in oklab, var(--label-color) 32%, transparent);
+  white-space: nowrap;
+}
+
+.label::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  background: var(--label-color);
+  border-radius: 2px;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.label:hover {
+  background: color-mix(in oklab, var(--label-color) 22%, var(--card));
+}
+
+/* Category → hue mapping (edit here when adding new categories) */
+.label[data-industry="tech"]      { --label-color: var(--industry-tech); }
+.label[data-industry="business"]  { --label-color: var(--industry-business); }
+.label[data-industry="design"]    { --label-color: var(--industry-design); }
+.label[data-industry="language"]  { --label-color: var(--industry-language); }
+.label[data-industry="science"]   { --label-color: var(--industry-science); }
+.label[data-industry="arts"]      { --label-color: var(--industry-arts); }
+
+/* "Seal" variant — for certification / featured labels only.
+   Distinct shape (small star, no pill) so meaning is carried
+   structurally, not just by color — reserved for real signals
+   of achievement, not decoration. */
+.label--seal {
+  background: transparent;
+  border: none;
+  padding-left: 0.2rem;
+}
+.label--seal::before {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 0;
+  background: var(--label-color);
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%,
+    21% 91%, 32% 57%, 2% 35%, 39% 35%
+  );
+  transform: none;
+}
+
+/* ============================================================
+   CARD / SURFACE — subtle "gilt edge" treatment
+   ============================================================ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.card--illuminated {
+  position: relative;
+  overflow: hidden;
+}
+.card--illuminated::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent) 20%,
+    var(--accent) 80%,
+    transparent
+  );
+}
+
+/* ============================================================
+   MOTION — one orchestrated entrance, used deliberately
+   ============================================================ */
+@keyframes fade-rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-rise {
+  animation: fade-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

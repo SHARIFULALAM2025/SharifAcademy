@@ -34,7 +34,7 @@ const pricingData: PricingPlan[] = [
     name: 'প্রো',
     price: '৳৯৯৯',
     billingPeriod: '/মাস',
-    subtitle: 'সিরিয়াস শিক্ষার্থীদের জন্য। সব কিছুতে প্রবেশাধিকার।',
+    subtitle: 'সিরিয়াস শিক্ষার্থীদের জন্য। সব কিছুতে প্রবেশাধিকার।',
     isPopular: true,
     features: [
       { text: 'সব ২০০+ কোর্স', included: true },
@@ -54,7 +54,7 @@ const pricingData: PricingPlan[] = [
       { text: 'ডেডিকেটেড অ্যাকাউন্ট ম্যানেজার', included: true },
       { text: 'কাস্টম কোর্স তৈরি', included: true },
       { text: 'বাল্ক রিপোর্ট ও অ্যানালিটিক্স', included: true },
-      { text: 'ইনভয়েস ও বার্ষিক বিলিং', included: true },
+      { text: 'ইনভয়েস ও বার্ষিক বিলিং', included: true },
     ],
   },
   {
@@ -67,69 +67,69 @@ const pricingData: PricingPlan[] = [
       { text: 'ডেডিকেটেড অ্যাকাউন্ট ম্যানেজার', included: true },
       { text: 'কাস্টম কোর্স তৈরি', included: true },
       { text: 'বাল্ক রিপোর্ট ও অ্যানালিটিক্স', included: true },
-      { text: 'ইনভয়েস ও বার্ষিক বিলিং', included: true },
+      { text: 'ইনভয়েস ও বার্ষিক বিলিং', included: true },
     ],
-  }
+  },
 ]
 
 const PricingSection = () => {
   return (
-    <div className="bg-white dark:bg-slate-950 py-6 px-4 font-sans text-slate-800">
+    <div className="bg-background py-6 px-4 font-body text-foreground">
       <div className="">
         {/* Headings */}
         <div className="text-center mb-12">
-          <span className="text-[#155e2f] dark:text-white font-bold text-xs sm:text-sm tracking-wide block mb-2">
+          <span className="text-accent font-bold text-xs sm:text-sm tracking-wide block mb-2">
             মূল্য পরিকল্পনা
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold dark:text-white text-[#1e293b] mb-3">
+          <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-foreground mb-3">
             তোমার বাজেটে সেরা প্ল্যান বেছে নাও
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-white font-medium">
+          <p className="text-xs sm:text-sm text-muted font-medium">
             সব প্ল্যানে ৩০ দিনের মানি-ব্যাক গ্যারান্টি
           </p>
         </div>
 
         {/* Grid Cards layout */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-2 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-stretch">
           {pricingData.map((plan) => (
             <div
               key={plan.id}
-              className={`relative rounded-2xl p-6 sm:p-7 flex flex-col transition-all duration-300 ${
+              className={`relative rounded-2xl p-6 sm:p-7 flex flex-col transition-all duration-300 bg-card ${
                 plan.isPopular
-                  ? 'bg-[#edf7f1] border-2 border-[#155e2f] shadow-sm'
-                  : 'bg-white border border-slate-200/80 shadow-sm'
+                  ? 'border-2 border-accent shadow-sm'
+                  : 'border border-border shadow-sm'
               }`}
             >
               {/* Popular Badge Container */}
               {plan.isPopular && (
                 <div className="mb-4">
-                  <span className="inline-block bg-[#155e2f] text-white text-[11px] font-bold px-2.5 py-0.5 rounded">
-                    সর্বাধিক জনপ্রিয়
+                  <span className="inline-block bg-accent text-accent-foreground text-[11px] font-bold px-2.5 py-0.5 rounded">
+                    সর্বাধিক জনপ্রিয়
                   </span>
                 </div>
               )}
 
               {/* Header Title & Pricing */}
-              <h3 className="text-lg font-bold text-slate-700 mb-2">
+              <h3 className="font-display text-lg font-bold text-foreground mb-2">
                 {plan.name}
               </h3>
 
               <div className="flex items-baseline gap-1 mb-4">
-                <span className="text-3xl font-black text-slate-800 tracking-tight">
+                <span className="text-3xl font-black text-foreground tracking-tight">
                   {plan.price}
                 </span>
                 {plan.billingPeriod && (
-                  <span className="text-xs font-semibold text-slate-500">
+                  <span className="text-xs font-semibold text-muted">
                     {plan.billingPeriod}
                   </span>
                 )}
               </div>
 
-              <p className="text-xs text-slate-500 leading-relaxed font-medium mb-6 min-h-[40px]">
+              <p className="text-xs text-muted leading-relaxed font-medium mb-6 min-h-[40px]">
                 {plan.subtitle}
               </p>
 
-              <hr className="border-slate-200/60 mb-6" />
+              <hr className="border-border mb-6" />
 
               {/* Features Lists */}
               <ul className="space-y-3.5 flex-1 mb-8">
@@ -140,20 +140,34 @@ const PricingSection = () => {
                   >
                     {feature.included ? (
                       /* Checked Icon Wrapper */
-                      <span className="w-4 h-4 rounded-full bg-[#edf7f1] text-[#155e2f] flex items-center justify-center flex-shrink-0 text-[10px] mt-0.5">
+                      <span
+                        className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] mt-0.5"
+                        style={{
+                          background:
+                            'color-mix(in oklab, var(--success) 16%, var(--card))',
+                          color: 'var(--success)',
+                        }}
+                      >
                         ✓
                       </span>
                     ) : (
                       /* Crossed Icon Wrapper */
-                      <span className="w-4 h-4 rounded-full bg-red-50 text-red-400 flex items-center justify-center flex-shrink-0 text-[9px] mt-0.5">
+                      <span
+                        className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-[9px] mt-0.5"
+                        style={{
+                          background:
+                            'color-mix(in oklab, var(--danger) 12%, var(--card))',
+                          color: 'var(--danger)',
+                        }}
+                      >
                         ✕
                       </span>
                     )}
                     <span
                       className={
                         feature.included
-                          ? 'text-slate-700'
-                          : 'text-slate-400 font-normal'
+                          ? 'text-foreground'
+                          : 'text-muted font-normal'
                       }
                     >
                       {feature.text}
@@ -162,7 +176,7 @@ const PricingSection = () => {
                 ))}
               </ul>
 
-              <button className=" bg-slate-950 hover:text-[#064E3B] text-white border border-emerald-400/60 font-semibold px-8 py-3 rounded-xl transition-all duration-300 text-sx sm:text-base shadow-lg shadow-black/10 active:scale-95">
+              <button className="bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground border border-transparent font-semibold px-8 py-3 rounded-xl transition-all duration-300 text-sm sm:text-base shadow-lg shadow-black/10 active:scale-95">
                 Subscription
               </button>
             </div>
