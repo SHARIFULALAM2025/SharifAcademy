@@ -39,6 +39,9 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openMobileId, setOpenMobileId] = useState<string | number | null>(null)
 
+  // ✅ লিন্ট এরর ফিক্স: রেন্ডার ফেজেই পাথনেম ট্র্যাকিং স্টেট রাখা
+  const [prevPathname, setPrevPathname] = useState(pathname)
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setMounted(true)
@@ -47,11 +50,12 @@ const Navbar = () => {
     return () => clearTimeout(timer)
   }, [])
 
-  // পেজ বদলালে মোবাইল মেনু বন্ধ হয়ে যাবে
-  useEffect(() => {
+  // ✅ রেন্ডার পাসেই পাথনেম বদলানো চেক করে মোবাইল মেনু বন্ধ করা (No useEffect needed)
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname)
     setMobileOpen(false)
     setOpenMobileId(null)
-  }, [pathname])
+  }
 
   const currentLang = (i18n.language || 'en') as 'en' | 'bn'
 
@@ -165,7 +169,6 @@ const Navbar = () => {
                     className="rounded-full w-8 h-8 sm:w-9 sm:h-9 object-cover ring-2 ring-accent ring-offset-2 ring-offset-background"
                   />
                 ) : (
-                  // ✅ Image না থাকলে name এর প্রথম অক্ষর দেখাবে
                   <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-primary flex items-center justify-center ring-2 ring-accent ring-offset-2 ring-offset-background">
                     <span className="text-primary-foreground text-sm font-bold">
                       {session.user.name?.charAt(0).toUpperCase()}
@@ -174,14 +177,11 @@ const Navbar = () => {
                 )}
               </button>
 
-              {/* ✅ Dropdown */}
+              {/* Dropdown */}
               <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 min-w-56">
-                {/* Arrow */}
                 <div className="w-2.5 h-2.5 bg-card border-t border-l border-border rotate-45 absolute -top-1 right-3 z-10"></div>
 
-                {/* Dropdown Card */}
                 <div className="bg-card rounded-xl shadow-2xl border border-border overflow-hidden">
-                  {/* User Info Section */}
                   <div className="px-4 py-3 border-b border-border">
                     <div className="flex items-center gap-3">
                       {session?.user?.image ? (
@@ -210,7 +210,6 @@ const Navbar = () => {
                     </div>
                   </div>
 
-                  {/* Menu Items */}
                   <div className="py-1">
                     <Link
                       href="/profile"
@@ -237,12 +236,12 @@ const Navbar = () => {
                     </Link>
                   </div>
 
-                  {/* Logout Section */}
                   <div className="border-t border-border py-1">
                     <button
                       onClick={handleLogout}
                       className="flex items-center gap-3 px-4 py-2.5 text-sm text-danger hover:bg-danger/10 w-full transition-colors"
                     >
+                      <br />
                       <LuLogOut className="text-base stroke-[2.5]" />
                       <span>Log Out</span>
                     </button>
@@ -260,7 +259,7 @@ const Navbar = () => {
             </Link>
           )}
 
-          {/* --- হ্যামবার্গার (lg-এর নিচে সব ডিভাইসে দেখাবে) --- */}
+          {/* --- হ্যামবার্গার --- */}
           <button
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Menu"
@@ -276,7 +275,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* --- মোবাইল/ট্যাবলেট স্লাইড-ডাউন মেনু (lg-এর নিচে) --- */}
+      {/* --- মোবাইল/ট্যাবলেট স্লাইড-ডাউন মেনু --- */}
       <div
         className={`lg:hidden absolute top-14 left-0 w-full bg-card border-b border-border shadow-2xl overflow-y-auto transition-all duration-300 ease-in-out ${
           mobileOpen
@@ -358,7 +357,7 @@ const Navbar = () => {
             )
           })}
 
-          {/* মোবাইলে সাইন-ইন/প্রোফাইল (sm-এর নিচে হেডার থেকে লুকানো ছিল) */}
+          {/* মোবাইলে সাইন-ইন/প্রোফাইল */}
           <div className="sm:hidden pt-3">
             {session ? (
               <div className="flex items-center gap-3 py-2">
