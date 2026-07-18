@@ -13,16 +13,23 @@ const SidebarWrapper = ({ items }: SidebarWrapperProps) => {
 
   return (
     <aside
-      className={`relative bg-background text-foreground border-r border-dotted border-background/15 flex flex-col transition-all duration-300 ease-in-out shrink-0 ${
-        isCollapsed ? 'w-12' : 'w-44 sm:w-48'
-      }`}
+      className={`
+        relative bg-background text-foreground h-full border-r border-dotted border-border flex flex-col transition-all duration-300 ease-in-out shrink-0
+        /* মোবাইলে ড্রয়ারের জন্য ফুল উইডথ, কিন্তু md স্ক্রিন থেকে কলাপ্সিবল উইডথ */
+        w-64 md:w-auto
+        ${!isCollapsed ? 'md:w-44 lg:w-48' : 'md:w-12'}
+      `}
     >
-      <ToggleButton
-        isCollapsed={isCollapsed}
-        onToggle={() => setIsCollapsed(!isCollapsed)}
-      />
+      {/* টগল বাটনটি শুধুমাত্র md এবং তার বড় স্ক্রিনে দেখাবে */}
+      <div className="hidden md:block">
+        <ToggleButton
+          isCollapsed={isCollapsed}
+          onToggle={() => setIsCollapsed(!isCollapsed)}
+        />
+      </div>
 
-      <nav className="pt-10 px-2">
+      {/* মোবাইলে pt-14 (যেহেতু টপ হেডার আছে) এবং ডেস্কে pt-10 */}
+      <nav className="pt-14 md:pt-10 px-2 h-full overflow-y-auto">
         <Language isCollapsed={isCollapsed} items={items} />
       </nav>
     </aside>
