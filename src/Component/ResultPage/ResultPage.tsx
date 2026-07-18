@@ -82,8 +82,8 @@ const ResultContent = () => {
     const duration = 5 * 1000 // ১৫ সেকেন্ড অনেক লম্বা, তাই ৫ সেকেন্ড দেওয়া হলো (চাইলে ১৫ করতে পারেন)
     const animationEnd = Date.now() + duration
 
-    // আপনার কাস্টম কালার প্যালেট
-    const colors = ['#4f6ef7', '#22c55e', '#f59e0b', '#ec4899']
+    // থিমের সাথে মেলানো কনফেত্তি প্যালেট (ইনডিগো, গিল্ট গোল্ড, সবুজ, রোজ)
+    const colors = ['#7C89E0', '#E4C567', '#7FA766', '#D97D68']
 
     // ৪০০ms ডিলে-র পর অ্যানিমেশন শুরু হবে
     const startTimer = setTimeout(() => {
@@ -128,23 +128,23 @@ const ResultContent = () => {
 
   if (loading)
     return (
-      <div className="min-h-screen bg-[#0f1117] text-white flex items-center justify-center">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
-          <span className="text-slate-400 text-sm">লোড হচ্ছে...</span>
+          <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+          <span className="text-muted text-sm">লোড হচ্ছে...</span>
         </div>
       </div>
     )
 
   if (!result)
     return (
-      <div className="min-h-screen bg-[#0f1117] text-red-400 flex items-center justify-center">
+      <div className="min-h-screen bg-background text-danger flex items-center justify-center">
         <div className="text-center">
           <div className="text-4xl mb-3">⚠️</div>
           <p className="text-lg font-semibold">ফলাফল পাওয়া যায়নি!</p>
           <button
             onClick={() => window.history.back()}
-            className="mt-4 px-4 py-2 rounded-lg bg-slate-800 text-slate-300 text-sm hover:bg-slate-700 transition-colors"
+            className="mt-4 px-4 py-2 rounded-lg bg-card border border-border text-foreground/80 text-sm hover:bg-border transition-colors"
           >
             ফিরে যান
           </button>
@@ -208,13 +208,13 @@ const ResultContent = () => {
   const progressPct = Math.min((score / parseFloat(totalMarks)) * 100, 100)
 
   return (
-    <div className="min-h-screen bg-[#0f1117] text-[#e2e8f0] font-sans">
+    <div className="min-h-screen bg-background text-foreground font-body">
       {/* Header band */}
-      <div className="bg-[#181c27] border-b border-[#2a3050] px-5 py-3">
-        <p className="text-sm font-semibold text-center text-slate-200 mb-3">
+      <div className="bg-card border-b border-border px-5 py-3">
+        <p className="text-sm font-semibold text-center text-foreground mb-3">
           {examFinishedData[0]?.title ?? 'পরীক্ষার ফলাফল'}
           &nbsp;·&nbsp;
-          <span className="text-slate-400 text-xs font-normal">
+          <span className="text-muted text-xs font-normal">
             {new Date(result.submitted_at).toLocaleDateString('en-GB', {
               day: '2-digit',
               month: 'short',
@@ -225,38 +225,36 @@ const ResultContent = () => {
 
         {/* Stat pills */}
         <div className="flex gap-1.5 flex-wrap mb-3">
-          <div className="flex-1 min-w-[90px] flex items-center gap-2 px-3 py-1.5 rounded-lg bg-green-500/10 border border-green-500/30">
+          <div className="flex-1 min-w-[90px] flex items-center gap-2 px-3 py-1.5 rounded-lg bg-success/10 border border-success/30">
             <div>
-              <div className="text-[9px] text-green-400/70 font-medium">
+              <div className="text-[9px] text-success/70 font-medium">
                 স্কোর
               </div>
-              <div className="text-sm font-bold text-green-400">
+              <div className="text-sm font-bold text-success">
                 {score}/{totalMarks}
               </div>
             </div>
           </div>
-          <div className="flex-1 min-w-[90px] flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/30">
+          <div className="flex-1 min-w-[90px] flex items-center gap-2 px-3 py-1.5 rounded-lg bg-info/10 border border-info/30">
             <div>
-              <div className="text-[9px] text-blue-400/70 font-medium">
+              <div className="text-[9px] text-info/70 font-medium">
                 নির্ভুলতা
               </div>
-              <div className="text-sm font-bold text-blue-400">{accuracy}%</div>
+              <div className="text-sm font-bold text-info">{accuracy}%</div>
             </div>
           </div>
-          <div className="flex-1 min-w-[90px] flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-500/10 border border-slate-500/20">
+          <div className="flex-1 min-w-[90px] flex items-center gap-2 px-3 py-1.5 rounded-lg bg-border/30 border border-border">
             <div>
-              <div className="text-[9px] text-slate-400/70 font-medium">
-                সময়
-              </div>
-              <div className="text-sm font-bold text-slate-300">
+              <div className="text-[9px] text-muted font-medium">সময়</div>
+              <div className="text-sm font-bold text-foreground/80">
                 {minutes}m {seconds}s
               </div>
             </div>
           </div>
-          <div className="flex-1 min-w-[90px] flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30">
+          <div className="flex-1 min-w-[90px] flex items-center gap-2 px-3 py-1.5 rounded-lg bg-danger/10 border border-danger/30">
             <div>
-              <div className="text-[9px] text-red-400/70 font-medium">ভুল</div>
-              <div className="text-sm font-bold text-red-400">
+              <div className="text-[9px] text-danger/70 font-medium">ভুল</div>
+              <div className="text-sm font-bold text-danger">
                 {result.total_wrong}
               </div>
             </div>
@@ -270,22 +268,22 @@ const ResultContent = () => {
               {
                 key: 'all',
                 label: `সব ${totalQ}`,
-                cls: 'border-slate-600 text-slate-300 data-[active=true]:bg-[#4f6ef7] data-[active=true]:border-[#4f6ef7] data-[active=true]:text-white',
+                cls: 'border-border text-foreground/80 data-[active=true]:bg-primary data-[active=true]:border-primary data-[active=true]:text-primary-foreground',
               },
               {
                 key: 'correct',
                 label: `সঠিক ${result.total_correct}`,
-                cls: 'border-green-500/40 text-green-400 data-[active=true]:bg-green-500 data-[active=true]:border-green-500 data-[active=true]:text-white',
+                cls: 'border-success/40 text-success data-[active=true]:bg-success data-[active=true]:border-success data-[active=true]:text-white',
               },
               {
                 key: 'skip',
                 label: `বাদ ${skippedCount}`,
-                cls: 'border-slate-600/40 text-slate-400 data-[active=true]:bg-slate-600 data-[active=true]:border-slate-600 data-[active=true]:text-white',
+                cls: 'border-muted/40 text-muted data-[active=true]:bg-muted data-[active=true]:border-muted data-[active=true]:text-white',
               },
               {
                 key: 'wrong',
                 label: `ভুল ${result.total_wrong}`,
-                cls: 'border-red-500/40 text-red-400 data-[active=true]:bg-red-500 data-[active=true]:border-red-500 data-[active=true]:text-white',
+                cls: 'border-danger/40 text-danger data-[active=true]:bg-danger data-[active=true]:border-danger data-[active=true]:text-white',
               },
             ] as const
           ).map(({ key, label, cls }) => (
@@ -299,8 +297,11 @@ const ResultContent = () => {
             </button>
           ))}
           <button
-            className="ml-auto px-3 py-1 rounded-md text-[10px] font-bold text-white"
-            style={{ background: 'linear-gradient(135deg,#f59e0b,#ef4444)' }}
+            className="ml-auto px-3 py-1 rounded-md text-[10px] font-bold text-primary-foreground"
+            style={{
+              background:
+                'linear-gradient(135deg, var(--accent), var(--primary))',
+            }}
           >
             🏆 LEADERBOARD
           </button>
@@ -309,48 +310,47 @@ const ResultContent = () => {
 
       <div className="px-5 py-3 pb-8">
         {/* Summary card */}
-        <div className="bg-[#1e2336] border border-[#2a3050] rounded-xl p-4 mb-3">
+        <div className="bg-card border border-border rounded-xl p-4 mb-3">
           <div className="flex items-center gap-4 mb-4">
             <div
               className={`w-[70px] h-[70px] rounded-full border-[3px] flex flex-col items-center justify-center flex-shrink-0 ${
-                passed ? 'border-green-400' : 'border-red-400'
+                passed ? 'border-success' : 'border-danger'
               }`}
             >
               <span
                 className={`text-xl font-extrabold leading-none ${
-                  passed ? 'text-green-400' : 'text-red-400'
+                  passed ? 'text-success' : 'text-danger'
                 }`}
               >
                 {score}
               </span>
-              <span className="text-[9px] text-slate-400 mt-0.5">
+              <span className="text-[9px] text-muted mt-0.5">
                 / {totalMarks}
               </span>
             </div>
 
             <div className="flex-1">
-              <div className="h-1 bg-white/10 rounded-full overflow-hidden mb-1">
+              <div className="h-1 bg-border/50 rounded-full overflow-hidden mb-1">
                 <div
                   className={`h-full rounded-full transition-all duration-1000 ${
-                    passed ? 'bg-green-400' : 'bg-red-400'
+                    passed ? 'bg-success' : 'bg-danger'
                   }`}
                   style={{ width: `${progressPct}%` }}
                 />
               </div>
-              <div className="flex justify-between text-[10px] text-slate-500 mb-2">
+              <div className="flex justify-between text-[10px] text-muted mb-2">
                 <span>0</span>
                 <span>পাস: ৮</span>
                 <span>{totalMarks}</span>
               </div>
-              <div className="text-[11px] text-slate-400">
-                সময় লেগেছে:{' '}
-                <span className="text-slate-200 font-semibold">
+              <div className="text-[11px] text-muted">
+                সময় লেগেছে:{' '}
+                <span className="text-foreground font-semibold">
                   {minutes} মিনিট {seconds} সেকেন্ড
                 </span>
               </div>
-              <div className="text-[11px] text-slate-400 mt-0.5">
-                পাস নম্বর:{' '}
-                <span className="text-amber-400 font-bold">8.00</span>
+              <div className="text-[11px] text-muted mt-0.5">
+                পাস নম্বর: <span className="text-accent font-bold">8.00</span>
               </div>
             </div>
 
@@ -358,13 +358,13 @@ const ResultContent = () => {
               <div
                 className={`px-3 py-1.5 rounded-lg text-sm font-bold border ${
                   passed
-                    ? 'bg-green-500/10 border-green-500/40 text-green-400'
-                    : 'bg-red-500/10 border-red-500/40 text-red-400'
+                    ? 'bg-success/10 border-success/40 text-success'
+                    : 'bg-danger/10 border-danger/40 text-danger'
                 }`}
               >
                 {passed ? '✅ পাস' : '❌ ফেল'}
               </div>
-              <span className="text-[10px] text-slate-500">পাস নম্বর ৮.০০</span>
+              <span className="text-[10px] text-muted">পাস নম্বর ৮.০০</span>
             </div>
           </div>
 
@@ -373,37 +373,37 @@ const ResultContent = () => {
               {
                 val: result.total_correct,
                 lbl: 'সঠিক উত্তর',
-                color: 'text-green-400',
+                color: 'text-success',
               },
               {
                 val: result.total_wrong,
                 lbl: 'ভুল উত্তর',
-                color: 'text-red-400',
+                color: 'text-danger',
               },
-              { val: skippedCount, lbl: 'বাদ দেওয়া', color: 'text-blue-400' },
+              { val: skippedCount, lbl: 'বাদ দেওয়া', color: 'text-info' },
               {
                 val: `${accuracy}%`,
                 lbl: 'নির্ভুলতা',
-                color: 'text-amber-400',
+                color: 'text-accent',
               },
             ].map(({ val, lbl, color }) => (
               <div
                 key={lbl}
-                className="bg-[#181c27] border border-[#2a3050] rounded-lg py-2.5 text-center"
+                className="bg-background border border-border rounded-lg py-2.5 text-center"
               >
                 <div
                   className={`text-base font-bold leading-none mb-1 ${color}`}
                 >
                   {val}
                 </div>
-                <div className="text-[10px] text-slate-400">{lbl}</div>
+                <div className="text-[10px] text-muted">{lbl}</div>
               </div>
             ))}
           </div>
 
           <button
             onClick={() => window.history.back()}
-            className="w-full mt-3 py-2.5 rounded-lg bg-[#181c27] border border-[#2a3050] text-slate-300 text-sm font-semibold hover:bg-[#1e2336] hover:border-[#323a58] transition-all"
+            className="w-full mt-3 py-2.5 rounded-lg bg-background border border-border text-foreground/80 text-sm font-semibold hover:bg-card hover:border-primary/30 transition-all"
           >
             ← ফিরে যান
           </button>
@@ -412,7 +412,7 @@ const ResultContent = () => {
         {/* Question list */}
         {questions.length > 0 && (
           <>
-            <p className="text-[11px] text-slate-500 font-semibold uppercase tracking-wider mb-2.5">
+            <p className="text-[11px] text-muted font-semibold uppercase tracking-wider mb-2.5">
               সম্পন্ন প্রশ্ন ({filteredQuestions.length})
             </p>
             <div className="flex flex-col gap-2">
@@ -423,13 +423,13 @@ const ResultContent = () => {
                 return (
                   <div
                     key={q.n}
-                    className="bg-[#1e2336] border border-[#2a3050] rounded-xl overflow-hidden"
+                    className="bg-card border border-border rounded-xl overflow-hidden"
                   >
                     <div className="flex items-start gap-2.5 px-3.5 pt-3 pb-2">
-                      <div className="min-w-[22px] h-[22px] rounded-[5px] bg-[#4f6ef7] flex items-center justify-center text-[11px] font-bold text-white flex-shrink-0 mt-0.5">
+                      <div className="min-w-[22px] h-[22px] rounded-[5px] bg-primary flex items-center justify-center text-[11px] font-bold text-primary-foreground flex-shrink-0 mt-0.5">
                         {q.n}
                       </div>
-                      <p className="text-[12.5px] text-slate-200 leading-relaxed">
+                      <p className="text-[12.5px] text-foreground/90 leading-relaxed">
                         {q.text}
                       </p>
                     </div>
@@ -439,7 +439,7 @@ const ResultContent = () => {
                         {q.tags.map((t) => (
                           <span
                             key={t}
-                            className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#4f6ef7]/15 border border-[#4f6ef7]/30 text-indigo-300"
+                            className="px-2 py-0.5 rounded text-[10px] font-semibold bg-primary/15 border border-primary/30 text-primary"
                           >
                             {t}
                           </span>
@@ -456,20 +456,17 @@ const ResultContent = () => {
                         let letterCls: string
 
                         if (isCorrectOpt && isUserChosen) {
-                          cls =
-                            'bg-green-500/10 border-green-500/40 text-green-400'
-                          letterCls = 'bg-green-500 border-green-500 text-white'
+                          cls = 'bg-success/10 border-success/40 text-success'
+                          letterCls = 'bg-success border-success text-white'
                         } else if (isCorrectOpt && !isUserChosen) {
-                          cls =
-                            'bg-green-500/10 border-green-500/40 text-green-400'
-                          letterCls = 'bg-green-500 border-green-500 text-white'
+                          cls = 'bg-success/10 border-success/40 text-success'
+                          letterCls = 'bg-success border-success text-white'
                         } else if (isUserChosen && !isCorrectOpt) {
-                          cls = 'bg-red-500/10 border-red-500/40 text-red-400'
-                          letterCls = 'bg-red-500 border-red-500 text-white'
+                          cls = 'bg-danger/10 border-danger/40 text-danger'
+                          letterCls = 'bg-danger border-danger text-white'
                         } else {
-                          cls = 'bg-[#181c27] border-[#2a3050] text-slate-400'
-                          letterCls =
-                            'bg-[#1e2336] border-[#323a58] text-slate-400'
+                          cls = 'bg-background border-border text-muted'
+                          letterCls = 'bg-card border-border text-muted'
                         }
 
                         return (
@@ -488,23 +485,23 @@ const ResultContent = () => {
                       })}
                     </div>
 
-                    <div className="border-t border-[#2a3050] px-3.5 py-2 flex items-center justify-between">
+                    <div className="border-t border-border px-3.5 py-2 flex items-center justify-between">
                       <div
                         className={`flex items-center gap-1.5 px-2 py-1 rounded text-[10px] font-bold ${
                           isCorrect
-                            ? 'bg-green-500/10 text-green-400'
+                            ? 'bg-success/10 text-success'
                             : isWrong
-                              ? 'bg-red-500/10 text-red-400'
-                              : 'bg-slate-500/10 text-slate-400'
+                              ? 'bg-danger/10 text-danger'
+                              : 'bg-muted/10 text-muted'
                         }`}
                       >
                         {isCorrect
                           ? '✓ সঠিক'
                           : isWrong
                             ? '✗ ভুল'
-                            : '— বাদ দেওয়া'}
+                            : '— বাদ দেওয়া'}
                       </div>
-                      <div className="flex items-center gap-1 text-[10px] text-slate-500">
+                      <div className="flex items-center gap-1 text-[10px] text-muted">
                         <svg
                           className="w-3 h-3"
                           fill="none"
@@ -521,7 +518,7 @@ const ResultContent = () => {
                         {q.time}
                       </div>
                       <div className="flex gap-2">
-                        <button className="text-slate-500 hover:text-slate-300 transition-colors">
+                        <button className="text-muted hover:text-foreground transition-colors">
                           <svg
                             className="w-3.5 h-3.5"
                             fill="none"
@@ -536,7 +533,7 @@ const ResultContent = () => {
                             />
                           </svg>
                         </button>
-                        <button className="text-slate-500 hover:text-slate-300 transition-colors">
+                        <button className="text-muted hover:text-foreground transition-colors">
                           <svg
                             className="w-3.5 h-3.5"
                             fill="none"
@@ -561,8 +558,8 @@ const ResultContent = () => {
         )}
 
         {questions.length === 0 && (
-          <div className="text-center py-12 text-slate-500 text-sm">
-            প্রশ্ন লোড হয়নি
+          <div className="text-center py-12 text-muted text-sm">
+            প্রশ্ন লোড হয়নি
           </div>
         )}
       </div>
@@ -574,10 +571,10 @@ const ResultPage = () => {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-[#0f1117] text-white flex items-center justify-center">
+        <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
           <div className="flex flex-col items-center gap-3">
-            <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
-            <span className="text-slate-400 text-sm">লোড হচ্ছে...</span>
+            <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+            <span className="text-muted text-sm">লোড হচ্ছে...</span>
           </div>
         </div>
       }

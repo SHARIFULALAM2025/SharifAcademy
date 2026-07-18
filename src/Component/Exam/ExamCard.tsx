@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { AttendExam } from '@/Types/Day'
 import React, { useState } from 'react'
 import ExamDetailsModal from './ExamDetailsModal'
@@ -6,13 +6,13 @@ import Link from 'next/link'
 
 // --- Types ---
 interface ExamCardProps {
-  data: AttendExam // অথবা আপনার টাইপ স্ট্রাকচার অনুযায়ী যদি সরাসরি অবজেক্ট হয়
+  data: AttendExam // অথবা আপনার টাইপ স্ট্রাকচার অনুযায়ী যদি সরাসরি অবজেক্ট হয়
 }
 
 // --- Icons ---
 const QuestionIcon = () => (
   <svg
-    className="w-4 h-4 text-gray-400"
+    className="w-4 h-4 text-muted"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -28,7 +28,7 @@ const QuestionIcon = () => (
 
 const MarksIcon = () => (
   <svg
-    className="w-4 h-4 text-gray-400"
+    className="w-4 h-4 text-muted"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -44,7 +44,7 @@ const MarksIcon = () => (
 
 const TimeIcon = () => (
   <svg
-    className="w-4 h-4 text-gray-400"
+    className="w-4 h-4 text-muted"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -60,9 +60,9 @@ const TimeIcon = () => (
 
 // --- Main Component ---
 const ExamCard = ({ data }: ExamCardProps) => {
-const [isModalOpen, setIsModalOpen] = useState(false)
-    const {
-      id,
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const {
+    id,
     category,
     sub_Category,
     title,
@@ -74,26 +74,26 @@ const [isModalOpen, setIsModalOpen] = useState(false)
   } = data
 
   return (
-    <div className="max-w-105 w-full bg-[#1e222b] border border-gray-800 rounded-xl p-5 font-sans text-gray-200 shadow-2xl flex flex-col justify-between select-none">
+    <div className="max-w-105 w-full bg-card border border-border rounded-xl p-5 font-body text-foreground shadow-2xl flex flex-col justify-between select-none">
       {/* Top Header: Badge & Status */}
       <div className="flex justify-between items-start gap-4 mb-3">
-        <span className="text-sm text-gray-400 font-medium">
+        <span className="text-sm text-muted font-medium">
           {category} {sub_Category ? `• ${sub_Category}` : ''}
         </span>
-        <span className="bg-[#2d3139] text-gray-300 text-xs px-2.5 py-1 rounded-md font-semibold tracking-wide">
+        <span className="bg-background border border-border text-muted text-xs px-2.5 py-1 rounded-md font-semibold tracking-wide">
           Active
         </span>
       </div>
 
       {/* Main Title */}
-      <h2 className="text-[20px] font-bold text-gray-100 leading-snug mb-3 hover:text-green-400 transition-colors cursor-pointer line-clamp-2">
+      <h2 className="font-display text-[20px] font-bold text-foreground leading-snug mb-3 hover:text-accent transition-colors cursor-pointer line-clamp-2">
         {title}
       </h2>
 
       {/* Participation Info Placeholder */}
-      <div className="flex items-center gap-1 text-sm text-gray-400 mb-4">
+      <div className="flex items-center gap-1 text-sm text-muted mb-4">
         <svg
-          className="w-4 h-4 text-yellow-500 fill-current"
+          className="w-4 h-4 text-accent fill-current"
           viewBox="0 0 24 24"
         >
           <path d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -103,36 +103,36 @@ const [isModalOpen, setIsModalOpen] = useState(false)
 
       {/* Quick Meta Badges */}
       <div className="flex flex-wrap gap-2 mb-5">
-        <div className="flex items-center gap-1.5 bg-[#282d37] px-3 py-1.5 rounded-lg text-xs md:text-sm text-gray-300">
+        <div className="flex items-center gap-1.5 bg-background px-3 py-1.5 rounded-lg text-xs md:text-sm text-muted">
           <QuestionIcon />
           <span>{total_Question} Question</span>
         </div>
-        <div className="flex items-center gap-1.5 bg-[#282d37] px-3 py-1.5 rounded-lg text-xs md:text-sm text-gray-300">
+        <div className="flex items-center gap-1.5 bg-background px-3 py-1.5 rounded-lg text-xs md:text-sm text-muted">
           <MarksIcon />
           <span>{total_Marks} Marks</span>
         </div>
-        <div className="flex items-center gap-1.5 bg-[#282d37] px-3 py-1.5 rounded-lg text-xs md:text-sm text-gray-300">
+        <div className="flex items-center gap-1.5 bg-background px-3 py-1.5 rounded-lg text-xs md:text-sm text-muted">
           <TimeIcon />
           <span>{total_time} Minutes</span>
         </div>
       </div>
 
       {/* Examiner & Package info */}
-      <div className="flex justify-between items-center border-b border-gray-800/60 pb-4 mb-4 gap-4">
+      <div className="flex justify-between items-center border-b border-border pb-4 mb-4 gap-4">
         <div className="space-y-1 text-sm">
-          <p className="text-gray-400">
-            <span className="font-semibold text-gray-300">Examiner:</span>{' '}
+          <p className="text-muted">
+            <span className="font-semibold text-foreground">Examiner:</span>{' '}
             {examiner || 'N/A'}
           </p>
-          <p className="text-gray-400 line-clamp-1">
-            <span className="font-semibold text-gray-300">Package:</span>{' '}
+          <p className="text-muted line-clamp-1">
+            <span className="font-semibold text-foreground">Package:</span>{' '}
             {title?.split('-')[0]} কুইক মডেল টেস্ট
           </p>
         </div>
 
         {/* Result Action Link */}
-        <button className="flex flex-col items-center justify-center text-gray-400 hover:text-blue-400 transition-colors shrink-0 group">
-          <span className="text-[10px] tracking-wider font-bold uppercase group-hover:text-blue-400">
+        <button className="flex flex-col items-center justify-center text-muted hover:text-primary transition-colors shrink-0 group">
+          <span className="text-[10px] tracking-wider font-bold uppercase group-hover:text-primary">
             RESULT
           </span>
           <svg
@@ -153,10 +153,10 @@ const [isModalOpen, setIsModalOpen] = useState(false)
 
       {/* Subject Badge Row */}
       <div className="flex items-center gap-2 mb-5">
-        <span className="text-sm font-bold text-gray-400 flex items-center gap-1">
+        <span className="text-sm font-bold text-muted flex items-center gap-1">
           Subject
           <svg
-            className="w-3 h-3 text-gray-500"
+            className="w-3 h-3 text-muted"
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -167,30 +167,30 @@ const [isModalOpen, setIsModalOpen] = useState(false)
             />
           </svg>
         </span>
-        <span className="bg-[#181a20] text-gray-300 text-xs font-semibold px-3 py-1 rounded border border-gray-800">
+        <span className="bg-background text-foreground text-xs font-semibold px-3 py-1 rounded border border-border">
           {sub_Category}{' '}
-          <span className="text-gray-500 ml-1">{total_Question}</span>
+          <span className="text-muted ml-1">{total_Question}</span>
         </span>
       </div>
 
       {/* Action Buttons Row */}
-      <div className="flex justify-between items-center border-b border-gray-800/60 pb-4 mb-3">
-        <span className="bg-[#10b981] text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-sm">
+      <div className="flex justify-between items-center border-b border-border pb-4 mb-3">
+        <span className="bg-success text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-sm">
           {examPackage || 'Free'}
         </span>
         <Link
           href={`/day/exam/FinalExam/${id}`}
-          className="bg-[#047857] hover:bg-[#059669] text-white font-bold px-5 py-2 rounded-lg text-sm transition-all shadow-md active:scale-95"
+          className="bg-primary hover:opacity-90 text-primary-foreground font-bold px-5 py-2 rounded-lg text-sm transition-all shadow-md active:scale-95"
         >
           Start Now
         </Link>
       </div>
 
       {/* Bottom Footer Actions */}
-      <div className="flex justify-between items-center text-gray-400 text-sm pt-1">
+      <div className="flex justify-between items-center text-muted text-sm pt-1">
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-1.5 hover:text-gray-200 transition-colors py-1"
+          className="flex items-center gap-1.5 hover:text-foreground transition-colors py-1"
         >
           <svg
             className="w-4 h-4"
@@ -215,7 +215,7 @@ const [isModalOpen, setIsModalOpen] = useState(false)
         </button>
 
         <div className="flex items-center gap-4">
-          <button className="hover:text-gray-200 transition-colors p-1">
+          <button className="hover:text-foreground transition-colors p-1">
             <svg
               className="w-4 h-4"
               fill="none"
@@ -230,7 +230,7 @@ const [isModalOpen, setIsModalOpen] = useState(false)
               />
             </svg>
           </button>
-          <button className="flex items-center gap-1 hover:text-gray-200 transition-colors p-1">
+          <button className="flex items-center gap-1 hover:text-foreground transition-colors p-1">
             <svg
               className="w-4 h-4"
               fill="none"
@@ -246,7 +246,7 @@ const [isModalOpen, setIsModalOpen] = useState(false)
             </svg>
             <span className="text-xs">0</span>
           </button>
-          <button className="hover:text-gray-200 transition-colors p-1">
+          <button className="hover:text-foreground transition-colors p-1">
             <svg
               className="w-4 h-4"
               fill="none"
@@ -264,7 +264,7 @@ const [isModalOpen, setIsModalOpen] = useState(false)
         </div>
       </div>
       {isModalOpen && (
-        <ExamDetailsModal data={data}  onClose={() => setIsModalOpen(false)} />
+        <ExamDetailsModal data={data} onClose={() => setIsModalOpen(false)} />
       )}
     </div>
   )

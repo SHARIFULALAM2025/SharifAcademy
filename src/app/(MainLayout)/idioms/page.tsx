@@ -75,36 +75,36 @@ const Page = () => {
   }
 
   return (
-    <div className="min-h-screen bg-stone-100 text-stone-900 dark:bg-slate-950 dark:text-slate-100">
+    <div className="min-h-screen bg-background text-foreground font-body">
       {/* Header */}
-      <header className="border-b border-stone-300 dark:border-slate-800">
+      <header className="border-b border-border">
         <div className="mx-auto max-w-5xl px-5 py-8">
-          <h1 className="font-serif text-center text-3xl font-bold">
+          <h1 className="font-display text-center text-3xl font-bold text-foreground">
             বাংলা বাগধারা অভিধান
           </h1>
-          <p className="mt-1 text-center text-sm text-stone-600 dark:text-slate-400">
+          <p className="mt-1 text-center text-sm text-muted">
             মোট {toBengaliNumber(allEntries.length)}টি বাগধারা ও তাদের অর্থ
           </p>
         </div>
       </header>
 
       {/* Table */}
-      <div className="">
-        <div className="rounded-lg border border-stone-300 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-sm">
+      <div className="mx-auto max-w-5xl px-5 py-6">
+        <div className="rounded-lg border border-border bg-card overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
                 <tr>
-                  <th className="w-14 px-4 py-3 text-center text-xs font-semibold text-stone-600 dark:text-slate-300 bg-stone-200 dark:bg-slate-800 border-b-2 border-red-800 dark:border-red-500">
+                  <th className="w-14 px-4 py-3 text-center text-xs font-semibold text-muted bg-background border-b-2 border-accent">
                     নং
                   </th>
-                  <th className="hidden sm:table-cell w-16 px-4 py-3 text-center text-xs font-semibold text-stone-600 dark:text-slate-300 bg-stone-200 dark:bg-slate-800 border-b-2 border-red-800 dark:border-red-500">
+                  <th className="hidden sm:table-cell w-16 px-4 py-3 text-center text-xs font-semibold text-muted bg-background border-b-2 border-accent">
                     বর্ণ
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-stone-600 dark:text-slate-300 bg-stone-200 dark:bg-slate-800 border-b-2 border-red-800 dark:border-red-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-muted bg-background border-b-2 border-accent">
                     বাগধারা
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-stone-600 dark:text-slate-300 bg-stone-200 dark:bg-slate-800 border-b-2 border-red-800 dark:border-red-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-muted bg-background border-b-2 border-accent">
                     অর্থ
                   </th>
                 </tr>
@@ -113,20 +113,20 @@ const Page = () => {
                 {rows.map((entry, idx) => (
                   <tr
                     key={rangeStart + idx}
-                    className="hover:bg-red-50/60 dark:hover:bg-slate-800/60"
+                    className="hover:bg-accent/5 transition-colors"
                   >
-                    <td className="px-4 py-3 border-b border-stone-200 dark:border-slate-800 text-center align-top font-serif text-xs text-stone-400 dark:text-slate-500">
+                    <td className="px-4 py-3 border-b border-border text-center align-top font-display text-xs text-muted">
                       {toBengaliNumber(rangeStart + idx)}
                     </td>
-                    <td className="hidden sm:table-cell px-4 py-3 border-b border-stone-200 dark:border-slate-800 text-center align-top">
-                      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-100 dark:bg-red-500/15 text-red-800 dark:text-red-400 font-serif font-bold text-sm">
+                    <td className="hidden sm:table-cell px-4 py-3 border-b border-border text-center align-top">
+                      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-accent/15 text-accent font-display font-bold text-sm">
                         {entry.category}
                       </span>
                     </td>
-                    <td className="px-4 py-3 border-b border-stone-200 dark:border-slate-800 align-top font-serif font-semibold text-[17px] text-stone-900 dark:text-slate-100">
+                    <td className="px-4 py-3 border-b border-border align-top font-display font-semibold text-[17px] text-foreground">
                       {entry.idiom}
                     </td>
-                    <td className="px-4 py-3 border-b border-stone-200 dark:border-slate-800 align-top text-sm text-stone-600 dark:text-white leading-relaxed">
+                    <td className="px-4 py-3 border-b border-border align-top text-sm text-muted leading-relaxed">
                       {entry.meaning}
                     </td>
                   </tr>
@@ -137,10 +137,10 @@ const Page = () => {
         </div>
 
         {/* Premium pagination bar */}
-        <div className="mt-5 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-lg border border-stone-300 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 shadow-sm">
-          <div className="flex items-center gap-3 text-sm text-stone-500 dark:text-slate-400">
+        <div className="mt-5 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-lg border border-border bg-card px-4 py-3 shadow-sm">
+          <div className="flex items-center gap-3 text-sm text-muted">
             <span>
-              <span className="font-semibold text-stone-700 dark:text-slate-200">
+              <span className="font-semibold text-foreground">
                 {toBengaliNumber(rangeStart)}–{toBengaliNumber(rangeEnd)}
               </span>{' '}
               এর মধ্যে, মোট {toBengaliNumber(allEntries.length)}টি
@@ -149,14 +149,10 @@ const Page = () => {
             <select
               value={pageSize}
               onChange={(e) => changePageSize(Number(e.target.value))}
-              className="rounded-md border border-stone-300 dark:border-slate-700 bg-stone-50 dark:bg-slate-800 text-stone-600 dark:text-slate-300 px-2 py-1 text-xs focus:outline-none focus:ring-2 focus:ring-red-800/30 dark:focus:ring-red-500/30 focus:border-red-800 dark:focus:border-red-500"
+              className="rounded-md border border-border bg-background text-muted px-2 py-1 text-xs focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
             >
               {PAGE_SIZE_OPTIONS.map((size) => (
-                <option
-                  key={size}
-                  value={size}
-                  className="dark:bg-slate-800 dark:text-slate-200"
-                >
+                <option key={size} value={size}>
                   প্রতি পৃষ্ঠায় {toBengaliNumber(size)}টি
                 </option>
               ))}
@@ -169,7 +165,7 @@ const Page = () => {
               onClick={() => goToPage(1)}
               disabled={currentPage === 1}
               aria-label="প্রথম পৃষ্ঠা"
-              className="h-9 w-9 flex items-center justify-center rounded-md text-stone-500 dark:text-slate-400 hover:bg-stone-100 dark:hover:bg-slate-800 hover:text-red-800 dark:hover:text-red-400 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-stone-500 dark:disabled:hover:text-slate-400 transition-colors"
+              className="h-9 w-9 flex items-center justify-center rounded-md text-muted hover:bg-background hover:text-accent disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-muted transition-colors"
             >
               «
             </button>
@@ -179,7 +175,7 @@ const Page = () => {
               onClick={() => goToPage(currentPage - 1)}
               disabled={currentPage === 1}
               aria-label="পূর্ববর্তী"
-              className="h-9 w-9 flex items-center justify-center rounded-md text-stone-500 dark:text-slate-400 hover:bg-stone-100 dark:hover:bg-slate-800 hover:text-red-800 dark:hover:text-red-400 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-stone-500 dark:disabled:hover:text-slate-400 transition-colors"
+              className="h-9 w-9 flex items-center justify-center rounded-md text-muted hover:bg-background hover:text-accent disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-muted transition-colors"
             >
               ‹
             </button>
@@ -190,7 +186,7 @@ const Page = () => {
                 p === '…' ? (
                   <span
                     key={`dots-${i}`}
-                    className="px-1.5 text-sm text-stone-400 dark:text-slate-600 select-none"
+                    className="px-1.5 text-sm text-muted select-none"
                   >
                     …
                   </span>
@@ -199,10 +195,10 @@ const Page = () => {
                     key={p}
                     onClick={() => goToPage(p)}
                     aria-current={p === currentPage ? 'page' : undefined}
-                    className={`h-9 min-w-9 px-2 flex items-center justify-center rounded-md font-serif text-sm transition-all ${
+                    className={`h-9 min-w-9 px-2 flex items-center justify-center rounded-md font-display text-sm transition-all ${
                       p === currentPage
-                        ? 'bg-red-800 dark:bg-red-600 text-white font-bold shadow-md shadow-red-800/25 dark:shadow-red-600/20 scale-105'
-                        : 'text-stone-600 dark:text-slate-400 hover:bg-stone-100 dark:hover:bg-slate-800'
+                        ? 'bg-accent text-accent-foreground font-bold shadow-md shadow-accent/25 scale-105'
+                        : 'text-muted hover:bg-background'
                     }`}
                   >
                     {toBengaliNumber(p)}
@@ -216,7 +212,7 @@ const Page = () => {
               onClick={() => goToPage(currentPage + 1)}
               disabled={currentPage === totalPages}
               aria-label="পরবর্তী"
-              className="h-9 w-9 flex items-center justify-center rounded-md text-stone-500 dark:text-slate-400 hover:bg-stone-100 dark:hover:bg-slate-800 hover:text-red-800 dark:hover:text-red-400 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-stone-500 dark:disabled:hover:text-slate-400 transition-colors"
+              className="h-9 w-9 flex items-center justify-center rounded-md text-muted hover:bg-background hover:text-accent disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-muted transition-colors"
             >
               ›
             </button>
@@ -226,7 +222,7 @@ const Page = () => {
               onClick={() => goToPage(totalPages)}
               disabled={currentPage === totalPages}
               aria-label="শেষ পৃষ্ঠা"
-              className="h-9 w-9 flex items-center justify-center rounded-md text-stone-500 dark:text-slate-400 hover:bg-stone-100 dark:hover:bg-slate-800 hover:text-red-800 dark:hover:text-red-400 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-stone-500 dark:disabled:hover:text-slate-400 transition-colors"
+              className="h-9 w-9 flex items-center justify-center rounded-md text-muted hover:bg-background hover:text-accent disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-muted transition-colors"
             >
               »
             </button>

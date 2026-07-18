@@ -179,7 +179,7 @@ const McqCard = ({
   return (
     <div
       onClick={() => checkMode()}
-      className="bg-card border border-border p-6 shadow-sm space-y-5 cursor-pointer rounded-lg"
+      className="bg-card border border-border p-6 shadow-sm space-y-5 cursor-pointer rounded-lg w-full min-w-0"
     >
       {/* Question */}
       <div className="flex items-start gap-3">
@@ -208,18 +208,20 @@ const McqCard = ({
               isReadOnly
             )}
           >
-            <span className="inline-flex items-center gap-2">
+            <span className="flex items-center gap-2 w-full">
               <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-xs flex-shrink-0">
                 {PREFIXES[i]}
               </span>
-              <MathText text={option} />
+              <span className="flex-1 min-w-0 break-words">
+                <MathText text={option} />
+              </span>
               {(selected || isReadOnly) && option === question.correct && (
-                <span className="ml-auto">✓</span>
+                <span className="flex-shrink-0">✓</span>
               )}
               {selected &&
                 option === selected &&
                 option !== question.correct && (
-                  <span className="ml-auto">✗</span>
+                  <span className="flex-shrink-0">✗</span>
                 )}
             </span>
           </button>

@@ -13,7 +13,7 @@ const SidebarWrapper = ({ items }: SidebarWrapperProps) => {
 
   return (
     <aside
-      className={`relative bg-foreground text-background/80 border-r border-dotted border-background/15 flex flex-col transition-all duration-300 ease-in-out shrink-0 ${
+      className={`relative bg-background text-foreground border-r border-dotted border-background/15 flex flex-col transition-all duration-300 ease-in-out shrink-0 ${
         isCollapsed ? 'w-12' : 'w-44 sm:w-48'
       }`}
     >

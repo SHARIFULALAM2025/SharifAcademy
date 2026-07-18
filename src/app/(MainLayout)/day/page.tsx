@@ -36,29 +36,35 @@ const MONTH_EN: Record<string, string> = {
   ডিসেম্বর: 'DEC',
 }
 
+// Importance now maps to the theme's semantic tokens instead of raw
+// Tailwind colors, so it automatically adapts across light/dark mode.
 const importanceConfig: Record<
   string,
-  { label: string; dotClass: string; badgeClass: string }
+  { label: string; dotClass: string; badgeClass: string; textClass: string }
 > = {
   'অতি গুরুত্বপূর্ণ *': {
     label: 'অতি গুরুত্বপূর্ণ',
-    dotClass: 'bg-red-500',
-    badgeClass: 'bg-red-50 text-red-700 border border-red-200',
+    dotClass: 'bg-danger',
+    badgeClass: 'bg-danger/10 text-danger border border-danger/30',
+    textClass: 'text-danger',
   },
   'গুরুত্বপূর্ণ *': {
     label: 'গুরুত্বপূর্ণ',
-    dotClass: 'bg-amber-500',
-    badgeClass: 'bg-amber-50 text-amber-700 border border-amber-200',
+    dotClass: 'bg-warning',
+    badgeClass: 'bg-warning/10 text-warning border border-warning/30',
+    textClass: 'text-warning',
   },
   গুরুত্বপূর্ণ: {
     label: 'গুরুত্বপূর্ণ',
-    dotClass: 'bg-amber-500',
-    badgeClass: 'bg-amber-50 text-amber-700 border border-amber-200',
+    dotClass: 'bg-warning',
+    badgeClass: 'bg-warning/10 text-warning border border-warning/30',
+    textClass: 'text-warning',
   },
   মাঝারি: {
     label: 'মাঝারি',
-    dotClass: 'bg-blue-400',
-    badgeClass: 'bg-blue-50 text-blue-700 border border-blue-200',
+    dotClass: 'bg-info',
+    badgeClass: 'bg-info/10 text-info border border-info/30',
+    textClass: 'text-info',
   },
 }
 
@@ -66,12 +72,12 @@ function getImportance(key: string) {
   return (
     importanceConfig[key] ?? {
       label: key,
-      dotClass: 'bg-slate-400',
-      badgeClass: 'bg-slate-50 text-slate-600 border border-slate-200',
+      dotClass: 'bg-muted',
+      badgeClass: 'bg-background text-muted border border-border',
+      textClass: 'text-muted',
     }
   )
 }
-
 
 function DayCard({ day }: { day: DayEntry }) {
   const [open, setOpen] = useState(false)
@@ -79,8 +85,8 @@ function DayCard({ day }: { day: DayEntry }) {
 
   return (
     <div
-      className={`group relative bg-white rounded-xl border transition-all duration-200 overflow-hidden
-        ${open ? 'border-slate-300 shadow-md' : 'border-slate-100 hover:border-slate-200 hover:shadow-sm'}`}
+      className={`group relative bg-card rounded-xl border transition-all duration-200 overflow-hidden
+        ${open ? 'border-accent/50 shadow-md' : 'border-border hover:border-accent/30 hover:shadow-sm'}`}
     >
       <div
         className={`absolute left-0 top-0 bottom-0 w-1 ${imp.dotClass} opacity-80`}
@@ -92,10 +98,12 @@ function DayCard({ day }: { day: DayEntry }) {
       >
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
-            <p className="text-[11px] font-semibold  tracking-widest text-red-500 uppercase mb-1">
+            <p
+              className={`text-[11px] font-semibold tracking-widest uppercase mb-1 ${imp.textClass}`}
+            >
               {day.date}
             </p>
-            <p className="text-[15px] font-semibold text-slate-800 leading-snug">
+            <p className="text-[15px] font-semibold text-foreground leading-snug">
               {day.name}
             </p>
           </div>
@@ -107,7 +115,7 @@ function DayCard({ day }: { day: DayEntry }) {
             </span>
             {day.note && (
               <span
-                className={`text-slate-900 transition-transform duration-200 text-xl ${open ? 'rotate-180' : ''}`}
+                className={`text-muted transition-transform duration-200 text-xl ${open ? 'rotate-180' : ''}`}
               >
                 <IoMdArrowDropdown />
               </span>
@@ -118,10 +126,8 @@ function DayCard({ day }: { day: DayEntry }) {
 
       {day.note && open && (
         <div className="px-6 pb-4 pt-0">
-          <div className="h-px bg-slate-900 mb-3" />
-          <p className="text-[13px] text-slate-900 leading-relaxed">
-            {day.note}
-          </p>
+          <div className="h-px bg-border mb-3" />
+          <p className="text-[13px] text-muted leading-relaxed">{day.note}</p>
         </div>
       )}
     </div>
@@ -145,7 +151,7 @@ function MonthSection({
       <div className="flex justify-center items-center gap-4 mb-5">
         <div
           className={`flex flex-col items-center justify-center w-14 h-14 rounded-2xl shrink-0 transition-colors
-            ${isActive ? 'bg-green-600 text-white' : 'bg-slate-100 text-slate-500'}`}
+            ${isActive ? 'bg-primary text-primary-foreground' : 'bg-background text-muted'}`}
         >
           <span className="text-[10px] font-bold tracking-widest leading-none">
             {MONTH_EN[entry.month]}
@@ -154,12 +160,14 @@ function MonthSection({
             {(MONTH_ORDER.indexOf(entry.month) + 1).toString().padStart(2, '0')}
           </span>
         </div>
-        <div className=''>
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-white">{entry.month}</h2>
-          <p className="text-xs text-black dark:text-green-500 mt-0.5">
+        <div>
+          <h2 className="font-display text-2xl font-bold text-foreground">
+            {entry.month}
+          </h2>
+          <p className="text-xs text-muted mt-0.5">
             {entry.days.length}টি দিবস
             {totalCritical > 0 && (
-              <span className="ml-2 text-red-500 font-semibold">
+              <span className="ml-2 text-danger font-semibold">
                 · {totalCritical}টি অতি গুরুত্বপূর্ণ
               </span>
             )}
@@ -232,20 +240,22 @@ const Page = () => {
   }
 
   return (
-    <div className="min-h-screen dark:not-last:bg-slate-900 font-sans">
+    <div className="min-h-screen bg-background font-body">
       {/* ── Top header ── */}
-      <header className="sticky top-0 z-30 bg-white dark:bg-slate-900  border-b border-dotted border-slate-100 shadow-sm">
-        <div className=" px-4 py-3 flex items-center gap-4 flex-wrap">
+      <header className="sticky top-0 z-30 bg-card border-b border-dotted border-border shadow-sm">
+        <div className="px-4 py-3 flex items-center gap-4 flex-wrap">
           {/* Logo / Title */}
           <div className="flex items-center gap-2 shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-green-600 flex items-center justify-center">
-              <span className="text-white text-sm font-black">দি</span>
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+              <span className="text-primary-foreground text-sm font-black">
+                দি
+              </span>
             </div>
             <div>
-              <p className="text-xs font-bold text-slate-800 dark:text-white leading-none">
+              <p className="text-xs font-bold text-foreground leading-none">
                 বাংলাদেশ দিবস
               </p>
-              <p className="text-[10px] text-slate-800 dark:text-white leading-none">
+              <p className="text-[10px] text-muted leading-none">
                 জাতীয় ও আন্তর্জাতিক
               </p>
             </div>
@@ -254,7 +264,7 @@ const Page = () => {
           {/* Search */}
           <div className="flex-1 min-w-45">
             <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-900  dark:text-black text-sm">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-sm">
                 <FaSearch />
               </span>
               <input
@@ -262,22 +272,22 @@ const Page = () => {
                 placeholder="জানুয়ারি... ,জাতীয় পরিসংখ্যান দিবস......"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 text-sm bg-slate-600 dark:text-black dark:bg-white border  border-slate-200 rounded-lg
-                  focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full pl-9 pr-4 py-2 text-sm bg-background text-foreground border border-border rounded-lg
+                  focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
               />
             </div>
           </div>
           <div className="flex gap-2 flex-row">
             {[
-              { label: 'মোট দিবস', value: totalDays, color: 'text-slate-800 dark:text-white' },
+              { label: 'মোট দিবস', value: totalDays, color: 'text-foreground' },
               {
                 label: 'অতি গুরুত্বপূর্ণ',
                 value: criticalDays,
-                color: 'text-red-600',
+                color: 'text-danger',
               },
-              { label: 'মাস', value: 12, color: 'text-green-600' },
+              { label: 'মাস', value: 12, color: 'text-primary' },
             ].map((s) => (
-              <div key={s.label} className="  text-center">
+              <div key={s.label} className="text-center">
                 <p className={`text-xs font-black ${s.color}`}>{s.value}</p>
                 <p className={`text-xs mt-0.5 ${s.color} font-medium`}>
                   {s.label}
@@ -286,24 +296,24 @@ const Page = () => {
             ))}
           </div>
         </div>
-        <div className="flex px-4 gap-1  items-center">
+        <div className="flex px-4 gap-1 items-center">
           <div className="flex items-center gap-1.5 flex-wrap">
             {['সব', 'অতি গুরুত্বপূর্ণ', 'গুরুত্বপূর্ণ', 'মাঝারি'].map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`px-2 py-1.5 rounded-md text-xs font-semibold transition-all
+                className={`px-2 py-1.5 rounded-md text-xs font-semibold transition-all border
                   ${
                     filter === f
-                      ? 'bg-green-600 text-white shadow-sm'
-                      : 'bg-amber-300 text-slate-900 hover:bg-slate-200'
+                      ? 'bg-primary text-primary-foreground border-primary shadow-sm'
+                      : 'bg-background text-muted border-border hover:border-accent'
                   }`}
               >
                 {f}
               </button>
             ))}
           </div>
-          <div className="sticky  flex gap-2 ">
+          <div className="sticky flex gap-2">
             {sortedMonths.map((m) => {
               const hasResults = filteredMonths.some(
                 (fm) => fm.month === m.month
@@ -313,13 +323,13 @@ const Page = () => {
                   key={m.month}
                   onClick={() => handleMonthNav(m.month)}
                   disabled={!hasResults}
-                  className={`px-2 py-1.5 bg-amber-300 rounded-md text-xs font-semibold transition-all
+                  className={`px-2 py-1.5 rounded-md text-xs font-semibold transition-all border
                     ${
                       activeMonth === m.month
-                        ? ' hover:cursor-pointer bg-green-600 text-slate-700  font-semibold'
+                        ? 'bg-primary text-primary-foreground border-primary cursor-pointer'
                         : hasResults
-                          ? 'text-slate-900 hover:cursor-pointer hover:text-red-700'
-                          : 'text-slate-900 cursor-not-allowed'
+                          ? 'bg-background text-muted border-border hover:text-accent hover:border-accent cursor-pointer'
+                          : 'bg-background text-muted/40 border-border cursor-not-allowed'
                     }`}
                 >
                   <span>{m.month}</span>
@@ -332,8 +342,6 @@ const Page = () => {
       {/* Stats bar */}
 
       <div className="max-w-6xl mx-auto px-4 flex gap-8">
-
-
         <main className="flex-1 min-w-0">
           {/* Mobile month tabs */}
           <div className="lg:hidden flex gap-2 overflow-x-auto pb-2 mb-6 -mx-1 px-1">
@@ -344,8 +352,8 @@ const Page = () => {
                 className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all
                   ${
                     activeMonth === m.month
-                      ? 'bg-green-600 text-white border-green-600'
-                      : 'bg-white text-slate-600 border-slate-200 hover:border-green-300'
+                      ? 'bg-primary text-primary-foreground border-primary'
+                      : 'bg-card text-muted border-border hover:border-accent'
                   }`}
               >
                 {m.month}
@@ -354,9 +362,7 @@ const Page = () => {
           </div>
 
           {/* No results */}
-          {filteredMonths.length === 0 && (
-           <Error/>
-          )}
+          {filteredMonths.length === 0 && <Error />}
 
           {/* Month sections */}
           <div className="space-y-12">

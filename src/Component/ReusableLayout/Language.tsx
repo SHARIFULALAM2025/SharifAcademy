@@ -22,7 +22,7 @@ const Language = ({ isCollapsed, items }: LanguageProps) => {
             className={`flex items-center gap-2 px-2 py-1.5 rounded-lg font-medium transition-colors ${
               isActive
                 ? 'text-accent bg-[color-mix(in_oklab,var(--accent)_16%,transparent)]'
-                : 'text-background/70 hover:text-accent hover:bg-[color-mix(in_oklab,var(--accent)_8%,transparent)]'
+                : 'text-muted hover:text-accent hover:bg-[color-mix(in_oklab,var(--accent)_8%,transparent)]'
             }`}
           >
             <span className="text-xs min-w-3 flex justify-center">

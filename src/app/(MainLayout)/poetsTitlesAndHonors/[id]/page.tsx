@@ -17,13 +17,13 @@ const page = async ({ params }: PageProps) => {
 
   if (!poet) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
-        <h1 className="text-2xl font-bold text-red-500 mb-4">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-background">
+        <h1 className="font-display text-2xl font-semibold text-danger mb-4">
           দুঃখিত, তথ্য পাওয়া যায়নি!
         </h1>
         <Link
           href="/poetsTitlesAndHonors"
-          className="text-blue-600 hover:underline"
+          className="text-primary hover:underline"
         >
           মূল পাতায় ফিরে যান
         </Link>
@@ -36,11 +36,11 @@ const page = async ({ params }: PageProps) => {
     : poet.importantFacts
 
   return (
-    <div className="min-h-screen bg-gray-50  ">
-      <div className=" bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+    <div className="min-h-screen bg-background">
+      <div className="bg-card rounded-2xl shadow-xl overflow-hidden border border-border">
         <div className="p-6 sm:p-10">
           {/* Header */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-200 pb-6 mb-6 gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-border pb-6 mb-6 gap-4">
             <div className="flex items-center gap-5">
               {poet.image && (
                 <Image
@@ -48,19 +48,19 @@ const page = async ({ params }: PageProps) => {
                   alt={poet.name}
                   width={96}
                   height={96}
-                  className="rounded-full object-cover border-2 border-indigo-200 w-24 h-24"
+                  className="rounded-full object-cover border-2 border-primary/30 w-24 h-24"
                 />
               )}
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 mb-1">
+                <h1 className="font-display text-3xl font-semibold text-foreground mb-1">
                   {poet.name}
                 </h1>
                 {poet.pseudonym && (
-                  <p className="text-sm text-gray-500 mb-1">
+                  <p className="text-sm text-muted mb-1">
                     ছদ্মনাম: {poet.pseudonym}
                   </p>
                 )}
-                <p className="text-md text-indigo-600 font-semibold">
+                <p className="text-md text-primary font-semibold">
                   জীবনকাল: {poet.dateOfBirth || 'অজানা'} –{' '}
                   {poet.dateOfDeath || 'বর্তমান'}
                 </p>
@@ -69,19 +69,20 @@ const page = async ({ params }: PageProps) => {
 
             <Link
               href="/poetsTitlesAndHonors"
-              className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition whitespace-nowrap"
+              className="px-4 py-2 bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground rounded-lg transition whitespace-nowrap"
             >
               ← ফিরে যান
             </Link>
           </div>
 
-          {/* Titles */}
+          {/* Titles — honorary titles rendered as seal-style labels */}
           {poet.titles && poet.titles.length > 0 && (
-            <div className="mb-8 flex flex-wrap gap-2">
+            <div className="mb-8 flex flex-wrap gap-3">
               {poet.titles.map((title, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1 bg-indigo-100 text-indigo-700 text-sm font-medium rounded-full"
+                  className="label label--seal"
+                  style={{ ['--label-color' as string]: 'var(--accent)' }}
                 >
                   {title}
                 </span>
@@ -92,7 +93,9 @@ const page = async ({ params }: PageProps) => {
           {/* Short Description */}
           {poet.shortDes && (
             <Section title="সংক্ষিপ্ত পরিচিতি">
-              <p className="text-gray-700 leading-relaxed">{poet.shortDes}</p>
+              <p className="text-foreground/80 leading-relaxed">
+                {poet.shortDes}
+              </p>
             </Section>
           )}
 
@@ -109,10 +112,10 @@ const page = async ({ params }: PageProps) => {
               {poet.family.notableSiblings &&
                 poet.family.notableSiblings.length > 0 && (
                   <div className="mt-4">
-                    <h4 className="font-semibold text-gray-800 mb-2">
+                    <h4 className="font-semibold text-foreground mb-2">
                       উল্লেখযোগ্য ভাই-বোন:
                     </h4>
-                    <ul className="list-disc list-inside text-gray-700 space-y-1">
+                    <ul className="list-disc list-inside text-foreground/80 space-y-1">
                       {poet.family.notableSiblings.map((sib, i) => (
                         <li key={i}>{sib}</li>
                       ))}
@@ -126,12 +129,12 @@ const page = async ({ params }: PageProps) => {
           {poet.education && (
             <Section title="শিক্ষাজীবন">
               {poet.education.summary && (
-                <p className="text-gray-700 leading-relaxed mb-3">
+                <p className="text-foreground/80 leading-relaxed mb-3">
                   {poet.education.summary}
                 </p>
               )}
               {poet.education.englandVisit && (
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-foreground/80 leading-relaxed">
                   {poet.education.englandVisit}
                 </p>
               )}
@@ -141,14 +144,14 @@ const page = async ({ params }: PageProps) => {
           {/* Life Timeline */}
           {poet.lifeTimeline && poet.lifeTimeline.length > 0 && (
             <Section title="জীবনপঞ্জি">
-              <div className="relative border-l-2 border-indigo-200 pl-6 space-y-6">
+              <div className="relative border-l-2 border-primary/30 pl-6 space-y-6">
                 {poet.lifeTimeline.map((item, i) => (
                   <div key={i} className="relative">
-                    <span className="absolute -left-[31px] top-1 w-3 h-3 bg-indigo-500 rounded-full" />
-                    <p className="text-sm font-bold text-indigo-600">
+                    <span className="absolute -left-[31px] top-1 w-3 h-3 bg-primary rounded-full" />
+                    <p className="text-sm font-bold text-primary">
                       {item.year}
                     </p>
-                    <p className="text-gray-700">{item.event}</p>
+                    <p className="text-foreground/80">{item.event}</p>
                   </div>
                 ))}
               </div>
@@ -223,10 +226,10 @@ const page = async ({ params }: PageProps) => {
             </Section>
           )}
 
-          {/* Nobel Prize */}
+          {/* Nobel Prize — treated as the page's highest "achievement" moment */}
           {poet.nobelPrize && (
             <Section title="নোবেল পুরস্কার">
-              <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-5 space-y-2">
+              <div className="bg-accent/10 border border-accent/30 rounded-xl p-5 space-y-2">
                 <InfoRow label="সাল" value={poet.nobelPrize.year} />
                 <InfoRow label="গ্রন্থ" value={poet.nobelPrize.book} />
                 <InfoRow label="তাৎপর্য" value={poet.nobelPrize.significance} />
@@ -245,7 +248,7 @@ const page = async ({ params }: PageProps) => {
                 <InfoRow label="অবস্থান" value={poet.visvaBharati.location} />
               </div>
               {poet.visvaBharati.background && (
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-foreground/80 leading-relaxed">
                   {poet.visvaBharati.background}
                 </p>
               )}
@@ -259,10 +262,12 @@ const page = async ({ params }: PageProps) => {
                 {poet.nationalAnthems.map((anthem, i) => (
                   <div
                     key={i}
-                    className="bg-green-50 border border-green-200 rounded-xl p-4"
+                    className="bg-success/10 border border-success/30 rounded-xl p-4"
                   >
-                    <p className="font-bold text-green-800">{anthem.country}</p>
-                    <p className="text-gray-700 text-sm mt-1">{anthem.song}</p>
+                    <p className="font-bold text-success">{anthem.country}</p>
+                    <p className="text-foreground/80 text-sm mt-1">
+                      {anthem.song}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -272,7 +277,7 @@ const page = async ({ params }: PageProps) => {
           {/* Honors and Titles */}
           {poet.honorsAndTitles && poet.honorsAndTitles.length > 0 && (
             <Section title="সম্মাননা ও উপাধি">
-              <ul className="list-disc list-inside text-gray-700 space-y-1">
+              <ul className="list-disc list-inside text-foreground/80 space-y-1">
                 {poet.honorsAndTitles.map((honor, i) => (
                   <li key={i}>{honor}</li>
                 ))}
@@ -287,9 +292,9 @@ const page = async ({ params }: PageProps) => {
                 {facts.map((fact, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-2 text-gray-700 bg-indigo-50/50 rounded-lg p-3"
+                    className="flex items-start gap-2 text-foreground/80 bg-primary/5 rounded-lg p-3"
                   >
-                    <span className="text-indigo-500 font-bold">✓</span>
+                    <span className="text-primary font-bold">✓</span>
                     <span>{fact}</span>
                   </li>
                 ))}
@@ -333,7 +338,7 @@ function Section({
 }) {
   return (
     <div className="mb-10">
-      <h2 className="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-100">
+      <h2 className="font-display text-xl font-semibold text-foreground mb-4 pb-2 border-b border-border">
         {title}
       </h2>
       {children}
@@ -345,8 +350,8 @@ function InfoRow({ label, value }: { label: string; value?: string }) {
   if (!value) return null
   return (
     <div>
-      <p className="text-xs text-gray-400 uppercase tracking-wide">{label}</p>
-      <p className="text-gray-800 font-medium">{value}</p>
+      <p className="text-xs text-muted uppercase tracking-wide">{label}</p>
+      <p className="text-foreground font-medium">{value}</p>
     </div>
   )
 }
@@ -355,8 +360,8 @@ function WorkList({ title, items }: { title: string; items?: string[] }) {
   if (!items || items.length === 0) return null
   return (
     <div>
-      <h4 className="font-semibold text-gray-800 mb-2">{title}</h4>
-      <ul className="list-disc list-inside text-gray-700 space-y-1 text-sm">
+      <h4 className="font-semibold text-foreground mb-2">{title}</h4>
+      <ul className="list-disc list-inside text-foreground/80 space-y-1 text-sm">
         {items.map((item, i) => (
           <li key={i}>{item}</li>
         ))}
@@ -368,9 +373,9 @@ function WorkList({ title, items }: { title: string; items?: string[] }) {
 function StatCard({ label, value }: { label: string; value?: string }) {
   if (!value) return null
   return (
-    <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
-      <p className="text-xs text-gray-400 uppercase mb-1">{label}</p>
-      <p className="text-gray-900 font-bold">{value}</p>
+    <div className="bg-background border border-border rounded-xl p-4 text-center">
+      <p className="text-xs text-muted uppercase mb-1">{label}</p>
+      <p className="text-foreground font-bold">{value}</p>
     </div>
   )
 }
@@ -378,9 +383,9 @@ function StatCard({ label, value }: { label: string; value?: string }) {
 function TipCard({ title, items }: { title: string; items?: string[] }) {
   if (!items || items.length === 0) return null
   return (
-    <div className="bg-blue-50 border border-blue-100 rounded-xl p-4">
-      <h4 className="font-semibold text-blue-800 mb-2">{title}</h4>
-      <ul className="text-sm text-gray-700 space-y-1 list-disc list-inside">
+    <div className="bg-info/10 border border-info/30 rounded-xl p-4">
+      <h4 className="font-semibold text-info mb-2">{title}</h4>
+      <ul className="text-sm text-foreground/80 space-y-1 list-disc list-inside">
         {items.map((item, i) => (
           <li key={i}>{item}</li>
         ))}
