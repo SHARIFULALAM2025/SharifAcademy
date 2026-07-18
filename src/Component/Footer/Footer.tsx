@@ -1,5 +1,5 @@
 import React from 'react'
-import { Mail, Phone, MapPin, ShieldCheck, ArrowUpRight } from 'lucide-react'
+import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react'
 import { FaFacebook, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa'
 import Link from 'next/link'
 import Image from 'next/image'

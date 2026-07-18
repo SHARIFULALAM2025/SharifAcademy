@@ -3,7 +3,6 @@ import allData from '@/data/punctuation.json'
 
 import {
   BookOpen,
-  Hash,
   Table2,
   GraduationCap,
   BadgeCheck,
@@ -11,7 +10,6 @@ import {
   PauseCircle,
   AlignLeft,
   Quote,
-  Sparkles,
 } from 'lucide-react'
 import { Punctuation, PunctuationSection } from '@/Types/punctuation'
 
@@ -314,7 +312,6 @@ const Page = () => {
       {/* header */}
       <header className="border-b border-slate-100 dark:border-slate-800">
         <div className="flex flex-col items-center gap-3 px-5 pb-10 pt-12 text-center md:px-8">
-
           <h1 className="text-[42px] font-bold leading-none text-slate-900 dark:text-white md:text-[54px]">
             {data.topic}
           </h1>
