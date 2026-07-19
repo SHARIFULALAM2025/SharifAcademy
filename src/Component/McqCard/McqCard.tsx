@@ -179,7 +179,7 @@ const McqCard = ({
   return (
     <div
       onClick={() => checkMode()}
-      className="bg-card  p-6 shadow-sm space-y-5 cursor-pointer rounded-lg w-full min-w-0"
+      className="bg-card  p-6 shadow-sm space-y-5 cursor-pointer w-full min-w-0"
     >
       {/* Question */}
       <div className="flex items-start gap-3">
