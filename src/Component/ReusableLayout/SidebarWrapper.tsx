@@ -14,7 +14,7 @@ const SidebarWrapper = ({ items }: SidebarWrapperProps) => {
   return (
     <aside
       className={`
-        relative bg-background text-foreground h-full border-r border-dotted border-border flex flex-col transition-all duration-300 ease-in-out shrink-0
+        relative bg-card text-foreground h-full border-r border-dotted border-border flex flex-col transition-all duration-300 ease-in-out shrink-0
         /* মোবাইলে ড্রয়ারের জন্য ফুল উইডথ, কিন্তু md স্ক্রিন থেকে কলাপ্সিবল উইডথ */
         w-64 md:w-auto
         ${!isCollapsed ? 'md:w-44 lg:w-48' : 'md:w-12'}
