@@ -175,7 +175,7 @@ function MonthSection({
         </div>
       </div>
 
-      <div className="space-y-2 grid grid-cols-2 gap-3 pl-0.5">
+      <div className="space-y-2 grid grid-cols-1 md:grid-cols-2 gap-3 pl-0.5">
         {entry.days.map((day, i) => (
           <DayCard key={i} day={day} />
         ))}
@@ -243,15 +243,16 @@ const Page = () => {
     <div className="min-h-screen  py-4 font-body">
       {/* ── Top header ── */}
       <header className="sticky top-0 z-10 bg-card border-b border-dotted border-border shadow-sm">
-        <div className="px-4 py-3 flex items-center gap-4 flex-wrap">
+        {/* ── সারি ১: Logo + Search + Stats ── */}
+        <div className="px-4 py-3 flex flex-col sm:flex-row sm:flex-wrap md:flex-nowrap items-center justify-between gap-3 sm:gap-4">
           {/* Logo / Title */}
-          <div className="flex items-center gap-2 shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+          <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto justify-center sm:justify-start">
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shrink-0">
               <span className="text-primary-foreground text-sm font-black">
                 দি
               </span>
             </div>
-            <div>
+            <div className="text-left">
               <p className="text-xs font-bold text-foreground leading-none">
                 বাংলাদেশ দিবস
               </p>
@@ -262,7 +263,7 @@ const Page = () => {
           </div>
 
           {/* Search */}
-          <div className="flex-1 min-w-45">
+          <div className="w-full sm:flex-1 sm:min-w-[200px] md:max-w-md">
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted text-sm">
                 <FaSearch />
@@ -273,11 +274,13 @@ const Page = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full pl-9 pr-4 py-2 text-sm bg-background text-foreground border border-border rounded-lg
-                  focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+            focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
               />
             </div>
           </div>
-          <div className="flex gap-2 flex-row">
+
+          {/* Stats */}
+          <div className="flex gap-4 sm:gap-3 md:gap-4 justify-center sm:justify-end shrink-0 w-full sm:w-auto">
             {[
               { label: 'মোট দিবস', value: totalDays, color: 'text-foreground' },
               {
@@ -288,32 +291,39 @@ const Page = () => {
               { label: 'মাস', value: 12, color: 'text-primary' },
             ].map((s) => (
               <div key={s.label} className="text-center">
-                <p className={`text-xs font-black ${s.color}`}>{s.value}</p>
-                <p className={`text-xs mt-0.5 ${s.color} font-medium`}>
+                <p className={`text-xs sm:text-sm font-black ${s.color}`}>
+                  {s.value}
+                </p>
+                <p
+                  className={`text-[10px] sm:text-xs mt-0.5 ${s.color} font-medium whitespace-nowrap`}
+                >
                   {s.label}
                 </p>
               </div>
             ))}
           </div>
         </div>
-        <div className="flex px-4 gap-1 items-center">
-          <div className="flex items-center gap-1.5 flex-wrap">
+
+        {/* ── সারি ২: Filter + Month nav ── */}
+        <div className="flex flex-col md:flex-row md:items-center gap-2 px-4 pb-3 md:pb-0 md:py-0">
+          <div className="flex items-center gap-1.5 flex-wrap justify-center md:justify-start">
             {['সব', 'অতি গুরুত্বপূর্ণ', 'গুরুত্বপূর্ণ', 'মাঝারি'].map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`px-2 py-1.5 rounded-md text-xs font-semibold transition-all border
-                  ${
-                    filter === f
-                      ? 'bg-primary text-primary-foreground border-primary shadow-sm'
-                      : 'bg-background text-muted border-border hover:border-accent'
-                  }`}
+                className={`px-2 py-1.5 rounded-md text-xs font-semibold transition-all border shrink-0
+            ${
+              filter === f
+                ? 'bg-primary text-primary-foreground border-primary shadow-sm'
+                : 'bg-background text-muted border-border hover:border-accent'
+            }`}
               >
                 {f}
               </button>
             ))}
           </div>
-          <div className="sticky flex gap-2">
+
+          <div className="grid grid-cols-4 sm:grid-cols-6 md:flex md:flex-wrap gap-1.5 md:gap-2">
             {sortedMonths.map((m) => {
               const hasResults = filteredMonths.some(
                 (fm) => fm.month === m.month
@@ -323,14 +333,14 @@ const Page = () => {
                   key={m.month}
                   onClick={() => handleMonthNav(m.month)}
                   disabled={!hasResults}
-                  className={`px-2 py-1.5 rounded-md text-xs font-semibold transition-all border
-                    ${
-                      activeMonth === m.month
-                        ? 'bg-primary text-primary-foreground border-primary cursor-pointer'
-                        : hasResults
-                          ? 'bg-background text-muted border-border hover:text-accent hover:border-accent cursor-pointer'
-                          : 'bg-background text-muted/40 border-border cursor-not-allowed'
-                    }`}
+                  className={`px-1.5 py-1.5 md:px-2 rounded-md text-[10px] sm:text-xs font-semibold transition-all border text-center
+          ${
+            activeMonth === m.month
+              ? 'bg-primary text-primary-foreground border-primary cursor-pointer'
+              : hasResults
+                ? 'bg-background text-muted border-border hover:text-accent hover:border-accent cursor-pointer'
+                : 'bg-background text-muted/40 border-border cursor-not-allowed'
+          }`}
                 >
                   <span>{m.month}</span>
                 </button>
@@ -343,24 +353,6 @@ const Page = () => {
 
       <div className="max-w-6xl mx-auto px-4 flex gap-8">
         <main className="flex-1 min-w-0">
-          {/* Mobile month tabs */}
-          <div className="lg:hidden flex gap-2 overflow-x-auto pb-2 mb-6 -mx-1 px-1">
-            {sortedMonths.map((m) => (
-              <button
-                key={m.month}
-                onClick={() => handleMonthNav(m.month)}
-                className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all
-                  ${
-                    activeMonth === m.month
-                      ? 'bg-primary text-primary-foreground border-primary'
-                      : 'bg-card text-muted border-border hover:border-accent'
-                  }`}
-              >
-                {m.month}
-              </button>
-            ))}
-          </div>
-
           {/* No results */}
           {filteredMonths.length === 0 && <Error />}
 
