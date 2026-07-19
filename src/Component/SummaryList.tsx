@@ -1,10 +1,9 @@
+import { SummaryListProps } from '@/Types/chapter1'
+import { LiaHandPointRightSolid } from 'react-icons/lia'
 
-import { SummaryListProps } from "@/Types/chapter1"
-import { LiaHandPointRightSolid } from "react-icons/lia"
-
-export const Summary = ({ items,className="" }: SummaryListProps) => {
+export const Summary = ({ items, className = '' }: SummaryListProps) => {
   return (
-    <ul className={`text-black dark:text-white space-y-1 sm:space-y-2 mt-2 ${className}`}>
+    <ul className={`text-foreground space-y-1 sm:space-y-2 mt-2 ${className}`}>
       {items.map((item, i) => (
         <li
           key={i}
@@ -16,7 +15,7 @@ export const Summary = ({ items,className="" }: SummaryListProps) => {
         >
           <LiaHandPointRightSolid
             className="
-                text-blue-700 flex-shrink-0 mt-0.5
+                text-primary flex-shrink-0 mt-0.5
                 text-xs sm:text-sm md:text-base lg:text-lg
               "
           />
