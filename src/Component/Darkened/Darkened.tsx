@@ -22,7 +22,7 @@ const Darkened = () => {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="px-3 py-2 rounded-lg bg-card border border-border text-foreground hover:ring-2 hover:ring-accent transition-all duration-200 cursor-pointer flex items-center justify-center"
+      className="px-3 py-2 rounded-sm bg-card border border-border text-foreground hover:ring-2 hover:ring-accent transition-all duration-200 cursor-pointer flex items-center justify-center"
       aria-label="Toggle Theme"
     >
       {theme === 'dark' ? (

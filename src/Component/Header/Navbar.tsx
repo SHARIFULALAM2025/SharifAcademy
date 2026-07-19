@@ -149,7 +149,7 @@ const Navbar = () => {
 
           <button
             onClick={toggleLanguage}
-            className="px-2 sm:px-3 py-1.5 text-[10px] sm:text-xs font-semibold bg-primary text-primary-foreground border border-primary hover:opacity-90 rounded-lg transition-opacity uppercase tracking-wider cursor-pointer whitespace-nowrap"
+            className="px-2 sm:px-3 py-1.5 text-[10px] sm:text-xs font-semibold bg-primary text-primary-foreground border border-primary hover:opacity-90 rounded-sm transition-opacity uppercase tracking-wider cursor-pointer whitespace-nowrap"
           >
             {mounted ? (currentLang === 'en' ? 'English' : 'বাংলা') : 'English'}
           </button>
@@ -251,7 +251,7 @@ const Navbar = () => {
           ) : (
             <Link
               href="/register"
-              className="hidden sm:inline-flex items-center justify-center gap-2 px-3 lg:px-4 py-1.5 bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground text-xs lg:text-sm font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-200 ease-in-out cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background whitespace-nowrap"
+              className="hidden sm:inline-flex items-center justify-center gap-2 px-3 lg:px-4 py-1.5 bg-primary hover:bg-accent text-primary-foreground hover:text-accent-foreground text-xs lg:text-sm font-semibold rounded-sm shadow-sm hover:shadow-md transition-all duration-200 ease-in-out cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background whitespace-nowrap"
             >
               <span>Sign in</span>
               <LuLogIn className="text-base stroke-[2.5]" />
