@@ -85,7 +85,7 @@ function DayCard({ day }: { day: DayEntry }) {
 
   return (
     <div
-      className={`group relative bg-card py-24 rounded-xl border transition-all duration-200 overflow-hidden
+      className={`group relative bg-card  rounded-xl border transition-all duration-200 overflow-hidden
         ${open ? 'border-accent/50 shadow-md' : 'border-border hover:border-accent/30 hover:shadow-sm'}`}
     >
       <div
@@ -148,7 +148,7 @@ function MonthSection({
   return (
     <section id={`month-${entry.month}`} className="scroll-mt-24 pt-5">
       {/* Month header */}
-      <div className="flex justify-center items-center gap-4 mb-5">
+      <div className="flex justify-center items-center gap-4  mb-5">
         <div
           className={`flex flex-col items-center justify-center w-14 h-14 rounded-2xl shrink-0 transition-colors
             ${isActive ? 'bg-primary text-primary-foreground' : 'bg-background text-muted'}`}
@@ -240,9 +240,9 @@ const Page = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background font-body">
+    <div className="min-h-screen  py-4 font-body">
       {/* ── Top header ── */}
-      <header className="sticky top-0 z-30 bg-card border-b border-dotted border-border shadow-sm">
+      <header className="sticky top-0 z-10 bg-card border-b border-dotted border-border shadow-sm">
         <div className="px-4 py-3 flex items-center gap-4 flex-wrap">
           {/* Logo / Title */}
           <div className="flex items-center gap-2 shrink-0">

@@ -7,7 +7,7 @@
    deep indigo ink + antique gold + parchment paper ব্যবহার করা হয়েছে।
    ============================================================ */
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* ---- Fonts ------------------------------------------------
    Display  : Fraunces      → calligraphic, high-contrast serif,
@@ -26,24 +26,24 @@
 
 :root {
   /* ---- Core palette (Manuscript & Gilt — light / "vellum") ---- */
-  --background: #F5F1E6;      /* Vellum       — warm parchment paper   */
-  --foreground: #201F3A;      /* Manuscript Ink — deep indigo-black    */
-  --primary:    #2A2F6D;      /* Royal Indigo — headings, primary CTA  */
-  --primary-foreground: #F5F1E6;
-  --accent:     #B8912B;      /* Antique Gilt — illumination gold      */
-  --accent-foreground: #201F3A;
-  --card:       #FDFBF3;      /* Ivory Leaf   — cards/panels           */
-  --border:     #E1D8B9;      /* Parchment edge                        */
-  --muted:      #7A7360;      /* Faded ink / captions                  */
+  --background: #f5f1e6; /* Vellum       — warm parchment paper   */
+  --foreground: #201f3a; /* Manuscript Ink — deep indigo-black    */
+  --primary: #2a2f6d; /* Royal Indigo — headings, primary CTA  */
+  --primary-foreground: #f5f1e6;
+  --accent: #b8912b; /* Antique Gilt — illumination gold      */
+  --accent-foreground: #201f3a;
+  --card: #fdfbf3; /* Ivory Leaf   — cards/panels           */
+  --border: #e1d8b9; /* Parchment edge                        */
+  --muted: #7a7360; /* Faded ink / captions                  */
 
   /* ---- Semantic feedback (kept in-family, not generic RGB) ---- */
-  --success: #4B6B3A;
-  --warning: #B8912B;
-  --danger:  #8C3B2E;
-  --info:    #2A5C7A;
+  --success: #4b6b3a;
+  --warning: #b8912b;
+  --danger: #8c3b2e;
+  --info: #2a5c7a;
 
   /* ---- Signature geometric motif (8‑point star, low opacity) --- */
-  --pattern-ink: 32 47 109;      /* rgb of --primary, for use in patterns */
+  --pattern-ink: 32 47 109; /* rgb of --primary, for use in patterns */
   --pattern-opacity: 0.05;
 
   /* ---- Industry / category label hues (single source of truth) ---
@@ -51,43 +51,43 @@
      --industry-<key>: <hex>;
      এরপর কোথাও ক্লাস বদলাতে হবে না — badge, chip, card accent
      সবাই এই ভ্যারিয়েবল থেকেই রঙ নেবে। */
-  --industry-tech:      #2A5C7A;
-  --industry-business:  #6B4A2A;
-  --industry-design:    #8C3B6B;
-  --industry-language:  #4B6B3A;
-  --industry-science:   #2A2F6D;
-  --industry-arts:      #B8912B;
-  --industry-default:   var(--muted);
+  --industry-tech: #2a5c7a;
+  --industry-business: #6b4a2a;
+  --industry-design: #8c3b6b;
+  --industry-language: #4b6b3a;
+  --industry-science: #2a2f6d;
+  --industry-arts: #b8912b;
+  --industry-default: var(--muted);
 
   --radius: 0.625rem;
 }
 
 .dark {
-  --background: #14132B;      /* Midnight Indigo */
-  --foreground: #F1ECDA;      /* Parchment White  */
-  --primary:    #7C89E0;      /* Lit Indigo — lighter for contrast on dark */
-  --primary-foreground: #14132B;
-  --accent:     #E4C567;      /* Bright Gilt — glows on dark ground */
-  --accent-foreground: #14132B;
-  --card:       #1C1B3B;
-  --border:     #33305E;
-  --muted:      #A29CC4;
+  --background: #14132b; /* Midnight Indigo */
+  --foreground: #f1ecda; /* Parchment White  */
+  --primary: #7c89e0; /* Lit Indigo — lighter for contrast on dark */
+  --primary-foreground: #14132b;
+  --accent: #e4c567; /* Bright Gilt — glows on dark ground */
+  --accent-foreground: #14132b;
+  --card: #1c1b3b;
+  --border: #33305e;
+  --muted: #a29cc4;
 
-  --success: #7FA766;
-  --warning: #E4C567;
-  --danger:  #D97D68;
-  --info:    #6FB2D9;
+  --success: #7fa766;
+  --warning: #e4c567;
+  --danger: #d97d68;
+  --info: #6fb2d9;
 
   --pattern-ink: 228 197 103; /* rgb of --accent in dark mode */
   --pattern-opacity: 0.06;
 
-  --industry-tech:      #6FB2D9;
-  --industry-business:  #C79A5C;
-  --industry-design:    #D08FC0;
-  --industry-language:  #8FBF75;
-  --industry-science:   #9AA6F2;
-  --industry-arts:      #E4C567;
-  --industry-default:   var(--muted);
+  --industry-tech: #6fb2d9;
+  --industry-business: #c79a5c;
+  --industry-design: #d08fc0;
+  --industry-language: #8fbf75;
+  --industry-science: #9aa6f2;
+  --industry-arts: #e4c567;
+  --industry-default: var(--muted);
 }
 
 @theme inline {
@@ -109,8 +109,9 @@
   /* next/font/google (layout.tsx) নিচের variable নাম দিয়ে ফন্ট inject করবে:
      --font-fraunces, --font-hind-siliguri, --font-plex-mono
      সেটআপ কোড ফাইলের একদম শেষে কমেন্টে দেওয়া আছে। */
-  --font-display: var(--font-fraunces), "Noto Serif Bengali", serif;
-  --font-body: var(--font-hind-siliguri), "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), 'Noto Serif Bengali', serif;
+  --font-body:
+    var(--font-hind-siliguri), 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -139,9 +140,15 @@
    utility-গুলো ঠিকভাবে override করতে পারে।
    ============================================================ */
 @layer base {
-  * { border-color: var(--border); }
+  * {
+    border-color: var(--border);
+  }
 
-  html, body, #root { height: 100%; }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
 
   body {
     background: var(--background);
@@ -151,14 +158,22 @@
     text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4, .font-display {
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
     font-family: var(--font-display);
     font-weight: 600;
     letter-spacing: -0.01em;
     color: var(--foreground);
   }
 
-  code, kbd, .font-mono { font-family: var(--font-mono); }
+  code,
+  kbd,
+  .font-mono {
+    font-family: var(--font-mono);
+  }
 
   ::selection {
     background: color-mix(in oklab, var(--accent) 35%, transparent);
@@ -171,15 +186,22 @@
     border-radius: var(--radius-sm);
   }
 
-  ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
   ::-webkit-scrollbar-thumb {
     background: color-mix(in oklab, var(--muted) 40%, transparent);
     border-radius: 999px;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.001ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.001ms !important;
@@ -193,7 +215,8 @@
    section dividers, empty states. Never on body text blocks.
    ============================================================ */
 .bg-star-pattern {
-  background-image: radial-gradient(
+  background-image:
+    radial-gradient(
       circle at 1px 1px,
       rgb(var(--pattern-ink) / var(--pattern-opacity)) 1.4px,
       transparent 0
@@ -203,7 +226,9 @@
       rgb(var(--pattern-ink) / var(--pattern-opacity)) 0deg 45deg,
       transparent 45deg 90deg
     );
-  background-size: 28px 28px, 56px 56px;
+  background-size:
+    28px 28px,
+    56px 56px;
 }
 
 .divider-seal {
@@ -214,7 +239,7 @@
 }
 .divider-seal::before,
 .divider-seal::after {
-  content: "";
+  content: '';
   flex: 1;
   height: 1px;
   background: var(--border);
@@ -224,8 +249,16 @@
   height: 0.9rem;
   background: var(--accent);
   clip-path: polygon(
-    50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%,
-    21% 91%, 32% 57%, 2% 35%, 39% 35%
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
   ); /* 8-point-ish star */
 }
 
@@ -262,7 +295,7 @@
 }
 
 .label::before {
-  content: "";
+  content: '';
   width: 0.4rem;
   height: 0.4rem;
   background: var(--label-color);
@@ -276,12 +309,24 @@
 }
 
 /* Category → hue mapping (edit here when adding new categories) */
-.label[data-industry="tech"]      { --label-color: var(--industry-tech); }
-.label[data-industry="business"]  { --label-color: var(--industry-business); }
-.label[data-industry="design"]    { --label-color: var(--industry-design); }
-.label[data-industry="language"]  { --label-color: var(--industry-language); }
-.label[data-industry="science"]   { --label-color: var(--industry-science); }
-.label[data-industry="arts"]      { --label-color: var(--industry-arts); }
+.label[data-industry='tech'] {
+  --label-color: var(--industry-tech);
+}
+.label[data-industry='business'] {
+  --label-color: var(--industry-business);
+}
+.label[data-industry='design'] {
+  --label-color: var(--industry-design);
+}
+.label[data-industry='language'] {
+  --label-color: var(--industry-language);
+}
+.label[data-industry='science'] {
+  --label-color: var(--industry-science);
+}
+.label[data-industry='arts'] {
+  --label-color: var(--industry-arts);
+}
 
 /* "Seal" variant — for certification / featured labels only.
    Distinct shape (small star, no pill) so meaning is carried
@@ -298,8 +343,16 @@
   border-radius: 0;
   background: var(--label-color);
   clip-path: polygon(
-    50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%,
-    21% 91%, 32% 57%, 2% 35%, 39% 35%
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
   );
   transform: none;
 }
@@ -318,7 +371,7 @@
   overflow: hidden;
 }
 .card--illuminated::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
@@ -335,9 +388,35 @@
    MOTION — one orchestrated entrance, used deliberately
    ============================================================ */
 @keyframes fade-rise {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .animate-fade-rise {
   animation: fade-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+/* ============================================================
+   MARQUEE — scrolling ticker text (used in ReusableLayout header)
+   ============================================================ */
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.animate-marquee {
+  animation: marquee 18s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
 }

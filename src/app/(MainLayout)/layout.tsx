@@ -1,6 +1,3 @@
-
-
-//import Footer from '@/Component/Footer/Footer'
 import Navbar from '@/Component/Header/Navbar'
 import React from 'react'
 
@@ -12,9 +9,7 @@ const layout = ({
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="min-h-screen ">
-        {children}
-      </main>
+      <main className="bg-card pt-14">{children}</main>
       {/* <Footer/> */}
     </div>
   )

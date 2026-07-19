@@ -10,7 +10,7 @@ const Page = () => {
   const chapter = chapter1Data[0]
 
   return (
-    <main className="bg-background text-foreground">
+    <main className=" text-foreground py-5">
       <section className="grid grid-cols-1 md:grid-cols-2">
         <section className="h-auto min-h-80 border-r-2 border-dotted border-r-border ">
           {/* Title */}
