@@ -5,6 +5,7 @@ import './globals.css'
 import ThemeProvider from '@/Component/Provider/ThemeProvider'
 import I18nProvider from '@/Component/Provider/I18nProvider'
 import { Toaster } from 'react-hot-toast'
+import Loader from '@/Component/Loader/Loader'
 
 const fraunces = Fraunces({
   variable: '--font-fraunces',
@@ -40,19 +41,21 @@ export default function RootLayout({
       className={`${fraunces.variable} ${hindSiliguri.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-200">
-        <I18nProvider>
-          <ThemeProvider>{children}</ThemeProvider>
-          <Toaster
-            position="top-right"
-            reverseOrder={false}
-            toastOptions={{
-              duration: 4000,
-              style: {
-                borderRadius: '10px',
-              },
-            }}
-          />
-        </I18nProvider>
+        <Loader>
+          <I18nProvider>
+            <ThemeProvider>{children}</ThemeProvider>
+            <Toaster
+              position="top-right"
+              reverseOrder={false}
+              toastOptions={{
+                duration: 4000,
+                style: {
+                  borderRadius: '10px',
+                },
+              }}
+            />
+          </I18nProvider>
+        </Loader>
       </body>
     </html>
   )
