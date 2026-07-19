@@ -85,7 +85,7 @@ function DayCard({ day }: { day: DayEntry }) {
 
   return (
     <div
-      className={`group relative bg-card rounded-xl border transition-all duration-200 overflow-hidden
+      className={`group relative bg-card py-24 rounded-xl border transition-all duration-200 overflow-hidden
         ${open ? 'border-accent/50 shadow-md' : 'border-border hover:border-accent/30 hover:shadow-sm'}`}
     >
       <div
