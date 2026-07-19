@@ -43,7 +43,7 @@ const SidebarWrapper = ({
           fixed inset-y-0 left-0 z-50 w-64 shadow-2xl
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full'}
           /* md এবং তার বড় স্ক্রিন থেকে: normal flow-এর অংশ, কোলাপ্সিবল উইডথ */
-          md:static md:z-auto md:shadow-none md:translate-x-0 md:w-auto
+          md:relative md:z-auto md:shadow-none md:translate-x-0 md:w-auto
           ${!isCollapsed ? 'md:w-44 lg:w-48' : 'md:w-12'}
         `}
       >
