@@ -148,12 +148,12 @@
           {
             "id": 222,
             "Name": { "en": "phonology", "bn": "ধ্বনিতত্ত্ব" },
-            "path": "/SellList"
+            "path": "/punctuation"
           },
           {
             "id": 223,
             "Name": { "en": "Sound Changes", "bn": "ধ্বনির পরিবর্তন" },
-            "path": "/SellSidebarGrid"
+            "path": "/punctuation"
           },
           {
             "id": 224,
@@ -166,7 +166,7 @@
               "en": "Consonant and Vowel Rules",
               "bn": "ন-ত্ব ও ষ-ত্ব বিধান"
             },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 226,
@@ -174,17 +174,17 @@
               "en": "Masculine and Feminine gender",
               "bn": "পুরুষ ও স্ত্রীবাচক"
             },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 227,
             "Name": { "en": "Repeated Word", "bn": "দিরুক্ত শব্দ" },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 228,
             "Name": { "en": "Numerical Words", "bn": "সংখ্যাবাচক শব্দ" },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 229,
@@ -209,17 +209,17 @@
           {
             "id": 233,
             "Name": { "en": "Verb Root", "bn": "ধতু" },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 234,
             "Name": { "en": "Suffix", "bn": "প্রত্যয়" },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 235,
             "Name": { "en": "Types of Words", "bn": "শব্দের প্রকার" },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 236,
@@ -227,12 +227,12 @@
               "en": "Parts of Speech / Classification of Words",
               "bn": "পদ-প্রকরণ"
             },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 237,
             "Name": { "en": "Verb", "bn": "ক্রিয়াপদ" },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 238,
@@ -240,7 +240,7 @@
               "en": "Tense, Person and Special Uses of Tenses",
               "bn": "কাল, পুরুষ এবং কালের বিশিষ্ট প্রয়োগ"
             },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 239,
@@ -248,12 +248,12 @@
               "en": "Finite, Non-finite and Compound Verbs",
               "bn": "সমাপিকা, অসমাপিকা ও যৌগিক ক্রিয়ার প্রয়োগ"
             },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 240,
             "Name": { "en": "Bengali Imperative Mode", "bn": "বাংলা অনুজ্ঞা" },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 241,
@@ -261,7 +261,7 @@
               "en": "Verb Inflection: Sadhu and Cholito",
               "bn": "ক্রিয়া-বিভক্তি : সাধু ও চলিত"
             },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 242,
@@ -269,7 +269,7 @@
               "en": "Case, Inflection, Genitive and Vocative Case",
               "bn": "কারক ও বিভক্তি এবং সম্বন্ধ পদ ও সম্বোধন পদ"
             },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 243,
@@ -277,7 +277,7 @@
               "en": "Preposition / Postposition",
               "bn": "অনুসর্গ বা কর্মপ্রবচনীয় শব্দ"
             },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
 
 
@@ -287,7 +287,7 @@
               "en": "Syntax / Sentence Structure",
               "bn": "বাক্য প্রকরণ"
             },
-            "path": "/SellListSidebar"
+            "path": "/punctuation"
           },
           {
             "id": 245,
@@ -303,7 +303,7 @@
               "en": "Voice and Voice Change",
               "bn": "বাচ্য এবং বাচ্য পরিবর্তন"
             },
-            "path": "/SellListSidebar"
+            "path": "/idioms"
           },
           {
             "id": 247,
@@ -320,23 +320,8 @@
               "bn": "যতি বা ছেদ-চিহ্নের লিখন কৌশল"
             },
             "path": "/punctuation"
-          },
-          {
-            "id": 249,
-            "Name": {
-              "en": "Classification of Sentences",
-              "bn": "বাক্যের শ্রেণীবিভাগ"
-            },
-            "path": "/SellListSidebar"
-          },
-          {
-            "id": 250,
-            "Name": {
-              "en": "Word Order in Sentences",
-              "bn": "বাক্যে পদ-সংস্থাপনের ক্রম"
-            },
-            "path": "/SellListSidebar"
           }
+
         ]
       }
     ]
@@ -376,15 +361,8 @@
               "bn": "ভৌগোলিক উপনাম"
             },
             "path": "/geoNickname"
-          },
-          {
-            "id": 324,
-            "Name": {
-              "en": "Agent List with sidebar",
-              "bn": "সাইডবারসহ এজেন্ট লিস্ট"
-            },
-            "path": "/AgentProfileSidebar"
           }
+
         ]
       },
       {
@@ -400,28 +378,8 @@
             "id": 331,
             "Name": { "en": "Country/Capital/Currency", "bn": "কান্ট্রি/ক্যাপিটাল/কারেন্সী" },
             "path": "/CountryCapitalCurrency"
-          },
-          {
-            "id": 332,
-            "Name": { "en": "Agency List", "bn": "এজেন্সি লিস্ট" },
-            "path": "/AgencyList"
-          },
-          {
-            "id": 333,
-            "Name": {
-              "en": "Agency Grid with sidebar",
-              "bn": "সাইডবারসহ এজেন্সি গ্রিড"
-            },
-            "path": "/AgentSidebar"
-          },
-          {
-            "id": 334,
-            "Name": {
-              "en": "Agency List with sidebar",
-              "bn": "সাইডবারসহ এজেন্সি লিস্ট"
-            },
-            "path": "/AgencyLSidebar"
           }
+
         ]
       }
     ]
