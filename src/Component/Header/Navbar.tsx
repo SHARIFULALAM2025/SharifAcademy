@@ -35,11 +35,11 @@ const Navbar = () => {
   const pathname = usePathname()
   const [mounted, setMounted] = useState(false)
 
-  // মোবাইল/ট্যাবলেট মেনু স্টেট (lg-এর নিচে সব ডিভাইসের জন্য)
+
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openMobileId, setOpenMobileId] = useState<string | number | null>(null)
 
-  // ✅ লিন্ট এরর ফিক্স: রেন্ডার ফেজেই পাথনেম ট্র্যাকিং স্টেট রাখা
+
   const [prevPathname, setPrevPathname] = useState(pathname)
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const Navbar = () => {
     return () => clearTimeout(timer)
   }, [])
 
-  // ✅ রেন্ডার পাসেই পাথনেম বদলানো চেক করে মোবাইল মেনু বন্ধ করা (No useEffect needed)
+
   if (pathname !== prevPathname) {
     setPrevPathname(pathname)
     setMobileOpen(false)
